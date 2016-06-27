@@ -1,7 +1,26 @@
 $(function() {
-    var make = go.GraphObject.make;
-    var myDiagram = make(go.Diagram, 'myDiagramDiv', {
+    var option = {
         initialContentAlignment: go.Spot.Center,
-        'undoManager.isEnable': true
-    });
+        'undoManager.isEnabled': true
+    };
+
+    var make = go.GraphObject.make;
+    var myDiagram = make(
+        go.Diagram,
+        'myDiagramDiv',
+        option
+    );
+
+    var myModel = make(go.Model);
+
+    myModel.nodeDataArray = [{
+        key: 'Alpha'
+    }, {
+        key: 'Beta'
+    }, {
+        key: 'Gamma'
+    }];
+
+    myDiagram.model = myModel;
+
 });
