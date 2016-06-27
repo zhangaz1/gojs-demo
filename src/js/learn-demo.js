@@ -6,21 +6,17 @@ $(function() {
             "undoManager.isEnabled": true // enable Ctrl-Z to undo and Ctrl-Y to redo
         });
 
-    var model = $(go.GraphLinksModel);
+    var model = $(go.TreeModel);
     model.nodeDataArray = [{
-        key: "A"
+        key: "A1"
     }, {
-        key: "B"
+        key: "B",
+        parent: "A1"
     }, {
-        key: "C"
+        key: "A1",
+        parent: "B"
     }];
-    model.linkDataArray = [{
-        from: "A",
-        to: "B"
-    }, {
-        from: "B",
-        to: "C"
-    }];
+
 
     myDiagram.model = model;
 });
