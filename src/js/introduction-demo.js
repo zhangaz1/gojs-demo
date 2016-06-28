@@ -8,35 +8,60 @@ $(function() {
 
     diagram.add(
         $(go.Part, "Horizontal",
-            $(go.Shape, "Rectangle", {
+            $(go.Shape, {
+                figure: "Club",
                 width: 40,
-                height: 60,
+                height: 40,
+                margin: 4
+            }), // default fill and stroke are "black"
+            $(go.Shape, {
+                figure: "Club",
+                width: 40,
+                height: 40,
                 margin: 4,
-                fill: null
+                fill: "green"
             }),
-            $(go.Shape, "RoundedRectangle", {
+            $(go.Shape, {
+                figure: "Club",
                 width: 40,
-                height: 60,
+                height: 40,
                 margin: 4,
-                fill: null
+                fill: "green",
+                stroke: null
             }),
-            $(go.Shape, "Ellipse", {
+            $(go.Shape, {
+                figure: "Club",
                 width: 40,
-                height: 60,
+                height: 40,
                 margin: 4,
-                fill: null
+                fill: null,
+                stroke: "green"
             }),
-            $(go.Shape, "Triangle", {
+            $(go.Shape, {
+                figure: "Club",
                 width: 40,
-                height: 60,
+                height: 40,
                 margin: 4,
-                fill: null
+                fill: null,
+                stroke: "green",
+                strokeWidth: 3
             }),
-            $(go.Shape, "Diamond", {
+            $(go.Shape, {
+                figure: "Club",
                 width: 40,
-                height: 60,
+                height: 40,
                 margin: 4,
-                fill: null
+                fill: null,
+                stroke: "green",
+                strokeWidth: 6
+            }),
+            $(go.Shape, {
+                figure: "Club",
+                width: 40,
+                height: 40,
+                margin: 4,
+                fill: "green",
+                background: "orange"
             })
         ));
 
