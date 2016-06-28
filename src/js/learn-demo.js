@@ -60,6 +60,13 @@ $(function() {
             source: "imgs/cat6.png"
         }
     ];
+
+    myDiagram.layout =
+        $(go.TreeLayout, {
+            angle: 270,
+            layerSpacing: 70
+        });
+
     myDiagram.model = model;
 
     window.g = {
