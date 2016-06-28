@@ -7,34 +7,20 @@ $(function() {
     });
 
     diagram.add(
-        $(go.Part, "Vertical",
+        $(go.Part,
             $(go.TextBlock, {
-                text: "a Text Block\nwith three logical lines\nof text",
-                background: "lightgreen",
-                // padding: 5,
-                margin: 20,
+                text: "select and then click to edit",
+                background: "lightblue",
+                editable: true,
                 isMultiline: false
-            }),
+            })
+        ));
+    diagram.add(
+        $(go.Part,
             $(go.TextBlock, {
-                text: "a Text Block\nwith three logical lines\nof text",
-                background: "lightgreen",
-                margin: 2,
-                isMultiline: true
-            }),
-            $(go.TextBlock, {
-                text: "a Text Block\nwith three logical lines\nof centered text",
-                background: "lightgreen",
-                margin: 2,
-                isMultiline: true,
-                textAlign: "center"
-            }),
-            $(go.TextBlock, {
-                text: "a single line of centered text that should wrap because we will limit the width",
-                background: "lightgreen",
-                margin: 2,
-                width: 80,
-                wrap: go.TextBlock.WrapFit,
-                textAlign: "center"
+                text: "this one allows embedded newlines",
+                background: "lightblue",
+                editable: true
             })
         ));
 
