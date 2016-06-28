@@ -2,6 +2,10 @@ $(function() {
     // For conciseness. See the "Building Parts" intro page for more
     var $ = go.GraphObject.make;
 
+    var diagram = $(go.Diagram, 'myDiagramDiv', {
+        layout: $(go.LayeredDigraphLayout)
+    });
+
     // the node template describes how each Node should be constructed
     diagram.nodeTemplate =
         $(go.Node, "Auto", // the Shape automatically fits around the TextBlock
@@ -57,8 +61,6 @@ $(function() {
 
     window.g = {
         make: $,
-        diagram: myDiagram,
-        model: model,
-        linkTemplate: linkTemplate
+        diagram: diagram
     };
 });
