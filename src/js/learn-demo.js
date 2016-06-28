@@ -22,6 +22,11 @@ $(function() {
         to: "A"
     }];
 
-
     myDiagram.model = model;
+
+    window.g = {
+        make: make,
+        diagram: myDiagram,
+        model: model
+    };
 });
