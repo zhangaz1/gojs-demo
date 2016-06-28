@@ -7,61 +7,58 @@ $(function() {
     });
 
     diagram.add(
-        $(go.Part, "Horizontal",
+        $(go.Part, "Table",
             $(go.Shape, {
-                figure: "Club",
-                width: 40,
-                height: 40,
-                margin: 4
-            }), // default fill and stroke are "black"
-            $(go.Shape, {
+                row: 0,
+                column: 0,
                 figure: "Club",
                 width: 40,
                 height: 40,
                 margin: 4,
                 fill: "green"
             }),
-            $(go.Shape, {
-                figure: "Club",
-                width: 40,
-                height: 40,
-                margin: 4,
-                fill: "green",
-                stroke: null
+            $(go.TextBlock, "green", {
+                row: 1,
+                column: 0
             }),
             $(go.Shape, {
+                row: 0,
+                column: 1,
                 figure: "Club",
                 width: 40,
                 height: 40,
                 margin: 4,
-                fill: null,
-                stroke: "green"
+                fill: "white"
+            }),
+            $(go.TextBlock, "white", {
+                row: 1,
+                column: 1
             }),
             $(go.Shape, {
+                row: 0,
+                column: 2,
                 figure: "Club",
                 width: 40,
                 height: 40,
                 margin: 4,
-                fill: null,
-                stroke: "green",
-                strokeWidth: 3
+                fill: "transparent"
+            }),
+            $(go.TextBlock, "transparent", {
+                row: 1,
+                column: 2
             }),
             $(go.Shape, {
+                row: 0,
+                column: 3,
                 figure: "Club",
                 width: 40,
                 height: 40,
                 margin: 4,
-                fill: null,
-                stroke: "green",
-                strokeWidth: 6
+                fill: null
             }),
-            $(go.Shape, {
-                figure: "Club",
-                width: 40,
-                height: 40,
-                margin: 4,
-                fill: "green",
-                background: "orange"
+            $(go.TextBlock, "null", {
+                row: 1,
+                column: 3
             })
         ));
 
