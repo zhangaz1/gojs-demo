@@ -6,59 +6,89 @@ $(function() {
         initialContentAlignment: go.Spot.Center
     });
 
+    var W_geometry = go.Geometry.parse(
+        "M 0,0 L 10,50 20,10 30,50 40,0", false);
+
     diagram.add(
-        $(go.Part, "Table",
+        $(go.Part, "Horizontal",
             $(go.Shape, {
-                row: 0,
-                column: 0,
-                figure: "Club",
-                width: 40,
-                height: 40,
-                margin: 4,
-                fill: "green"
-            }),
-            $(go.TextBlock, "green", {
-                row: 1,
-                column: 0
+                geometry: W_geometry,
+                strokeWidth: 2
             }),
             $(go.Shape, {
-                row: 0,
-                column: 1,
-                figure: "Club",
-                width: 40,
-                height: 40,
-                margin: 4,
-                fill: "white"
-            }),
-            $(go.TextBlock, "white", {
-                row: 1,
-                column: 1
+                geometry: W_geometry,
+                stroke: "blue",
+                strokeWidth: 10,
+                strokeJoin: "miter",
+                strokeCap: "butt"
             }),
             $(go.Shape, {
-                row: 0,
-                column: 2,
-                figure: "Club",
-                width: 40,
-                height: 40,
-                margin: 4,
-                fill: "transparent"
-            }),
-            $(go.TextBlock, "transparent", {
-                row: 1,
-                column: 2
+                geometry: W_geometry,
+                stroke: "blue",
+                strokeWidth: 10,
+                strokeJoin: "miter",
+                strokeCap: "round"
             }),
             $(go.Shape, {
-                row: 0,
-                column: 3,
-                figure: "Club",
-                width: 40,
-                height: 40,
-                margin: 4,
-                fill: null
+                geometry: W_geometry,
+                stroke: "blue",
+                strokeWidth: 10,
+                strokeJoin: "miter",
+                strokeCap: "square"
             }),
-            $(go.TextBlock, "null", {
-                row: 1,
-                column: 3
+            $(go.Shape, {
+                geometry: W_geometry,
+                stroke: "green",
+                strokeWidth: 10,
+                strokeJoin: "bevel",
+                strokeCap: "butt"
+            }),
+            $(go.Shape, {
+                geometry: W_geometry,
+                stroke: "green",
+                strokeWidth: 10,
+                strokeJoin: "bevel",
+                strokeCap: "round"
+            }),
+            $(go.Shape, {
+                geometry: W_geometry,
+                stroke: "green",
+                strokeWidth: 10,
+                strokeJoin: "bevel",
+                strokeCap: "square"
+            }),
+            $(go.Shape, {
+                geometry: W_geometry,
+                stroke: "red",
+                strokeWidth: 10,
+                strokeJoin: "round",
+                strokeCap: "butt"
+            }),
+            $(go.Shape, {
+                geometry: W_geometry,
+                stroke: "red",
+                strokeWidth: 10,
+                strokeJoin: "round",
+                strokeCap: "round"
+            }),
+            $(go.Shape, {
+                geometry: W_geometry,
+                stroke: "red",
+                strokeWidth: 10,
+                strokeJoin: "round",
+                strokeCap: "square"
+            }),
+            $(go.Shape, {
+                geometry: W_geometry,
+                stroke: "purple",
+                strokeWidth: 2,
+                strokeDashArray: [4, 2]
+            }),
+            $(go.Shape, {
+                geometry: W_geometry,
+                stroke: "purple",
+                strokeWidth: 2,
+                strokeDashArray: [6, 6, 2, 2]
             })
         ));
 
