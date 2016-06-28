@@ -17,32 +17,24 @@ $(function() {
                 text: "a Text Block",
                 background: "lightgreen",
                 margin: 2,
-                width: 100,
-                height: 33
-            }),
-            $(go.TextBlock, {
-                text: "a Text Block",
-                background: "lightgreen",
-                margin: 2,
-                width: 60,
-                height: 33
+                width: 50,
+                wrap: go.TextBlock.None
             }),
             $(go.TextBlock, {
                 text: "a Text Block",
                 background: "lightgreen",
                 margin: 2,
                 width: 50,
-                height: 22
+                wrap: go.TextBlock.WrapDesiredSize
             }),
             $(go.TextBlock, {
                 text: "a Text Block",
                 background: "lightgreen",
                 margin: 2,
-                width: 40,
-                height: 9
+                width: 50,
+                wrap: go.TextBlock.WrapFit
             })
         ));
-
     window.g = {
         make: $,
         diagram: diagram
