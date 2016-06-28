@@ -7,20 +7,36 @@ $(function() {
     });
 
     diagram.add(
-        $(go.Part,
-            $(go.TextBlock, {
-                text: "select and then click to edit",
-                background: "lightblue",
-                editable: true,
-                isMultiline: false
-            })
-        ));
-    diagram.add(
-        $(go.Part,
-            $(go.TextBlock, {
-                text: "this one allows embedded newlines",
-                background: "lightblue",
-                editable: true
+        $(go.Part, "Horizontal",
+            $(go.Shape, "Rectangle", {
+                width: 40,
+                height: 60,
+                margin: 4,
+                fill: null
+            }),
+            $(go.Shape, "RoundedRectangle", {
+                width: 40,
+                height: 60,
+                margin: 4,
+                fill: null
+            }),
+            $(go.Shape, "Ellipse", {
+                width: 40,
+                height: 60,
+                margin: 4,
+                fill: null
+            }),
+            $(go.Shape, "Triangle", {
+                width: 40,
+                height: 60,
+                margin: 4,
+                fill: null
+            }),
+            $(go.Shape, "Diamond", {
+                width: 40,
+                height: 60,
+                margin: 4,
+                fill: null
             })
         ));
 
