@@ -10,95 +10,73 @@ $(function() {
         go.Part,
         g(
             go.Panel,
-            'Table', {
-                defaultAlignment: go.Spot.Left
-            },
+            'Table',
             g(
-                go.RowColumnDefinition, {
+                go.TextBlock, {
+                    text: '顶标题',
+                    row: 0,
                     column: 0,
-                    width: 200
+                    columnSpan: 3,
+                    stretch: go.GraphObject.Horizontal,
+                    margin: 2,
+                    background: '#394'
                 }
             ),
             g(
-                go.RowColumnDefinition, {
+                go.TextBlock, {
+                    text: '侧标题',
+                    row: 1,
+                    column: 0,
+                    rowSpan: 2,
+                    margin: 2,
+                    stretch: go.GraphObject.Vertical,
+                    background: '#394'
+                }
+            ),
+            g(
+                go.TextBlock, {
+                    text: '一行一列',
+                    row: 1,
                     column: 1,
-                    width: 15,
+                    margin: 2,
+                    background: '#394'
                 }
-            ),
-            g(
-                go.Panel,
-                'Auto', {
-                    row: 0,
-                    column: 0,
-                    alignment: go.Spot.Left
-                },
-                g(
-                    go.Shape,
-                    'RoundedRectangle', {
-                        fill: '#493'
-                    }
-                ),
-                g(
-                    go.TextBlock,
-                    'auot panel'
-                )
             ),
             g(
                 go.TextBlock, {
-                    text: 'alignment: left',
-                    row: 0,
-                    column: 2
-                }
-            ),
-            g(
-                go.Panel,
-                'Auto', {
+                    text: '一行两列',
                     row: 1,
-                    column: 0,
-                    alignment: go.Spot.Center
-                },
-                g(
-                    go.Shape,
-                    'RoundedRectangle', {
-                        fill: '#493'
-                    }
-                ),
-                g(
-                    go.TextBlock,
-                    'auto panel'
-                )
-            ),
-            g(
-                go.TextBlock, {
-                    text: 'alignment: center',
-                    row: 1,
-                    column: 2
+                    column: 2,
+                    margin: 2,
+                    background: '#394'
                 }
             ),
             g(
-                go.Panel,
-                'Auto', {
+                go.TextBlock, {
+                    text: '二行一列',
                     row: 2,
-                    column: 0,
-                    alignment: go.Spot.Right,
-                    stretch: go.GraphObject.Fill
-                },
-                g(
-                    go.Shape,
-                    'RoundedRectangle', {
-                        fill: '#493'
-                    }
-                ),
-                g(
-                    go.TextBlock,
-                    'auto panel'
-                )
+                    column: 1,
+                    margin: 2,
+                    background: '#394'
+                }
             ),
             g(
                 go.TextBlock, {
-                    text: 'alignment: right',
+                    text: '二行三列',
                     row: 2,
-                    column: 2
+                    column: 3,
+                    margin: 2,
+                    background: '#394'
+                }
+            ),
+            g(
+                go.TextBlock, {
+                    text: '结尾',
+                    row: 3,
+                    column: 2,
+                    columnSpan: 2,
+                    margin: 2,
+                    background: '#394'
                 }
             )
         )
