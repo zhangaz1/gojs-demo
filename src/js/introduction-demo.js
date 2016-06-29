@@ -6,35 +6,23 @@ $(function() {
         initialContentAlignment: go.Spot.Center
     });
 
-    var node = new go.Node(go.Panel.Auto);
-
-    var shape = new go.Shape();
-    shape.figure = 'RoundedRectangle';
-    shape.fill = '#394';
-    node.add(shape);
-
-    var textBlock = new go.TextBlock();
-    textBlock.text = 'Hello!';
-    textBlock.margin = 5;
-    textBlock.editable = true;
-    node.add(textBlock);
-
-    diagram.add(node);
-
+    var style = {
+        width: 55,
+        height: 30,
+        margin: 5,
+        fill: '#555'
+    }
     diagram.add(G(
         go.Node,
-        go.Panel.Auto,
+        'Auto',
         G(
             go.Shape,
-            'RoundedRectangle', {
-                fill: '#394'
-            }
+            'RoundedRectangle',
+            style
         ),
         G(
             go.TextBlock, {
-                text: 'Hello!',
-                margin: 5,
-                editable: true
+                text: 'xy1'
             }
         )
     ));
@@ -44,15 +32,12 @@ $(function() {
         'Auto',
         G(
             go.Shape,
-            'RoundedRectangle', {
-                fill: '#394'
-            }
+            'Rectangle',
+            style
         ),
         G(
-            go.TextBlock,
-            'Hello!', {
-                margin: 5,
-                editable: true
+            go.TextBlock, {
+                text: 'xy2'
             }
         )
     ));
