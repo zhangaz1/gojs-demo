@@ -23,7 +23,7 @@ $(function() {
     diagram.linkTemplate =
         $(go.Link, {
                 routing: go.Link.Orthogonal, // may be either Orthogonal or AvoidsNodes
-                curve: go.Link.JumpOver
+                curve: go.Link.JumpGap
             },
             $(go.Shape),
             $(go.Shape, {
