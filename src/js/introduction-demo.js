@@ -6,35 +6,31 @@ $(function() {
         initialContentAlignment: go.Spot.Center
     });
 
-    var node1 = g(
-        go.Node,
-        'Auto',
-        g(
-            go.Shape, {
-                fill: '#493'
-            }
-        ),
-        g(
-            go.TextBlock, {
-                text: 'node1'
-            },
-            new go.Binding('text', 'key')
-        )
-    );
-
-    diagram.nodeTemplate = node1;
-
-    diagram.add(node1);
+    diagram.nodeTemplate =
+        g(go.Node, "Auto",
+            g(go.Shape, {
+                    figure: "RoundedRectangle",
+                    fill: "white"
+                },
+                new go.Binding("fill", "color")),
+            g(go.TextBlock, {
+                    margin: 5
+                },
+                new go.Binding("text", "key"))
+        );
 
     var nodeDataArray = [{
-        key: "Alpha"
+        key: "Alpha",
+        color: "lightblue"
     }, {
-        key: "Beta"
+        key: "Beta",
+        color: "pink"
     }];
     var linkDataArray = [{
         from: "Alpha",
         to: "Beta"
     }];
+    diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
 
     diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
 
