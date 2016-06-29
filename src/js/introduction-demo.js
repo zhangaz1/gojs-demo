@@ -45,6 +45,15 @@ $(function() {
                 alignment: go.Spot.Right,
                 stretch: go.GraphObject.Fill
             }
+        ),
+        G(
+            go.TextBlock, {
+                text: '扩展背景',
+                background: '#394',
+                alignment: go.Spot.Right,
+                stretch: go.GraphObject.Fill,
+                maxSize: new go.Size(100, NaN)
+            }
         )
     ));
 
