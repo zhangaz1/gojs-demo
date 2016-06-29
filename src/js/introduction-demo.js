@@ -20,7 +20,11 @@ $(function() {
 
     diagram.linkTemplate = $(
         go.Link, // the whole link panel
-        $(go.Shape)
+        $(go.Shape),
+        $(go.Shape, {
+            toArrow: 'OpenTriangle',
+            fill: null
+        })
     ); // the link shape, default black stroke
 
     var nodeDataArray = [{
@@ -38,8 +42,8 @@ $(function() {
         from: "Alpha",
         to: "0,0"
     }, {
-        from: '0,0',
-        to: 'Beta'
+        from: 'Beta',
+        to: '0,0'
     }];
 
     diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
