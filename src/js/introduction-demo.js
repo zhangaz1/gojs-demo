@@ -6,36 +6,53 @@ $(function() {
         initialContentAlignment: go.Spot.Center
     });
 
-    diagram.add(
-        G(go.Part,
-            'Horizontal',
-            G(
-                go.TextBlock, {
-                    text: '文本块',
-                    background: 'blue'
-                }
-            ),
-            G(
-                go.TextBlock, {
-                    text: '文本块颜色',
-                    stroke: '#492'
-                }
-            ),
-            G(
-                go.TextBlock, {
-                    text: '文本块背景',
-                    background: '#492'
-                }
-            ),
-            G(
-                go.TextBlock, {
-                    text: '文本块字体',
-                    font: 'bold 22px serif'
-                }
-            )
+    diagram.add(G(
+        go.Part,
+        'Horizontal',
+        G(
+            go.TextBlock, {
+                text: '文本块宽度和高度',
+                background: '#492',
+                margin: 5
+            }
+        ),
+        G(
+            go.TextBlock, {
+                text: '文本块宽度和高度',
+                background: '#492',
+                margin: 5,
+                width: 100,
+                height: 30
+            }
+        ),
+        G(
+            go.TextBlock, {
+                text: '文本块宽度和高度',
+                background: '#492',
+                margin: 5,
+                width: 60,
+                height: 30
+            }
+        ),
+        G(
+            go.TextBlock, {
+                text: '文本块宽度和高度',
+                background: '#492',
+                margin: 5,
+                width: 60,
+                height: 20
+            }
+        ),
+        G(
+            go.TextBlock, {
+                text: '文本块宽度和高度',
+                background: '#492',
+                margin: 5,
+                width: 60,
+                height: 10
+            }
         )
-    );
-
+    ));
     window.g = {
         make: G,
         diagram: diagram
