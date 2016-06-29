@@ -7,53 +7,19 @@ $(function() {
     });
 
     diagram.nodeTemplate =
-        $(go.Node, "Auto", {
-                locationSpot: go.Spot.Center
-            },
-            new go.Binding("location", "loc", go.Point.parse),
-            $(go.Shape, "RoundedRectangle", {
-                fill: "lightgray"
-            }),
+        $(go.Node, "Auto",
+            $(go.Shape, "Rectangle",
+                new go.Binding("fill", "color")),
             $(go.TextBlock, {
                     margin: 5
                 },
                 new go.Binding("text", "key"))
         );
 
-    diagram.linkTemplate =
-        $(go.Link, {
-                routing: go.Link.Orthogonal, // may be either Orthogonal or AvoidsNodes
-                curve: go.Link.JumpGap
-            },
-            $(go.Shape),
-            $(go.Shape, {
-                toArrow: "Standard"
-            })
-        );
-
-    var nodeDataArray = [{
+    diagram.model.nodeDataArray = [{
         key: "Alpha",
-        loc: "0 50"
-    }, {
-        key: "Beta",
-        loc: "100 50"
-    }, {
-        key: "Alpha2",
-        loc: "50 0"
-    }, {
-        key: "Beta2",
-        loc: "50 100"
+        color: "lightblue"
     }];
-    var linkDataArray = [{
-            from: "Alpha",
-            to: "Beta"
-        }, // these two links will cross
-        {
-            from: "Alpha2",
-            to: "Beta2"
-        }
-    ];
-    diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
 
     window.g = {
         make: $,
