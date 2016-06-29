@@ -18,23 +18,31 @@ $(function() {
                 new go.Binding("text", "key"))
         );
 
-    diagram.linkTemplate =
-        $(go.Link, // the whole link panel
-            $(go.Shape)); // the link shape, default black stroke
+    diagram.linkTemplate = $(
+        go.Link, // the whole link panel
+        $(go.Shape)
+    ); // the link shape, default black stroke
 
     var nodeDataArray = [{
         key: "Alpha",
-        loc: "0 0"
+        loc: "-100 -50"
+    }, {
+        key: '0,0',
+        loc: '0 0'
     }, {
         key: "Beta",
         loc: "100 50"
     }];
+
     var linkDataArray = [{
         from: "Alpha",
-        to: "Beta"
+        to: "0,0"
+    }, {
+        from: '0,0',
+        to: 'Beta'
     }];
-    diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
 
+    diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
 
     window.g = {
         make: $,
