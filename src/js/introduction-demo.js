@@ -20,6 +20,7 @@ $(function() {
 
     diagram.linkTemplate =
         $(go.Link, {
+                curve: go.Link.Bezier,
                 routing: go.Link.AvoidsNodes
             }, // link route should avoid nodes
             $(go.Shape),
