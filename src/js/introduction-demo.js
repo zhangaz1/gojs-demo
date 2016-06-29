@@ -10,39 +10,52 @@ $(function() {
         $(go.Part, "Table",
             $(go.Shape, {
                 row: 0,
-                column: 1,
+                column: 0,
                 figure: "Club",
-                fill: "green",
                 width: 40,
                 height: 40,
-            }), // default angle is zero; default scale is one
+                angle: 0,
+                scale: 1.5,
+                fill: $(go.Brush, go.Brush.Linear, {
+                    0.0: "blue",
+                    1.0: "red"
+                }),
+                background: $(go.Brush, go.Brush.Linear, {
+                    0.0: "yellow",
+                    1.0: "green"
+                }),
+                areaBackground: $(go.Brush, go.Brush.Linear, {
+                    0.0: "gray",
+                    1.0: "lightgray"
+                })
+            }),
+            $(go.Shape, {
+                row: 0,
+                column: 1,
+                width: 10,
+                fill: null,
+                stroke: null
+            }),
             $(go.Shape, {
                 row: 0,
                 column: 2,
                 figure: "Club",
-                fill: "green",
-                width: 40,
-                height: 40,
-                angle: -90
-            }),
-            $(go.Shape, {
-                row: 0,
-                column: 3,
-                figure: "Club",
-                fill: "green",
-                width: 40,
-                height: 40,
-                scale: 5
-            }),
-            $(go.Shape, {
-                row: 0,
-                column: 4,
-                figure: "Club",
-                fill: "green",
-                width: 40,
-                height: 40,
-                angle: 30,
-                scale: 1.5
+                width: 140,
+                height: 10,
+                angle: 45,
+                scale: 1.5,
+                fill: $(go.Brush, go.Brush.Linear, {
+                    0.0: "blue",
+                    1.0: "red"
+                }),
+                background: $(go.Brush, go.Brush.Linear, {
+                    0.0: "yellow",
+                    1.0: "green"
+                }),
+                areaBackground: $(go.Brush, go.Brush.Linear, {
+                    0.0: "black",
+                    1.0: "lightgray"
+                })
             })
         ));
 
