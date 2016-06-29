@@ -18,35 +18,35 @@ $(function() {
                 new go.Binding("text", "key"))
         );
 
-    diagram.linkTemplate = $(
-        go.Link, // the whole link panel
-        new go.Binding('routing', 'routing'),
-        $(go.Shape),
-        $(go.Shape, {
-            toArrow: 'OpenTriangle',
-            fill: null
-        })
-    ); // the link shape, default black stroke
+    diagram.linkTemplate =
+        $(go.Link, {
+                routing: go.Link.AvoidsNodes
+            }, // link route should avoid nodes
+            $(go.Shape),
+            $(go.Shape, {
+                toArrow: "Standard"
+            })
+        );
 
     var nodeDataArray = [{
         key: "Alpha",
-        loc: "-100 -50"
-    }, {
-        key: '0,0',
-        loc: '0 0'
+        loc: "0 0"
     }, {
         key: "Beta",
-        loc: "100 50"
+        loc: "250 40"
+    }, {
+        key: "Gamma",
+        loc: "100 0"
+    }, {
+        key: "Delta",
+        loc: "75 50"
+    }, {
+        key: "Epsilon",
+        loc: "150 30"
     }];
-
     var linkDataArray = [{
         from: "Alpha",
-        routing: go.Link.Normal,
-        to: "0,0"
-    }, {
-        from: 'Beta',
-        routing: go.Link.Orthogonal,
-        to: '0,0'
+        to: "Beta"
     }];
 
     diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
