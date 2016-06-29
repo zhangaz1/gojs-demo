@@ -20,6 +20,7 @@ $(function() {
 
     diagram.linkTemplate = $(
         go.Link, // the whole link panel
+        new go.Binding('routing', 'routing'),
         $(go.Shape),
         $(go.Shape, {
             toArrow: 'OpenTriangle',
@@ -40,9 +41,11 @@ $(function() {
 
     var linkDataArray = [{
         from: "Alpha",
+        routing: go.Link.Normal,
         to: "0,0"
     }, {
         from: 'Beta',
+        routing: go.Link.Orthogonal,
         to: '0,0'
     }];
 
