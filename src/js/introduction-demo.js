@@ -8,22 +8,99 @@ $(function() {
 
     diagram.add(g(
         go.Part,
-        'Table', {
-            background: '#ddd'
-        },
         g(
-            go.TextBlock, {
-                text: '这里的文字会重叠',
-                row: 0,
-                column: 0
-            }
-        ),
-        g(
-            go.TextBlock, {
-                text: '叠重会字文的里这',
-                row: 0,
-                column: 0
-            }
+            go.Panel,
+            'Table', {
+                defaultAlignment: go.Spot.Left
+            },
+            g(
+                go.RowColumnDefinition, {
+                    column: 0,
+                    width: 200
+                }
+            ),
+            g(
+                go.RowColumnDefinition, {
+                    column: 1,
+                    width: 15,
+                }
+            ),
+            g(
+                go.Panel,
+                'Auto', {
+                    row: 0,
+                    column: 0,
+                    alignment: go.Spot.Left
+                },
+                g(
+                    go.Shape,
+                    'RoundedRectangle', {
+                        fill: '#493'
+                    }
+                ),
+                g(
+                    go.TextBlock,
+                    'auot panel'
+                )
+            ),
+            g(
+                go.TextBlock, {
+                    text: 'alignment: left',
+                    row: 0,
+                    column: 2
+                }
+            ),
+            g(
+                go.Panel,
+                'Auto', {
+                    row: 1,
+                    column: 0,
+                    alignment: go.Spot.Center
+                },
+                g(
+                    go.Shape,
+                    'RoundedRectangle', {
+                        fill: '#493'
+                    }
+                ),
+                g(
+                    go.TextBlock,
+                    'auto panel'
+                )
+            ),
+            g(
+                go.TextBlock, {
+                    text: 'alignment: center',
+                    row: 1,
+                    column: 2
+                }
+            ),
+            g(
+                go.Panel,
+                'Auto', {
+                    row: 2,
+                    column: 0,
+                    alignment: go.Spot.Right,
+                    stretch: go.GraphObject.Fill
+                },
+                g(
+                    go.Shape,
+                    'RoundedRectangle', {
+                        fill: '#493'
+                    }
+                ),
+                g(
+                    go.TextBlock,
+                    'auto panel'
+                )
+            ),
+            g(
+                go.TextBlock, {
+                    text: 'alignment: right',
+                    row: 2,
+                    column: 2
+                }
+            )
         )
     ));
 
