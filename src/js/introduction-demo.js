@@ -1,39 +1,34 @@
 $(function() {
     // For conciseness. See the "Building Parts" intro page for more
-    var G = go.GraphObject.make;
+    var g = go.GraphObject.make;
 
-    var diagram = G(go.Diagram, 'myDiagramDiv', {
+    var diagram = g(go.Diagram, 'myDiagramDiv', {
         initialContentAlignment: go.Spot.Center
     });
 
-    diagram.add(G(
+    diagram.add(g(
         go.Part,
-        go.Panel.Horizontal, {
-            position: new go.Point(500, 0),
-            location: new go.Point(100, 200), // ?区别
-
-            background: '#ddd',
-            height: 150
+        'Table', {
+            background: '#ddd'
         },
-        G(
-            go.Shape, {
-                width: 30,
-                height: 50,
-                fill: '#394',
-                alignment: go.Spot.Top //center bottom
+        g(
+            go.TextBlock, {
+                text: '这里的文字会重叠',
+                row: 0,
+                column: 0
             }
         ),
-        G(
-            go.Shape, {
-                width: 30,
-                height: 100,
-                fill: '#394'
+        g(
+            go.TextBlock, {
+                text: '叠重会字文的里这',
+                row: 0,
+                column: 0
             }
         )
     ));
 
     window.g = {
-        make: G,
+        make: g,
         diagram: diagram
     };
 });
