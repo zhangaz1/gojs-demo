@@ -8,51 +8,26 @@ $(function() {
 
     diagram.add(G(
         go.Part,
-        go.Panel.Vertical, {
-            background: '#eee'
+        go.Panel.Horizontal, {
+            position: new go.Point(500, 0),
+            location: new go.Point(100, 200), // ?区别
+
+            background: '#ddd',
+            height: 150
         },
         G(
-            go.TextBlock, {
-                text: '左',
-                background: '#394',
-                alignment: go.Spot.Left
+            go.Shape, {
+                width: 30,
+                height: 50,
+                fill: '#394',
+                alignment: go.Spot.Top //center bottom
             }
         ),
         G(
-            go.TextBlock, {
-                text: '中',
-                background: '#394',
-                alignment: go.Spot.Center
-            }
-        ),
-        G(
-            go.TextBlock, {
-                text: '右',
-                background: '#394',
-                alignment: go.Spot.Right
-            }
-        ),
-        G(
-            go.TextBlock, {
-                text: '－－－－拉伸面板－－－－',
-                background: '#394'
-            }
-        ),
-        G(
-            go.TextBlock, {
-                text: '扩展背景',
-                background: '#394',
-                alignment: go.Spot.Right,
-                stretch: go.GraphObject.Fill
-            }
-        ),
-        G(
-            go.TextBlock, {
-                text: '扩展背景',
-                background: '#394',
-                alignment: go.Spot.Right,
-                stretch: go.GraphObject.Fill,
-                maxSize: new go.Size(100, NaN)
+            go.Shape, {
+                width: 30,
+                height: 100,
+                fill: '#394'
             }
         )
     ));
