@@ -6,38 +6,36 @@ $(function() {
         initialContentAlignment: go.Spot.Center
     });
 
-    var style = {
-        width: 55,
-        height: 30,
-        margin: 5,
-        fill: '#555'
-    }
     diagram.add(G(
-        go.Node,
-        'Auto',
-        G(
-            go.Shape,
-            'RoundedRectangle',
-            style
-        ),
+        go.Part,
+        go.Panel.Position, {
+            background: '#eee'
+        },
         G(
             go.TextBlock, {
-                text: 'xy1'
+                text: '0, 0',
+                background: '#394'
             }
-        )
-    ));
-
-    diagram.add(G(
-        go.Node,
-        'Auto',
-        G(
-            go.Shape,
-            'Rectangle',
-            style
         ),
         G(
             go.TextBlock, {
-                text: 'xy2'
+                text: '100, 100',
+                background: '#394',
+                position: new go.Point(100, 100)
+            }
+        ),
+        G(
+            go.TextBlock, {
+                text: '0, 100',
+                background: '#394',
+                position: new go.Point(0, 100)
+            }
+        ),
+        G(
+            go.TextBlock, {
+                text: '100, 000',
+                background: '#394',
+                position: new go.Point(100, 0)
             }
         )
     ));
