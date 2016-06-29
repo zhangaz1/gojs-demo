@@ -8,22 +8,22 @@ $(function() {
 
     diagram.add(G(
         go.Part,
-        'Vertical',
+        'Horizontal',
         G(
-            go.TextBlock, {
-                text: '选中后，单击编辑，不可换行',
-                background: '#492',
-                margin: 5,
-                editable: true,
-                isMultiline: false
+            go.Shape,
+            'Rectangle', {
+                width: 40,
+                height: 60,
+                margin: 4,
+                fill: null
             }
         ),
         G(
-            go.TextBlock, {
-                text: '允许嵌入换行',
-                background: '#492',
-                margin: 5,
-                editable: true
+            go.Shape,
+            'Ellipse', {
+                desiredSize: new go.Size(40, 60),
+                margin: 4,
+                fill: null
             }
         )
     ));
