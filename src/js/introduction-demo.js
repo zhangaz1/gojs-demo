@@ -20,10 +20,11 @@ $(function() {
 
     diagram.linkTemplate =
         $(go.Link, {
-                // curve: go.Link.Bezier,
-                corner: 10,
+                curve: go.Link.Bezier,
+                // corner:10,
                 routing: go.Link.AvoidsNodes
             }, // link route should avoid nodes
+            new go.Binding('curviness', 'curviness'),
             $(go.Shape),
             $(go.Shape, {
                 toArrow: "Standard"
@@ -48,10 +49,12 @@ $(function() {
     }];
     var linkDataArray = [{
         from: "Alpha",
-        to: "Beta"
+        to: "Beta",
+        curviness: 20
     }, {
         from: 'Alpha',
-        to: 'Bet/a'
+        to: 'Beta',
+        curniess: 50
     }];
 
     diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
