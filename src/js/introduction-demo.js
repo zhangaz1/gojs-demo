@@ -33,8 +33,11 @@ $(function() {
         key: "Alpha",
         loc: "0 0"
     }, {
+        key: 'center',
+        loc: '125 150'
+    }, {
         key: "Beta",
-        loc: "100 50"
+        loc: "250 40"
     }];
     var linkDataArray = [{
             from: "Alpha",
