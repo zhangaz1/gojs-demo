@@ -21,6 +21,24 @@ $(function() {
 
     diagram.add(node);
 
+    diagram.add(G(
+        go.Node,
+        go.Panel.Auto,
+        G(
+            go.Shape,
+            'RoundedRectangle', {
+                fill: '#394'
+            }
+        ),
+        G(
+            go.TextBlock, {
+                text: 'Hello!',
+                margin: 5,
+                editable: true
+            }
+        )
+    ));
+
     window.g = {
         make: G,
         diagram: diagram
