@@ -6,58 +6,35 @@ $(function() {
         initialContentAlignment: go.Spot.Center
     });
 
-    diagram.add(
-        $(go.Part, "Table",
-            $(go.Shape, {
-                row: 0,
-                column: 0,
-                figure: "Club",
-                width: 40,
-                height: 40,
-                angle: 0,
-                scale: 1.5,
-                fill: $(go.Brush, go.Brush.Linear, {
-                    0.0: "blue",
-                    1.0: "red"
-                }),
-                background: $(go.Brush, go.Brush.Linear, {
-                    0.0: "yellow",
-                    1.0: "green"
-                }),
-                areaBackground: $(go.Brush, go.Brush.Linear, {
-                    0.0: "gray",
-                    1.0: "lightgray"
-                })
+    diagram.nodeTemplate =
+        $(go.Node, "Auto",
+            new go.Binding("location", "loc", go.Point.parse),
+            $(go.Shape, "RoundedRectangle", {
+                fill: "lightgray"
             }),
-            $(go.Shape, {
-                row: 0,
-                column: 1,
-                width: 10,
-                fill: null,
-                stroke: null
-            }),
-            $(go.Shape, {
-                row: 0,
-                column: 2,
-                figure: "Club",
-                width: 140,
-                height: 10,
-                angle: 45,
-                scale: 1.5,
-                fill: $(go.Brush, go.Brush.Linear, {
-                    0.0: "blue",
-                    1.0: "red"
-                }),
-                background: $(go.Brush, go.Brush.Linear, {
-                    0.0: "yellow",
-                    1.0: "green"
-                }),
-                areaBackground: $(go.Brush, go.Brush.Linear, {
-                    0.0: "black",
-                    1.0: "lightgray"
-                })
-            })
-        ));
+            $(go.TextBlock, {
+                    margin: 5
+                },
+                new go.Binding("text", "key"))
+        );
+
+    diagram.linkTemplate =
+        $(go.Link, // the whole link panel
+            $(go.Shape)); // the link shape, default black stroke
+
+    var nodeDataArray = [{
+        key: "Alpha",
+        loc: "0 0"
+    }, {
+        key: "Beta",
+        loc: "100 50"
+    }];
+    var linkDataArray = [{
+        from: "Alpha",
+        to: "Beta"
+    }];
+    diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+
 
     window.g = {
         make: $,
