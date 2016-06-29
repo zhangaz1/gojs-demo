@@ -7,7 +7,9 @@ $(function() {
     });
 
     diagram.nodeTemplate =
-        $(go.Node, "Auto",
+        $(go.Node, "Auto", {
+                locationSpot: go.Spot.Center
+            },
             new go.Binding("location", "loc", go.Point.parse),
             $(go.Shape, "RoundedRectangle", {
                 fill: "lightgray"
@@ -20,8 +22,8 @@ $(function() {
 
     diagram.linkTemplate =
         $(go.Link, {
-                curve: go.Link.Bezier,
-                routing: go.Link.AvoidsNodes
+                routing: go.Link.Orthogonal, // may be either Orthogonal or AvoidsNodes
+                curve: go.Link.JumpOver
             },
             $(go.Shape),
             $(go.Shape, {
@@ -31,30 +33,26 @@ $(function() {
 
     var nodeDataArray = [{
         key: "Alpha",
-        loc: "0 0"
-    }, {
-        key: 'center',
-        loc: '125 150'
+        loc: "0 50"
     }, {
         key: "Beta",
-        loc: "250 40"
+        loc: "100 50"
+    }, {
+        key: "Alpha2",
+        loc: "50 0"
+    }, {
+        key: "Beta2",
+        loc: "50 100"
     }];
     var linkDataArray = [{
             from: "Alpha",
             to: "Beta"
-        }, // multiple links between the same nodes
+        }, // these two links will cross
         {
-            from: "Alpha",
-            to: "Beta"
-        }, {
-            from: "Alpha",
-            to: "Beta"
-        }, {
-            from: "Alpha",
-            to: "Beta"
+            from: "Alpha2",
+            to: "Beta2"
         }
     ];
-
     diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
 
     window.g = {
