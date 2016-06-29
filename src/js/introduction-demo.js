@@ -9,7 +9,8 @@ $(function() {
     diagram.add(G(
         go.Part,
         go.Panel.Position, {
-            background: '#eee'
+            background: '#eee',
+            padding: 50
         },
         G(
             go.TextBlock, {
