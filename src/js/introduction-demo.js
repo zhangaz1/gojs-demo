@@ -15,6 +15,13 @@ $(function() {
         G(
             go.TextBlock, {
                 text: '0, 0',
+                background: '#394',
+                position: new go.Point(-50, -50)
+            }
+        ),
+        G(
+            go.TextBlock, {
+                text: '0, 0',
                 background: '#394'
             }
         ),
