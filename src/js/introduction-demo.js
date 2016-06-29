@@ -39,6 +39,24 @@ $(function() {
         )
     ));
 
+    diagram.add(G(
+        go.Node,
+        'Auto',
+        G(
+            go.Shape,
+            'RoundedRectangle', {
+                fill: '#394'
+            }
+        ),
+        G(
+            go.TextBlock,
+            'Hello!', {
+                margin: 5,
+                editable: true
+            }
+        )
+    ));
+
     window.g = {
         make: G,
         diagram: diagram
