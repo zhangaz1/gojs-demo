@@ -6,49 +6,16 @@ $(function() {
         initialContentAlignment: go.Spot.Center
     });
 
-    var node1 = g(
-        go.Node,
-        'Auto',
-        g(
-            go.Shape, {
-                fill: '#493'
-            }
-        ),
-        g(
-            go.TextBlock, {
-                text: 'node1'
-            }
-        )
-    );
-
-    diagram.add(node1);
-
-    var node2 = g(
-        go.Node,
-        'Auto',
-        g(
-            go.Shape, {
-                fill: '#943'
-            }
-        ),
-        g(
-            go.TextBlock, {
-                text: 'node1'
-            }
-        )
-    );
-
-    diagram.add(node2);
-
-    diagram.add(g(
-        go.Link, {
-            fromNode: node1,
-            toNode: node2
-        },
-        g(
-            go.Shape
-        )
-    ));
+    var nodeDataArray = [{
+        key: "Alpha"
+    }, {
+        key: "Beta"
+    }];
+    var linkDataArray = [{
+        from: "Alpha",
+        to: "Beta"
+    }];
+    diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
 
     window.g = {
         make: g,
