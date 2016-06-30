@@ -5,7 +5,7 @@ $(function() {
     diagram.nodeTemplate = g(
         go.Node,
         'Auto',
-        new go.Binding('location', 'loc'),
+        new go.Binding('location', 'loc', go.Point.parse),
         g(
             go.Shape,
             'RoundedRectangle', {
@@ -36,16 +36,16 @@ $(function() {
         key: '1',
         text: 'hello1',
         color: '#345',
-        loc: new go.Point(100, 0)
+        loc: '0, 0'
     }, {
         key: '2',
         text: 'hello2',
         color: '#245',
-        loc: new go.Point(-100, 100)
+        loc: '0, 150'
     }, {
         key: '3',
         text: 'hello3',
-        loc: new go.Point(100, 200)
+        loc: '0, 250'
     }]
     var linkDataArray = [{
         from: '1',
