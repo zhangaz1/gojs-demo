@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="css/main.css">
+
+	<script src="libs/jquery/jquery-3.0.0.js"></script>
+	<script src="libs/gojs/go-debug.js"></script>
+	<script src="js/virtualizedForceLayout.js"></script>
+</head>
+
+<body onload="init()">
+	<div id="sample">
+		<div id="myDiagramDiv" style="background-color: white; border: solid 1px blue; width: 100%; height: 600px"></div>
+		<div id="description">
+			<p>This uses a <a>GraphLinksModel</a> and a virtualized <a>ForceDirectedLayout</a>.</p>
+			Node data in Model: <span id="myMessage1"></span>. Actual Nodes in Diagram: <span id="myMessage2"></span>.
+			<br /> Link data in model: <span id="myMessage3"></span>. Actual Links in Diagram: <span id="myMessage4"></span>.
+		</div>
+	</div>
+</body>
+
+</html>
