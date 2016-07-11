@@ -1,3 +1,12 @@
+if(!window.onMapReady) {
+    window.onMapReady = function() {
+        var imgData = diagram.makeImageData({
+            scale: 1
+        });
+        console.log(imgData);
+    }
+}
+
 function init() {
     if(window.goSamples) goSamples(); // init for these samples -- you don't need to call this
     var $ = go.GraphObject.make; // for conciseness in defining templates
@@ -6,6 +15,7 @@ function init() {
     // Its model does NOT include node data for the whole graph, but only that
     // which might be visible in the viewport.
     myDiagram =
+        window.diagram =
         $(go.Diagram, "myDiagramDiv", {
             contentAlignment: go.Spot.Center,
 
@@ -113,6 +123,8 @@ function load() {
 
     // remove the status indicator
     myDiagram.remove(myLoading);
+
+    window.onMapReady(myDiagram);
 }
 
 // Creates a random number of randomly colored nodes.

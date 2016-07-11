@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "jsdom": "^9.4.1"
+    "jsdom": "^9.4.1",
+    "phantomjs": "^2.1.7"
   }
 }
