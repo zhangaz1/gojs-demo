@@ -53,7 +53,8 @@ function getMapImage(mapPageUrl, cb) {
                 console.log(window.diagram);
 
                 window.onMapReady = function(diagram) {
-                    console.log('on map ready.', diagram);
+                    console.log('on map ready: ', diagram);
+                    cb('https://nodejs.org/static/images/logos/nodejs-new-white-pantone.png');
                     var imgData = diagram.makeImageData({
                         scale: 1
                     });
