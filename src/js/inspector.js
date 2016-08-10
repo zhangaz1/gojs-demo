@@ -7,6 +7,17 @@ $(function() {
         "undoManager.isEnabled": true
     });
 
+    new DebugInspector('myInspector', diagram, {
+        acceptButton: true,
+        resetButton: true,
+        /*
+        // example predicate, only show data objects:
+        inspectPredicate: function(value) {
+          return !(value instanceof go.GraphObject)
+        }
+        */
+    });
+
     diagram.model.nodeDataArray = [{
         key: "Alpha",
         color: "lightblue"

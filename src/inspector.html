@@ -2,6 +2,8 @@
 <html>
 
 <head>
+	<link rel="stylesheet" type="text/css" href="libs/spectrum/spectrum.css">
+
 	<link rel="stylesheet" type="text/less" href="less/main.less">
 	<link rel="stylesheet" type="text/less" href="less/DebugInspector.less" />
 
@@ -11,12 +13,22 @@
 			height: 450px;
 			border: solid 1px;
 		}
+
+		#myDiagramDiv,
+		#myInspector {
+			float: left;
+		}
+
+		.inspector-container {}
 	</style>
 
 	<script type="text/javascript" src="libs/lodash/lodash.js"></script>
 	<script type="text/javascript" src="libs/jquery/jquery.js"></script>
 	<script type="text/javascript" src="libs/less/less.js"></script>
+
 	<script src="libs/gojs/go-debug.js"></script>
+	<script src="libs/spectrum/spectrum.js"></script>
+	<script src="libs/gojs/DebugInspector.js"></script>
 
 	<script src="js/inspector.js"></script>
 </head>
@@ -24,6 +36,7 @@
 <body>
 	<div>
 		<div id="myDiagramDiv"></div>
+		<div id="myInspector"></div>
 	</div>
 </body>
 
