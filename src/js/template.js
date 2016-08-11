@@ -2,39 +2,39 @@ $(function() {
 
     var $ = go.GraphObject.make;
 
-    var diagram = $(go.Diagram, "myDiagramDiv", {
+    var diagram = $(go.Diagram, 'myDiagramDiv', {
         initialContentAlignment: go.Spot.Center,
-        "undoManager.isEnabled": true
+        'undoManager.isEnabled': true
     });
 
     diagram.model.nodeDataArray = [{
-        key: "Alpha",
-        color: "lightblue"
+        key: 'Alpha',
+        color: 'lightblue'
     }, {
-        key: "Beta",
-        color: "orange"
+        key: 'Beta',
+        color: 'orange'
     }, {
-        key: "Gamma",
-        color: "lightgreen"
+        key: 'Gamma',
+        color: 'lightgreen'
     }, {
-        key: "Delta",
-        color: "pink"
+        key: 'Delta',
+        color: 'pink'
     }];
 
     diagram.model.linkDataArray = [{
-        from: "Alpha",
-        to: "Beta"
+        from: 'Alpha',
+        to: 'Beta'
     }, {
-        from: "Alpha",
-        to: "Gamma"
+        from: 'Alpha',
+        to: 'Gamma'
     }, {
-        from: "Beta",
-        to: "Beta"
+        from: 'Beta',
+        to: 'Beta'
     }, {
-        from: "Gamma",
-        to: "Delta"
+        from: 'Gamma',
+        to: 'Delta'
     }, {
-        from: "Delta",
-        to: "Alpha"
+        from: 'Delta',
+        to: 'Alpha'
     }];
 });
