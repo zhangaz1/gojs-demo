@@ -7,6 +7,20 @@ $(function() {
 	function bindHandlers() {
 		$('#toSvg').click(makeSvg);
 
+		return void(0);
+
+		function makeSvg() {
+			var svg = myDiagram.makeSvg({
+				scale: 1,
+				background: "white"
+			});
+			var svgstr = new XMLSerializer().serializeToString(svg);
+			var blob = new Blob([svgstr], {
+				type: "image/svg+xml"
+			});
+			myCallback(blob);
+		}
+
 		// When the blob is complete, make an anchor tag for it and use the tag to initiate a download
 		// Works in:
 		// * Chrome
@@ -33,18 +47,6 @@ $(function() {
 				window.URL.revokeObjectURL(url);
 				document.body.removeChild(a);
 			});
-		}
-
-		function makeSvg() {
-			var svg = myDiagram.makeSvg({
-				scale: 1,
-				background: "white"
-			});
-			var svgstr = new XMLSerializer().serializeToString(svg);
-			var blob = new Blob([svgstr], {
-				type: "image/svg+xml"
-			});
-			myCallback(blob);
 		}
 	}
 
