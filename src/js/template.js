@@ -6,10 +6,25 @@ $(function() {
 	function initDiagram() {
 		var $ = go.GraphObject.make;
 		var diagram = makeDiagram();
+
+		diagram.nodeTemplate = getNodeTemplate();
 		diagram.model.nodeDataArray = getNodes();
 		diagram.model.linkDataArray = getLinks();
 
 		return void(0);
+
+		function getNodeTemplate() {
+			return $(go.Node, "Auto",
+				$(go.Shape, "RoundedRectangle", {
+						strokeWidth: 0
+					},
+					new go.Binding("fill", "color")),
+				$(go.TextBlock, {
+						margin: 8
+					},
+					new go.Binding("text", "key"))
+			);
+		}
 
 		function getLinks() {
 			return [{
