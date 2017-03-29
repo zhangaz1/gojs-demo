@@ -16,7 +16,7 @@ $(function() {
 		function scaleSizeSvg() {
 			var svg = myDiagram.makeSvg({
 				scale: 3,
-				size: new go.Size(100, NaN),
+				size: new go.Size(300, 200),
 			});
 			downloadSvg(svg);
 		}
