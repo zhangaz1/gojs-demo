@@ -7,12 +7,20 @@ $(function() {
 	function bindHandlers() {
 		$('#toSvg').click(makeSvg);
 		$('#scaleSvg').click(scaleSvg);
+		$('#sizeSvg').click(sizeSvg);
 
 		return void(0);
 
+		function sizeSvg() {
+			var svg = myDiagram.makeSvg({
+				size: new go.Size(300, 200),
+			});
+			downloadSvg(svg);
+		}
+
 		function scaleSvg() {
 			var svg = myDiagram.makeSvg({
-				scale: 1
+				scale: 1,
 			});
 			downloadSvg(svg);
 		}
