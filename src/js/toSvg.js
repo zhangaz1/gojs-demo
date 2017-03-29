@@ -8,8 +8,21 @@ $(function() {
 		$('#toSvg').click(makeSvg);
 		$('#scaleSvg').click(scaleSvg);
 		$('#sizeSvg').click(sizeSvg);
+		$('#partsSvg').click(partsSvg);
 
 		return void(0);
+
+		function partsSvg() {
+			var svg = myDiagram.makeSvg({
+				parts: myDiagram.nodes,
+			});
+			downloadSvg(svg);
+
+			var svg = myDiagram.makeSvg({
+				parts: myDiagram.links,
+			});
+			downloadSvg(svg);
+		}
 
 		function sizeSvg() {
 			var svg = myDiagram.makeSvg({
