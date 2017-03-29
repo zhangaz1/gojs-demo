@@ -6,11 +6,23 @@ $(function() {
 
 	function bindHandlers() {
 		$('#toSvg').click(makeSvg);
+		$('#scaleSvg').click(scaleSvg);
 
 		return void(0);
 
+		function scaleSvg() {
+			var svg = myDiagram.makeSvg({
+				scale: 1
+			});
+			downloadSvg(svg);
+		}
+
 		function makeSvg() {
 			var svg = myDiagram.makeSvg();
+			downloadSvg(svg);
+		}
+
+		function downloadSvg(svg) {
 			var svgstr = new XMLSerializer().serializeToString(svg);
 			var blob = new Blob([svgstr], {
 				type: "image/svg+xml"
