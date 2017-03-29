@@ -13,7 +13,7 @@ $(function() {
 
 		function sizeSvg() {
 			var svg = myDiagram.makeSvg({
-				size: new go.Size(300, 200),
+				size: new go.Size(300, NaN),
 			});
 			downloadSvg(svg);
 		}
