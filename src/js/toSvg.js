@@ -10,10 +10,7 @@ $(function() {
 		return void(0);
 
 		function makeSvg() {
-			var svg = myDiagram.makeSvg({
-				scale: 1,
-				background: "white"
-			});
+			var svg = myDiagram.makeSvg();
 			var svgstr = new XMLSerializer().serializeToString(svg);
 			var blob = new Blob([svgstr], {
 				type: "image/svg+xml"
