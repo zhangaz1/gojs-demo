@@ -10,8 +10,17 @@ $(function() {
 		$('#sizeSvg').click(sizeSvg);
 		$('#partsSvg').click(partsSvg);
 		$('#scaleSizeSvg').click(scaleSizeSvg);
+		$('#positionSizeSvg').click(positionSizeSvg);
 
 		return void(0);
+
+		function positionSizeSvg() {
+			var svg = myDiagram.makeSvg({
+				position: new go.Point(50, 10),
+				size: new go.Size(300, 200),
+			});
+			downloadSvg(svg);
+		}
 
 		function scaleSizeSvg() {
 			var svg = myDiagram.makeSvg({
