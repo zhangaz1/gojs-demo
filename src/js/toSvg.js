@@ -9,8 +9,17 @@ $(function() {
 		$('#scaleSvg').click(scaleSvg);
 		$('#sizeSvg').click(sizeSvg);
 		$('#partsSvg').click(partsSvg);
+		$('#scaleSizeSvg').click(scaleSizeSvg);
 
 		return void(0);
+
+		function scaleSizeSvg() {
+			var svg = myDiagram.makeSvg({
+				scale: 3,
+				size: new go.Size(100, NaN),
+			});
+			downloadSvg(svg);
+		}
 
 		function partsSvg() {
 			var svg = myDiagram.makeSvg({
