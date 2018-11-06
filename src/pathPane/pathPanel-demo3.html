@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Path Pane</title>
+
+    <script src="./../libs/jquery/jquery.js"></script>
+
+    <script src="./../libs/gojs/go-src.js"></script>
+
+    <script src='./../libs/gojs/spectrum.js'></script>
+    <link rel='stylesheet' href='./../libs/gojs/spectrum.css' />
+
+    <link rel='stylesheet' href='./../libs/gojs/DataInspector.css' />
+    <script src="./../libs/gojs/DataInspector.js"></script>
+
+    <link rel='stylesheet' href='./../libs/gojs/DebugInspector.css' />
+    <script src="./../libs/gojs/DebugInspector.js"></script>
+
+    <script src="./js/ns.js"></script>
+    <script src="./js/nodeTemplates.js"></script>
+    <script src="./js/linkTemplates.js"></script>
+    <script src="./js/data.js"></script>
+    <script src="./js/pathPane.js"></script>
+
+</head>
+
+<body>
+    <div id="sample">
+        <span style="display: inline-block; vertical-align: top;">
+            <div style="margin-left: 10px;">
+                <div id="myDiagramDiv" style="border: solid 1px black; width:300px; height:600px;"></div>
+            </div>
+        </span>
+
+        <span style="display: inline-block; vertical-align: top;">
+            Selected Part:<br />
+            <div id="myInspectorDiv" class="inspector"> </div>
+            <br />
+            First Node's data:<br />
+            <div id="myInspectorDiv2" class="inspector"> </div>
+            <br />
+            Model.modelData:<br />
+            <div id="myInspectorDiv3" class="inspector"> </div>
+            <br />
+        </span>
+
+        <span style="display: inline-block; vertical-align: top;">
+            <div id="myInspector" class="inspector-container"> </div>
+        </span>
+
+        <span style="display: inline-block; vertical-align: top;">
+            <p>
+                This shows the contents of the model after each transaction:
+            </p>
+            <pre id="savedModel" />
+            </span>
+
+  </div>
+</body>
+</html>
