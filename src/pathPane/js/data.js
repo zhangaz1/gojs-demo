@@ -7,7 +7,6 @@
 
     return void(0);
 
-
     function getNodes() {
         return [{
                 key: 1,
@@ -27,7 +26,6 @@
                 text: "Gamma",
                 color: "#1DE9B6",
                 state: 2,
-                group: 5,
                 flag: false,
                 choices: [1, 2, 3, 4, 5]
             },
@@ -36,7 +34,6 @@
                 text: "Delta",
                 color: "#00BFA5",
                 state: "three",
-                group: 5,
                 flag: true
             },
             {
@@ -73,4 +70,4 @@
     }
 
 
-})(pathPane);
+})(NetBrain);

@@ -1,1 +1,5 @@
- window.pathPane = {};
+;
+(function(ns) {
+    window.NetBrain = ns;
+
+})({});

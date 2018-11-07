@@ -26,4 +26,4 @@
                 new go.Binding("fill", "color"))
         );
     }
-})(pathPane);
+})(NetBrain);

@@ -39,4 +39,4 @@
         );
     }
 
-})(pathPane);
+})(NetBrain);
