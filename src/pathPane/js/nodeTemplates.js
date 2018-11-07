@@ -12,7 +12,7 @@
         return $(go.Node, 'Auto', {
                 locationSpot: go.Spot.Center
             },
-            new go.Binding('location', 'loc', go.Point.parse).makeTwoWay(go.Point.stringify),
+            new go.Binding('location', 'location', go.Point.parse), // .makeTwoWay(go.Point.stringify),
             $(go.Shape, 'Rectangle', {
                     stroke: null,
                     strokeWidth: 0,

@@ -21,7 +21,9 @@
                 name: 'L2'
             }, {
                 name: 'L3'
-            }]
+            }],
+
+            location: '100 100'
         }, {
             key: 102,
             type: 'device',
@@ -37,7 +39,9 @@
                 name: 'L3'
             }, {
                 name: 'vxlan'
-            }]
+            }],
+
+            location: '100 200'
         }, {
             key: 103,
             type: 'device',
@@ -51,7 +55,9 @@
                 name: 'L2'
             }, {
                 name: 'L3'
-            }]
+            }],
+
+            location: '100 300'
         }, {
             key: 104,
             type: 'device',
@@ -67,7 +73,9 @@
                 name: 'L3'
             }, {
                 name: 'vxlan'
-            }]
+            }],
+
+            location: '100 400'
         }, {
             key: 105,
             type: 'device',
@@ -81,7 +89,9 @@
                 name: 'L2'
             }, {
                 name: 'L3'
-            }]
+            }],
+
+            location: '100 500'
         }];
     }
 
