@@ -13,21 +13,8 @@
                 locationSpot: go.Spot.Center
             },
             new go.Binding('location', 'location', go.Point.parse), // .makeTwoWay(go.Point.stringify),
-            $(go.Shape, 'Rectangle', {
-                    stroke: null,
-                    strokeWidth: 0,
-                    fill: 'white', // the default fill, if there is no data-binding
-                    portId: '',
-                    cursor: 'pointer', // the Shape is the port, not the whole Node
-                    // allow all kinds of links from and to this port
-                    fromLinkable: true,
-                    fromLinkableSelfNode: true,
-                    fromLinkableDuplicates: true,
-                    toLinkable: true,
-                    toLinkableSelfNode: true,
-                    toLinkableDuplicates: true
-                },
-                new go.Binding('fill', 'color')),
+
+            createDeviceBackground(),
             $(go.TextBlock, {
                     font: 'bold 18px sans-serif',
                     stroke: '#111',
@@ -36,6 +23,19 @@
                     editable: true // allow in-place editing by user
                 },
                 new go.Binding('text', 'name').makeTwoWay())
+        );
+    }
+
+    function createDeviceBackground() {
+        return $(
+            go.Shape,
+            'Rectangle', {
+                stroke: '#C8DCEA',
+                strokeWidth: 1,
+                fill: '#ECF5FC',
+            },
+            new go.Binding('fill', 'color'),
+            new go.Binding('stroke', 'borderColor')
         );
     }
 
