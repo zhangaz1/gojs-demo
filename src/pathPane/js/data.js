@@ -9,64 +9,100 @@
 
     function getNodes() {
         return [{
-                key: 1,
-                text: "Alpha",
-                color: "#B2DFDB",
-                state: "one"
-            },
-            {
-                key: 2,
-                text: "Beta",
-                color: "#B2B2DB",
-                state: "two",
-                password: "1234"
-            },
-            {
-                key: 3,
-                text: "Gamma",
-                color: "#1DE9B6",
-                state: 2,
-                flag: false,
-                choices: [1, 2, 3, 4, 5]
-            },
-            {
-                key: 4,
-                text: "Delta",
-                color: "#00BFA5",
-                state: "three",
-                flag: true
-            },
-            {
-                key: 5,
-                text: "Epsilon",
-                color: "#00BFA5",
-                isGroup: true
-            }
-        ];
+            key: 101,
+            type: 'device',
+            icon: 'pc.png',
+            color: '#B2DFDB',
+            name: 'Host-1',
+            in: '',
+            out: 'E0 10.10.10.1/24',
+
+            levels: [{
+                name: 'L2'
+            }, {
+                name: 'L3'
+            }]
+        }, {
+            key: 102,
+            type: 'device',
+            icon: 'route.png',
+            color: '#B2DFDB',
+            name: 'Host-1',
+            in: 'E1',
+            out: 'E2',
+
+            levels: [{
+                name: 'L2'
+            }, {
+                name: 'L3'
+            }, {
+                name: 'vxlan'
+            }]
+        }, {
+            key: 103,
+            type: 'device',
+            icon: 'firewall.png',
+            color: '#B2DFDB',
+            name: 'N7L-RP',
+            in: 'E4',
+            out: 'E5 192.168.2.1/30',
+
+            levels: [{
+                name: 'L2'
+            }, {
+                name: 'L3'
+            }]
+        }, {
+            key: 104,
+            type: 'device',
+            icon: 'router.png',
+            color: '#B2DFDB',
+            name: '9369-a',
+            in: 'E3 192.169.2.2/30',
+            out: 'E4',
+
+            levels: [{
+                name: 'L2'
+            }, {
+                name: 'L3'
+            }, {
+                name: 'vxlan'
+            }]
+        }, {
+            key: 105,
+            type: 'device',
+            icon: 'pc.png',
+            color: '#B2DFDB',
+            name: 'Host-2',
+            in: 'E1 10.10.2/24',
+            out: '',
+
+            levels: [{
+                name: 'L2'
+            }, {
+                name: 'L3'
+            }]
+        }];
     }
 
     function getLinks() {
         return [{
-                from: 1,
-                to: 2,
-                color: "#5E35B1"
-            },
-            {
-                from: 2,
-                to: 2,
-                color: "#5E35B1"
-            },
-            {
-                from: 3,
-                to: 4,
-                color: "#6200EA"
-            },
-            {
-                from: 3,
-                to: 1,
-                color: "#6200EA"
-            }
-        ];
+            from: 101,
+            to: 102,
+            color: '#D98805'
+        }, {
+            from: 102,
+            to: 103,
+            color: '#D98805'
+        }, {
+            from: 103,
+            to: 104,
+            color: '#D98805'
+        }, {
+            from: 104,
+            to: 105,
+            color: '#D98805'
+        }];
     }
 
 

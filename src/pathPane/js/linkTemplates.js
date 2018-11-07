@@ -9,7 +9,7 @@
     return void(0);
 
     function createLinkTemplate() {
-        // The link shape and arrowhead have their stroke brush data bound to the "color" property
+        // The link shape and arrowhead have their stroke brush data bound to the 'color' property
         return $(go.Link, {
                 toShortLength: 3,
                 relinkableFrom: true,
@@ -18,12 +18,12 @@
             $(go.Shape, {
                     strokeWidth: 2
                 },
-                new go.Binding("stroke", "color")),
+                new go.Binding('stroke', 'color')),
             $(go.Shape, {
-                    toArrow: "Standard",
+                    toArrow: 'Standard',
                     stroke: null
                 },
-                new go.Binding("fill", "color"))
+                new go.Binding('fill', 'color'))
         );
     }
 })(NetBrain);
