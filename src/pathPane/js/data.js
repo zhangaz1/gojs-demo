@@ -27,7 +27,7 @@
         }, {
             key: 102,
             type: 'device',
-            icon: 'route.png',
+            icon: 'router.png',
             color: '#B2DFDB',
             name: 'Host-1',
             in: 'E1',
@@ -45,7 +45,7 @@
         }, {
             key: 103,
             type: 'device',
-            icon: 'firewall.png',
+            icon: 'switch.png',
             color: '#B2DFDB',
             name: 'N7L-RP',
             in: 'E4',
