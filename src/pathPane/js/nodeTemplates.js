@@ -55,8 +55,12 @@
             go.Panel,
             'Auto', {
                 name: 'levelItemPanel',
+                background: '#ECF5FC',
+                areaBackground: '#C8DCEA',
             },
-            createLevelItemBackgroundTemplate(),
+            new go.Binding('background', 'backgroundColor'),
+            new go.Binding('areaBackground', 'borderColor'),
+
             createLevelItemTextTemplate(),
         );
     }
@@ -73,52 +77,89 @@
         );
     }
 
-    function createLevelItemBackgroundTemplate() {
-        return $(
-            go.Shape,
-            'Rectangle', {
-                name: 'levelItemBackgournd',
-                stroke: '#C8DCEA',
-                strokeWidth: 1,
-                fill: '#ECF5FC',
-            },
-            new go.Binding('stroke', 'borderColor'),
-            new go.Binding('fill', 'backgroundColor'),
-        );
-    }
-
     function createDeviceDetailTemplate() {
         return $(
             go.Panel,
-            'Horizontal',
-            createDeviceNameTemplate()
+            'Vertical', {
+                name: 'detailPanel',
+                alignment: go.Spot.Left,
+            },
+            createDeviceInTemplate(),
+            createDeviceNameTemplate(),
+            createDeviceOutTemplate(),
         );
     }
 
-    // function createDeviceBackground() {
-    //     return $(
-    //         go.Shape,
-    //         'Rectangle', {
-    //             name: 'deviceBackground',
-    //             stroke: '#C8DCEA',
-    //             strokeWidth: 1,
-    //             fill: '#ECF5FC',
-    //         },
-    //         new go.Binding('fill', 'color'),
-    //         new go.Binding('stroke', 'borderColor')
-    //     );
-    // }
+    function createDeviceInTemplate() {
+        return $(
+            go.Panel,
+            'Horizontal', {
+                name: 'devcieInPanel',
+                alignment: go.Spot.Left,
+            },
+            $(
+                go.TextBlock, {
+                    name: 'deviceInLabel',
+                    font: '10px sans-serif',
+                    text: 'In:',
+                }
+            ),
+            $(
+                go.TextBlock, {
+                    name: 'deviceInText',
+                    font: 'bold 8px ans-serif',
+                },
+                new Binding('text', 'in'),
+            )
+        );
+    }
 
     function createDeviceNameTemplate() {
         return $(
-            go.TextBlock, {
-                name: 'levelItemText',
-                font: 'bold 12px sans-serif',
-                stroke: '#111',
-                margin: 8,
-                isMultiline: false,
+            go.Panel, 'Horizontal', {
+                name: 'deviceNamePanel',
+                alignment: go.Spot.Left,
             },
-            new go.Binding('text', 'name').makeTwoWay()
+            $(
+                go.Picture, {
+                    width: 16,
+                    height: 16,
+                },
+                new go.Binding("source", "icon")
+            ),
+            $(
+                go.TextBlock, {
+                    name: 'deviceHostNameText',
+                    font: 'bold 12px sans-serif',
+                    stroke: '#111',
+                    isMultiline: false,
+                },
+                new go.Binding('text', 'name').makeTwoWay(),
+            ),
+        );
+    }
+
+    function createDeviceOutTemplate() {
+        return $(
+            go.Panel,
+            'Horizontal', {
+                name: 'devcieOutPanel',
+                alignment: go.Spot.Left,
+            },
+            $(
+                go.TextBlock, {
+                    name: 'deviceOutLabel',
+                    font: '10px sans-serif',
+                    text: 'Out:',
+                }
+            ),
+            $(
+                go.TextBlock, {
+                    name: 'deviceOutText',
+                    font: 'bold 8px ans-serif',
+                },
+                new Binding('text', 'out'),
+            )
         );
     }
 

@@ -11,7 +11,7 @@
         return [{
             key: 101,
             type: 'device',
-            icon: 'pc.png',
+            icon: './imgs/icons/pc.png',
             // color: '#B2DFDB',
             name: 'Host-1',
             in: '',
@@ -31,7 +31,7 @@
         }, {
             key: 102,
             type: 'device',
-            icon: 'router.png',
+            icon: './imgs/icons/router.png',
             // color: '#B2DFDB',
             borderColor: 'red',
             name: 'Host-1',
@@ -56,7 +56,7 @@
         }, {
             key: 103,
             type: 'device',
-            icon: 'switch.png',
+            icon: './imgs/icons/switch.png',
             // color: '#B2DFDB',
             name: 'N7L-RP',
             in: 'E4',
@@ -76,7 +76,7 @@
         }, {
             key: 104,
             type: 'device',
-            icon: 'router.png',
+            icon: './imgs/icons/router.png',
             // color: '#B2DFDB',
             name: '9369-a',
             in: 'E3 192.169.2.2/30',
@@ -100,7 +100,7 @@
         }, {
             key: 105,
             type: 'device',
-            icon: 'pc.png',
+            icon: './imgs/icons/pc.png',
             color: '#B2DFDB',
             name: 'Host-2',
             in: 'E1 10.10.2/24',
