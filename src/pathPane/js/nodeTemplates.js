@@ -101,8 +101,10 @@
                 go.TextBlock, {
                     name: 'deviceInLabel',
                     font: '10px sans-serif',
-                    text: 'In:',
-                }
+                },
+                new go.Binding('text', 'in', function(v) {
+                    return v && 'In:';
+                }),
             ),
             $(
                 go.TextBlock, {
@@ -122,10 +124,24 @@
             },
             $(
                 go.Picture, {
+                    name: 'abIcon',
+                    visible: false,
                     width: 16,
                     height: 16,
                 },
-                new go.Binding("source", "icon")
+                new go.Binding('source', 'abIcon'),
+                new go.Binding('visible', 'abIcon', function(v) {
+                    console.log('xxx visible:', arguments);
+                    return v ? true : false;
+                }),
+            ),
+            $(
+                go.Picture, {
+                    name: 'deviceIcon',
+                    width: 16,
+                    height: 16,
+                },
+                new go.Binding('source', 'icon')
             ),
             $(
                 go.TextBlock, {
@@ -150,8 +166,10 @@
                 go.TextBlock, {
                     name: 'deviceOutLabel',
                     font: '10px sans-serif',
-                    text: 'Out:',
-                }
+                },
+                new go.Binding('text', 'out', function(v) {
+                    return v && 'Out:';
+                }),
             ),
             $(
                 go.TextBlock, {

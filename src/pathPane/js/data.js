@@ -17,6 +17,8 @@
             in: '',
             out: 'E0 10.10.10.1/24',
 
+            abIcon: './imgs/icons/path_point_a.bmp',
+
             levels: [{
                 name: 'L2',
                 borderColor: '#D98805',
@@ -105,6 +107,8 @@
             name: 'Host-2',
             in: 'E1 10.10.2/24',
             out: '',
+
+            abIcon: './imgs/icons/path_point_b.bmp',
 
             levels: [{
                 name: 'L2',
