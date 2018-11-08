@@ -24,11 +24,12 @@
     function createMainLayout() {
         return $(
             go.Panel,
-            'Horizontal', {
+            'Position', {
                 name: 'mainLayout',
                 padding: 10,
                 background: '#ECF5FC',
                 areaBackground: '#C8DCEA',
+                width: 280,
             },
             createDeviceLevelsTemplate(),
             createDeviceDetailTemplate(),
@@ -70,7 +71,7 @@
             go.TextBlock, {
                 margin: 2,
                 angle: 270,
-                desiredSize: new go.Size(50, 18),
+                desiredSize: new go.Size(40, 18),
                 textAlign: 'center',
             },
             new go.Binding('text', 'name')
@@ -82,7 +83,8 @@
             go.Panel,
             'Vertical', {
                 name: 'detailPanel',
-                alignment: go.Spot.Left,
+                width: 170,
+                margin: new go.Margin(0, 0, 0, 90),
             },
             createDeviceInTemplate(),
             createDeviceNameTemplate(),
