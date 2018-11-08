@@ -18,9 +18,13 @@
             out: 'E0 10.10.10.1/24',
 
             levels: [{
-                name: 'L2'
+                name: 'L2',
+                borderColor: '#D98805',
+                backgroundColor: '#F8A200',
             }, {
-                name: 'L3'
+                name: 'L3',
+                borderColor: '#B2E88E',
+                backgroundColor: '#E8FDDA',
             }],
 
             location: '100 100'
@@ -35,11 +39,17 @@
             out: 'E2',
 
             levels: [{
-                name: 'L2'
+                name: 'L2',
+                borderColor: '#D98805',
+                backgroundColor: '#F8A200',
             }, {
-                name: 'L3'
+                name: 'L3',
+                borderColor: '#B2E88E',
+                backgroundColor: '#E8FDDA',
             }, {
-                name: 'vxlan'
+                name: 'vxlan',
+                borderColor: '#B2E88E',
+                backgroundColor: '#DDF0FF',
             }],
 
             location: '100 200'
@@ -47,15 +57,19 @@
             key: 103,
             type: 'device',
             icon: 'switch.png',
-            color: '#B2DFDB',
+            // color: '#B2DFDB',
             name: 'N7L-RP',
             in: 'E4',
             out: 'E5 192.168.2.1/30',
 
             levels: [{
-                name: 'L2'
+                name: 'L2',
+                borderColor: '#D98805',
+                backgroundColor: '#F8A200',
             }, {
-                name: 'L3'
+                name: 'L3',
+                borderColor: '#B2E88E',
+                backgroundColor: '#E8FDDA',
             }],
 
             location: '100 300'
@@ -63,17 +77,23 @@
             key: 104,
             type: 'device',
             icon: 'router.png',
-            color: '#B2DFDB',
+            // color: '#B2DFDB',
             name: '9369-a',
             in: 'E3 192.169.2.2/30',
             out: 'E4',
 
             levels: [{
-                name: 'L2'
+                name: 'L2',
+                borderColor: '#D98805',
+                backgroundColor: '#F8A200',
             }, {
-                name: 'L3'
+                name: 'L3',
+                borderColor: '#B2E88E',
+                backgroundColor: '#E8FDDA',
             }, {
-                name: 'vxlan'
+                name: 'vxlan',
+                borderColor: '#B2E88E',
+                backgroundColor: '#DDF0FF',
             }],
 
             location: '100 400'
@@ -87,9 +107,13 @@
             out: '',
 
             levels: [{
-                name: 'L2'
+                name: 'L2',
+                borderColor: '#D98805',
+                backgroundColor: '#F8A200',
             }, {
-                name: 'L3'
+                name: 'L3',
+                borderColor: '#B2E88E',
+                backgroundColor: '#E8FDDA',
             }],
 
             location: '100 500'
