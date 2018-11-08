@@ -59,6 +59,7 @@
                 background: '#ECF5FC',
                 areaBackground: '#C8DCEA',
             },
+            new go.Binding('portId', 'name'),
             new go.Binding('background', 'backgroundColor'),
             new go.Binding('areaBackground', 'borderColor'),
 

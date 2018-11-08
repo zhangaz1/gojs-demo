@@ -16,24 +16,29 @@
                 return diagram;
             },
             bindData: function(data) {
-                bindData(diagram, data);
+                diagram.model = bindData(data);
             },
         };
     }
 
-    function bindData(diagram, data) {
-        diagram.model = new go.GraphLinksModel(
+    function bindData(data) {
+        var model = new go.GraphLinksModel(
             data.nodeDataArray,
             data.linkDataArray
         );
 
+        model.linkFromPortIdProperty = "fromPort";
+        model.linkToPortIdProperty = "toPort";
+
         // test
         // some shared model data
-        diagram.model.modelData = {
+        model.modelData = {
             test: true,
             hello: "world",
             version: 42
         };
+
+        return model;
     }
 
     function createPathPanelDiagram() {

@@ -71,7 +71,7 @@
             }, {
                 name: 'L3',
                 borderColor: '#B2E88E',
-                backgroundColor: '#E8FDDA',
+                backgroundColor: '#4DBB00',
             }],
 
             location: '100 300'
@@ -91,7 +91,7 @@
             }, {
                 name: 'L3',
                 borderColor: '#B2E88E',
-                backgroundColor: '#E8FDDA',
+                backgroundColor: '#4DBB00',
             }, {
                 name: 'vxlan',
                 borderColor: '#B2E88E',
@@ -127,19 +127,27 @@
     function getLinks() {
         return [{
             from: 101,
+            fromPort: 'L2',
             to: 102,
+            toPort: 'L2',
             color: '#D98805'
         }, {
             from: 102,
+            fromPort: 'L2',
             to: 103,
+            toPort: 'L2',
             color: '#D98805'
         }, {
             from: 103,
+            fromPort: 'L3',
             to: 104,
-            color: '#D98805'
+            toPort: 'L3',
+            color: '#4DBB00'
         }, {
             from: 104,
+            fromPort: 'L2',
             to: 105,
+            toPort: 'L2',
             color: '#D98805'
         }];
     }
