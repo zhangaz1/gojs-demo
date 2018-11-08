@@ -16,27 +16,28 @@
                 return diagram;
             },
             bindData: function(data) {
-                diagram.model = bindData(data);
+                diagram.model = createModel(data);
             },
         };
     }
 
-    function bindData(data) {
-        var model = new go.GraphLinksModel(
-            data.nodeDataArray,
-            data.linkDataArray
-        );
+    function createModel(data) {
+        var model = new go.GraphLinksModel();
 
-        model.linkFromPortIdProperty = "fromPort";
-        model.linkToPortIdProperty = "toPort";
+        model.nodeKeyProperty = 'id';
+        model.linkFromPortIdProperty = 'fromPort';
+        model.linkToPortIdProperty = 'toPort';
 
         // test
         // some shared model data
         model.modelData = {
             test: true,
-            hello: "world",
+            hello: 'world',
             version: 42
         };
+
+        model.nodeDataArray = data.nodeDataArray;
+        model.linkDataArray = data.linkDataArray
 
         return model;
     }
@@ -51,15 +52,15 @@
     }
 
     function createDiagram() {
-        var diagram = $(go.Diagram, "myDiagramDiv", {
+        var diagram = $(go.Diagram, 'myDiagramDiv', {
             initialContentAlignment: go.Spot.Top, // 上对齐布局
 
             // enable undo & redo
-            "undoManager.isEnabled": true,
+            'undoManager.isEnabled': true,
             // automatically show the state of the diagram's model on the page
-            "ModelChanged": function(e) {
+            'ModelChanged': function(e) {
                 if (e.isTransactionFinished) {
-                    document.getElementById("savedModel").textContent = diagram.model.toJson();
+                    document.getElementById('savedModel').textContent = diagram.model.toJson();
                 }
             }
         });

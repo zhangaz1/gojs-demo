@@ -9,8 +9,8 @@
 
     function getNodes() {
         return [{
-            key: 101,
-            type: 'device',
+            id: 101,
+            category: 'device',
             icon: './imgs/icons/pc.png',
             // color: '#B2DFDB',
             name: 'Host-1',
@@ -21,6 +21,7 @@
 
             levels: [{
                 name: 'L2',
+                current: true,
                 borderColor: '#D98805',
                 backgroundColor: '#F8A200',
             }, {
@@ -31,8 +32,8 @@
 
             location: '100 100'
         }, {
-            key: 102,
-            type: 'device',
+            id: 102,
+            category: 'device',
             icon: './imgs/icons/router.png',
             // color: '#B2DFDB',
             borderColor: 'red',
@@ -42,6 +43,7 @@
 
             levels: [{
                 name: 'L2',
+                current: true,
                 borderColor: '#D98805',
                 backgroundColor: '#F8A200',
             }, {
@@ -56,8 +58,8 @@
 
             location: '100 200'
         }, {
-            key: 103,
-            type: 'device',
+            id: 103,
+            category: 'device',
             icon: './imgs/icons/switch.png',
             // color: '#B2DFDB',
             name: 'N7L-RP',
@@ -66,18 +68,20 @@
 
             levels: [{
                 name: 'L2',
+                current: true,
                 borderColor: '#D98805',
                 backgroundColor: '#F8A200',
             }, {
                 name: 'L3',
+                current: true,
                 borderColor: '#B2E88E',
                 backgroundColor: '#4DBB00',
             }],
 
             location: '100 300'
         }, {
-            key: 104,
-            type: 'device',
+            id: 104,
+            category: 'device',
             icon: './imgs/icons/router.png',
             // color: '#B2DFDB',
             name: '9369-a',
@@ -86,10 +90,12 @@
 
             levels: [{
                 name: 'L2',
+                current: true,
                 borderColor: '#D98805',
                 backgroundColor: '#F8A200',
             }, {
                 name: 'L3',
+                current: true,
                 borderColor: '#B2E88E',
                 backgroundColor: '#4DBB00',
             }, {
@@ -100,8 +106,8 @@
 
             location: '100 400'
         }, {
-            key: 105,
-            type: 'device',
+            id: 105,
+            category: 'device',
             icon: './imgs/icons/pc.png',
             color: '#B2DFDB',
             name: 'Host-2',
@@ -112,6 +118,7 @@
 
             levels: [{
                 name: 'L2',
+                current: true,
                 borderColor: '#D98805',
                 backgroundColor: '#F8A200',
             }, {
