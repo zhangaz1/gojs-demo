@@ -77,7 +77,9 @@
                     angle: 270,
                     desiredSize: new go.Size(40, 18),
                     textAlign: 'center',
-                    background: 'red',
+                    click: function(event, textBlock) {
+                        console.log('click:', textBlock.part.data);
+                    },
                 },
                 new go.Binding('text', 'name'),
                 new go.Binding('background', '', getLevelColor('backgroundColor')),
