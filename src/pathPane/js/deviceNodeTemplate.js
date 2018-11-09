@@ -2,6 +2,7 @@
 (function(ns) {
 
     var $ = go.GraphObject.make;
+    var opacityByValue = ns.utils.opacityByValue;
 
     ns.deviceTemplate = {
         createDeviceTemplate: createDeviceTemplate
@@ -105,9 +106,7 @@
                     name: 'devcieInPanel',
                     alignment: go.Spot.Left,
                 },
-                new go.Binding('opacity', 'in', function(v) {
-                    return v ? 1 : 0;
-                }),
+                new go.Binding('opacity', 'in', opacityByValue),
                 $(
                     go.TextBlock, {
                         name: 'deviceInLabel',
@@ -131,26 +130,7 @@
                     name: 'deviceNamePanel',
                     alignment: go.Spot.Left,
                 },
-                $(
-                    go.Picture, {
-                        name: 'abIcon',
-                        visible: false,
-                        width: 16,
-                        height: 16,
-                    },
-                    new go.Binding('source', 'abIcon'),
-                    new go.Binding('visible', '', function(data, picture) {
-                        if (!picture.source) {
-                            if (data.isA) {
-                                picture.source = deviceConfig.aIcon;
-                            } else if (data.isB) {
-                                picture.source = deviceConfig.bIcon;
-                            }
-                        }
-
-                        return data.isA || data.isB || false;
-                    }),
-                ),
+                createABIconTemplate(),
                 $(
                     go.Picture, {
                         name: 'deviceIcon',
@@ -171,6 +151,29 @@
             );
         }
 
+        function createABIconTemplate() {
+            return $(
+                go.Picture, {
+                    name: 'abIcon',
+                    visible: false,
+                    width: 16,
+                    height: 16,
+                },
+                new go.Binding('source', 'abIcon'),
+                new go.Binding('visible', '', function(data, picture) {
+                    if (!picture.source) {
+                        if (data.isA) {
+                            picture.source = deviceConfig.aIcon;
+                        } else if (data.isB) {
+                            picture.source = deviceConfig.bIcon;
+                        }
+                    }
+
+                    return data.isA || data.isB || false;
+                }),
+            );
+        }
+
         function createDeviceOutTemplate() {
             return $(
                 go.Panel,
@@ -178,9 +181,7 @@
                     name: 'devcieOutPanel',
                     alignment: go.Spot.Left,
                 },
-                new go.Binding('opacity', 'out', function(v) {
-                    return v ? 1 : 0;
-                }),
+                new go.Binding('opacity', 'out', opacityByValue),
                 $(
                     go.TextBlock, {
                         name: 'deviceOutLabel',
