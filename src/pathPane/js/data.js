@@ -11,32 +11,27 @@
         return [{
             id: 101,
             category: 'device',
-            icon: './imgs/icons/pc.png',
-            // color: '#B2DFDB',
+
             name: 'Host-1',
             in: '',
             out: 'E0 10.10.10.1/24',
 
-            abIcon: './imgs/icons/path_point_a.bmp',
-
             levels: [{
                 name: 'L2',
                 current: true,
-                borderColor: '#D98805',
-                backgroundColor: '#F8A200',
             }, {
                 name: 'L3',
-                borderColor: '#B2E88E',
-                backgroundColor: '#E8FDDA',
             }],
+
+            icon: './imgs/icons/pc.png',
+            // abIcon: './imgs/icons/path_point_a.bmp',
+            isA: true,
 
             location: '100 100'
         }, {
             id: 102,
             category: 'device',
-            icon: './imgs/icons/router.png',
-            // color: '#B2DFDB',
-            borderColor: 'red',
+
             name: 'Host-1',
             in: 'E1',
             out: 'E2',
@@ -44,24 +39,19 @@
             levels: [{
                 name: 'L2',
                 current: true,
-                borderColor: '#D98805',
-                backgroundColor: '#F8A200',
             }, {
                 name: 'L3',
-                borderColor: '#B2E88E',
-                backgroundColor: '#E8FDDA',
             }, {
                 name: 'vxlan',
-                borderColor: '#B2E88E',
-                backgroundColor: '#DDF0FF',
             }],
+
+            icon: './imgs/icons/router.png',
 
             location: '100 200'
         }, {
             id: 103,
             category: 'device',
-            icon: './imgs/icons/switch.png',
-            // color: '#B2DFDB',
+
             name: 'N7L-RP',
             in: 'E4',
             out: 'E5 192.168.2.1/30',
@@ -69,21 +59,18 @@
             levels: [{
                 name: 'L2',
                 current: true,
-                borderColor: '#D98805',
-                backgroundColor: '#F8A200',
             }, {
                 name: 'L3',
                 current: true,
-                borderColor: '#B2E88E',
-                backgroundColor: '#4DBB00',
             }],
+
+            icon: './imgs/icons/switch.png',
 
             location: '100 300'
         }, {
             id: 104,
             category: 'device',
-            icon: './imgs/icons/router.png',
-            // color: '#B2DFDB',
+
             name: '9369-a',
             in: 'E3 192.169.2.2/30',
             out: 'E4',
@@ -91,46 +78,42 @@
             levels: [{
                 name: 'L2',
                 current: true,
-                borderColor: '#D98805',
-                backgroundColor: '#F8A200',
             }, {
                 name: 'L3',
                 current: true,
-                borderColor: '#B2E88E',
-                backgroundColor: '#4DBB00',
             }, {
                 name: 'vxlan',
-                borderColor: '#B2E88E',
-                backgroundColor: '#DDF0FF',
             }],
+
+            icon: './imgs/icons/router.png',
 
             location: '100 400'
         }, {
             id: 104.5,
-            name: 'VPC1',
             category: 'media',
-            icon: './imgs/icons/lan.png',
+
+            name: 'VPC1',
+
+            // icon: './imgs/icons/lan.png',
+
             location: '100 500',
         }, {
             id: 105,
             category: 'device',
-            icon: './imgs/icons/pc.png',
-            color: '#B2DFDB',
+
             name: 'Host-2',
             in: 'E1 10.10.2/24',
             out: '',
 
-            abIcon: './imgs/icons/path_point_b.bmp',
+            icon: './imgs/icons/pc.png',
+            // abIcon: './imgs/icons/path_point_b.bmp',
+            isB: true,
 
             levels: [{
                 name: 'L2',
                 current: true,
-                borderColor: '#D98805',
-                backgroundColor: '#F8A200',
             }, {
                 name: 'L3',
-                borderColor: '#B2E88E',
-                backgroundColor: '#E8FDDA',
             }],
 
             location: '100 600'

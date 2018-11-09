@@ -44,6 +44,7 @@
                         portId: 'media',
                         width: 16,
                         height: 16,
+                        source: mediaConfig.icon,
                     },
                     new go.Binding('source', 'icon'),
                 ),

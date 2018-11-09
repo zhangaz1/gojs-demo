@@ -51,8 +51,7 @@
                     padding: 5,
                     background: '#DEF0FB',
                     areaBackground: '#B9DCF4',
-                }, {
-                    itemTemplate: createLevelItemTemplate()
+                    itemTemplate: createLevelItemTemplate(),
                 },
                 new go.Binding('itemArray', 'levels')
             );
@@ -140,9 +139,16 @@
                         height: 16,
                     },
                     new go.Binding('source', 'abIcon'),
-                    new go.Binding('visible', 'abIcon', function(v) {
-                        console.log('xxx visible:', arguments);
-                        return v ? true : false;
+                    new go.Binding('visible', '', function(data, picture) {
+                        if (!picture.source) {
+                            if (data.isA) {
+                                picture.source = deviceConfig.aIcon;
+                            } else if (data.isB) {
+                                picture.source = deviceConfig.bIcon;
+                            }
+                        }
+
+                        return data.isA || data.isB || false;
                     }),
                 ),
                 $(
