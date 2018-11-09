@@ -15,12 +15,12 @@
                     borderColor: '#CEE0ED',
                     borderWidth: 1,
                     device: {
-                        icon: './imgs/icons/router.png',
+                        icon: './imgs/icons/router.png', // default icon ?
                         aIcon: './imgs/icons/path_point_a.bmp',
                         bIcon: './imgs/icons/path_point_b.bmp',
 
                         levels: {
-                            backgroundColor: '#F8A200',
+                            backgroundColor: '#DEF0FB',
                             borderColor: '#D98805',
 
                             l2: {

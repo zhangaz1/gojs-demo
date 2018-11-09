@@ -28,7 +28,7 @@
             createDeviceNameTemplate(),
         );
 
-        return void(0);
+        // return void(0);
 
         function createDeviceNameTemplate() {
             return $(

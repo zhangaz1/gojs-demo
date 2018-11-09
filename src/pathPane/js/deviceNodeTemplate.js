@@ -28,7 +28,7 @@
             createMainLayout(),
         );
 
-        return void(0);
+        // return void(0);
 
         function createMainLayout() {
             return $(
@@ -49,8 +49,7 @@
                 'Horizontal', {
                     name: 'levelsPanel',
                     padding: 5,
-                    background: '#DEF0FB',
-                    areaBackground: '#B9DCF4',
+                    background: deviceConfig.levels.backgroundColor,
                     itemTemplate: createLevelItemTemplate(),
                 },
                 new go.Binding('itemArray', 'levels')
@@ -106,14 +105,15 @@
                     name: 'devcieInPanel',
                     alignment: go.Spot.Left,
                 },
+                new go.Binding('opacity', 'in', function(v) {
+                    return v ? 1 : 0;
+                }),
                 $(
                     go.TextBlock, {
                         name: 'deviceInLabel',
+                        text: 'In:',
                         font: '10px sans-serif',
                     },
-                    new go.Binding('text', 'in', function(v) {
-                        return v && 'In:';
-                    }),
                 ),
                 $(
                     go.TextBlock, {
@@ -178,14 +178,15 @@
                     name: 'devcieOutPanel',
                     alignment: go.Spot.Left,
                 },
+                new go.Binding('opacity', 'out', function(v) {
+                    return v ? 1 : 0;
+                }),
                 $(
                     go.TextBlock, {
                         name: 'deviceOutLabel',
+                        text: 'Out:',
                         font: '10px sans-serif',
                     },
-                    new go.Binding('text', 'out', function(v) {
-                        return v && 'Out:';
-                    }),
                 ),
                 $(
                     go.TextBlock, {
