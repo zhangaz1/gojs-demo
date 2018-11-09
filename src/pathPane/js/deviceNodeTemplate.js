@@ -62,12 +62,10 @@
                 go.Panel,
                 'Auto', {
                     name: 'levelItemPanel',
-                    background: '#ECF5FC',
-                    areaBackground: '#C8DCEA',
+                    padding: 1,
                 },
                 new go.Binding('portId', 'name'),
-                new go.Binding('background', 'backgroundColor'),
-                new go.Binding('areaBackground', 'borderColor'),
+                new go.Binding('background', '', getLevelColor('borderColor')),
 
                 createLevelItemTextTemplate(),
             );
@@ -76,13 +74,24 @@
         function createLevelItemTextTemplate() {
             return $(
                 go.TextBlock, {
-                    margin: 2,
                     angle: 270,
                     desiredSize: new go.Size(40, 18),
                     textAlign: 'center',
+                    background: 'red',
                 },
-                new go.Binding('text', 'name')
+                new go.Binding('text', 'name'),
+                new go.Binding('background', '', getLevelColor('backgroundColor')),
             );
+        }
+
+        function getLevelColor(colorKey) {
+            return function(data) {
+                var key = data.name.toLowerCase();
+                var level = deviceConfig.levels[key];
+                return data.current ?
+                    level.active[colorKey] :
+                    level[colorKey];
+            }
         }
 
         function createDeviceDetailTemplate() {

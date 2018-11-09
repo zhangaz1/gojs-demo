@@ -24,8 +24,8 @@
                             borderColor: '#D98805',
 
                             l2: {
-                                backgroundColor: '#F8A200',
-                                borderColor: '#D98805',
+                                backgroundColor: 'green',
+                                borderColor: 'red',
                                 active: {
                                     backgroundColor: '#F8A200',
                                     borderColor: '#D98805',
@@ -35,16 +35,16 @@
                                 borderColor: '#B2E88E',
                                 backgroundColor: '#E8FDDA',
                                 active: {
-                                    borderColor: '#B2E88E',
+                                    borderColor: '#3F9105',
                                     backgroundColor: '#4DBB00',
                                 },
                             },
                             vxlan: {
-                                borderColor: '#B2E88E',
+                                borderColor: '#94CDF6',
                                 backgroundColor: '#DDF0FF',
                                 active: {
-                                    borderColor: '#B2E88E',
-                                    backgroundColor: '#DDF0FF',
+                                    borderColor: 'green',
+                                    backgroundColor: 'red',
                                 },
                             },
                         },
