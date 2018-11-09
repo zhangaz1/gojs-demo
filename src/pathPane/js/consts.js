@@ -7,48 +7,53 @@
                 media: 'media',
             }
         },
-        style: {
-            nodes: {
-                width: 280,
-                background: '#B2DFDB',
-                borderColor: '',
-                borderWidth: 1,
-                device: {
-                    levels: {
-                        backgroundColor: '#F8A200',
-                        borderColor: '#D98805',
-
-                        l2: {
+        config: {
+            style: {
+                nodes: {
+                    width: 280,
+                    backgroundColor: '#ECF5FC',
+                    borderColor: '#CEE0ED',
+                    borderWidth: 1,
+                    device: {
+                        levels: {
                             backgroundColor: '#F8A200',
                             borderColor: '#D98805',
-                            active: {
+
+                            l2: {
                                 backgroundColor: '#F8A200',
                                 borderColor: '#D98805',
+                                active: {
+                                    backgroundColor: '#F8A200',
+                                    borderColor: '#D98805',
+                                },
                             },
-                        },
-                        l3: {
-                            borderColor: '#B2E88E',
-                            backgroundColor: '#E8FDDA',
-                            active: {
+                            l3: {
                                 borderColor: '#B2E88E',
-                                backgroundColor: '#4DBB00',
+                                backgroundColor: '#E8FDDA',
+                                active: {
+                                    borderColor: '#B2E88E',
+                                    backgroundColor: '#4DBB00',
+                                },
                             },
-                        },
-                        vxlan: {
-                            borderColor: '#B2E88E',
-                            backgroundColor: '#DDF0FF',
-                            active: {
+                            vxlan: {
                                 borderColor: '#B2E88E',
                                 backgroundColor: '#DDF0FF',
+                                active: {
+                                    borderColor: '#B2E88E',
+                                    backgroundColor: '#DDF0FF',
+                                },
                             },
                         },
+                        details: {
+
+                        },
                     },
-                    details: {
+                    media: {
 
                     },
                 },
+                links: {},
             },
-            links: {},
         },
     };
 

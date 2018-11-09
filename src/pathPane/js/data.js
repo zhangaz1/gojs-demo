@@ -106,6 +106,12 @@
 
             location: '100 400'
         }, {
+            id: 104.5,
+            name: 'VPC1',
+            category: 'media',
+            icon: './imgs/icons/lan.png',
+            location: '100 500',
+        }, {
             id: 105,
             category: 'device',
             icon: './imgs/icons/pc.png',
@@ -127,7 +133,7 @@
                 backgroundColor: '#E8FDDA',
             }],
 
-            location: '100 500'
+            location: '100 600'
         }];
     }
 
@@ -153,6 +159,12 @@
         }, {
             from: 104,
             fromPort: 'L2',
+            to: 104.5,
+            toPort: 'media',
+            color: '#D98805'
+        }, {
+            from: 104.5,
+            fromPort: 'media',
             to: 105,
             toPort: 'L2',
             color: '#D98805'

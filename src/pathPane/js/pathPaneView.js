@@ -10,7 +10,8 @@
     return void(0);
 
     function createView() {
-        var diagram = createPathPanelDiagram();
+        var config = ns.config.getConfig({});
+        var diagram = createPathPanelDiagram(config);
         return {
             getDiagram: function() {
                 return diagram;
@@ -42,16 +43,18 @@
         return model;
     }
 
-    function createPathPanelDiagram() {
-        var diagram = createDiagram();
+    function createPathPanelDiagram(config) {
+        var diagram = createDiagram(config);
 
-        diagram.nodeTemplate = ns.nodeTemplates.device;
+
         diagram.linkTemplate = ns.linkTemplates.link;
+
+        ns.nodeTemplates.mappingNodeTeamplates(diagram, config);
 
         return diagram;
     }
 
-    function createDiagram() {
+    function createDiagram(config) {
         var diagram = $(go.Diagram, 'myDiagramDiv', {
             initialContentAlignment: go.Spot.Top, // 上对齐布局
 
