@@ -57,9 +57,18 @@
     function createDiagram(config) {
         var diagram = $(go.Diagram, 'myDiagramDiv', {
             initialContentAlignment: go.Spot.Top, // 上对齐布局
+            allowMove: false,
+            allowHorizontalScroll: false,
+            allowVerticalScroll: false,
+            allowZoom: false,
+            allowDelete: false,
+            allowCopy: false,
 
-            // enable undo & redo
+            // allowSelect: false,
+
+            'dragSelectingTool.isEnabled': false,
             'undoManager.isEnabled': true,
+
             // automatically show the state of the diagram's model on the page
             'ModelChanged': function(e) {
                 if (e.isTransactionFinished) {
