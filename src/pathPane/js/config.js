@@ -7,7 +7,11 @@
     return void(0);
 
     function getConfig(customize) {
-        return $.extend(true, {}, ns.consts.config, customize);
+        return $.extend(
+            true, {},
+            ns.consts.config,
+            customize
+        );
     }
 
 })(NetBrain);

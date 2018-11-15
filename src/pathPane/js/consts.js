@@ -10,6 +10,9 @@
                 nodeCategories: {
                     device: 'device',
                     media: 'media',
+                    balance: 'balance',
+                    failed: 'failed',
+                    elseLevels: 'elseLevels',
                 }
             },
             config: {
@@ -23,6 +26,7 @@
 
     function createNodesStyleConfig() {
         return {
+            // device的一些默认颜色、图标等信息
             width: 280,
             backgroundColor: '#ECF5FC',
             borderColor: '#CEE0ED',
@@ -40,10 +44,14 @@
             media: {
                 icon: './imgs/icons/lan.png',
             },
+            balance: {
+                icon: './imgs/icons/balance.png',
+            },
         };
     }
 
     function createLevelsConfig() {
+        // levels的默认颜色和激活颜色等
         return {
             backgroundColor: '#DEF0FB',
             borderColor: '#D98805',
