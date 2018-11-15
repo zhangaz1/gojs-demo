@@ -150,42 +150,49 @@
 
     function getLinks() {
         return [{
+            category: 'hopLink',
             from: 101,
             fromPort: 'L2',
             to: 102,
             toPort: 'L2',
             color: '#D98805'
         }, {
+            category: 'hopLink',
             from: 102, // from node id
             fromPort: 'L2', // from port
             to: 103, // to ndoe id
             toPort: 'L2', // to port
             color: '#D98805' // link颜色，若有产生规则，可不传
         }, {
+            category: 'hopLink',
             from: 103,
             fromPort: 'L3',
             to: 103.5,
             toPort: 'balance',
             color: '#4DBB00'
         }, {
+            category: 'hopLink',
             from: 103.5,
             fromPort: 'balance',
             to: 104,
             toPort: 'L3',
             color: '#4DBB00'
         }, {
+            category: 'hopLink',
             from: 104,
             fromPort: 'L2',
             to: 104.5,
             toPort: 'media',
             color: '#D98805'
         }, {
+            category: 'hopLink',
             from: 104.5,
             fromPort: 'media',
             to: 400,
             toPort: 'failed',
             color: '#D98805'
         }, {
+            category: 'hopLink',
             from: 400,
             fromPort: 'failed',
             to: 105,

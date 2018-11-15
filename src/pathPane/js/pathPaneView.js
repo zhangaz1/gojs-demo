@@ -145,10 +145,8 @@
     function createPathPanelDiagram(config) {
         var diagram = createDiagram(config);
 
-
-        diagram.linkTemplate = ns.linkTemplates.link;
-
         ns.nodeTemplates.mappingNodeTeamplates(diagram, config);
+        ns.linkTemplates.mappingLinkTemplates(diagram, config);
 
         return diagram;
     }
