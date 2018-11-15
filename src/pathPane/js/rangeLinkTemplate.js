@@ -2,13 +2,13 @@
 (function(ns) {
     var $ = go.GraphObject.make;
 
-    ns.hopLinkTemplate = {
-        createHopLinkTemplate: createHopLinkTemplate,
+    ns.rangeLinkTemplate = {
+        createRangeLinkTemplate: createRangeLinkTemplate,
     };
 
     return void(0);
 
-    function createHopLinkTemplate() {
+    function createRangeLinkTemplate() {
         return $(
             go.Link, {
                 routing: go.Link.Orthogonal,

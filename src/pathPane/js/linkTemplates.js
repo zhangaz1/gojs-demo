@@ -12,6 +12,7 @@
         var linkTemplateMap = diagram.linkTemplateMap;
 
         linkTemplateMap.add('hopLink', ns.hopLinkTemplate.createHopLinkTemplate(config));
+        linkTemplateMap.add('rangeLink', ns.rangeLinkTemplate.createRangeLinkTemplate(config));
     }
 
 })(NetBrain);
