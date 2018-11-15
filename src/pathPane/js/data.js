@@ -165,11 +165,11 @@
             from: 103,
             fromPort: 'L3',
             to: 103.5,
-            toPort: 'L3',
+            toPort: 'balance',
             color: '#4DBB00'
         }, {
             from: 103.5,
-            fromPort: 'L3',
+            fromPort: 'balance',
             to: 104,
             toPort: 'L3',
             color: '#4DBB00'
@@ -183,11 +183,11 @@
             from: 104.5,
             fromPort: 'media',
             to: 400,
-            toPort: 'L2',
+            toPort: 'failed',
             color: '#D98805'
         }, {
             from: 400,
-            fromPort: 'media',
+            fromPort: 'failed',
             to: 105,
             toPort: 'L2',
             color: '#D98805'

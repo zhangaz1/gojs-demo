@@ -47,6 +47,9 @@
             balance: {
                 icon: './imgs/icons/balance.png',
             },
+            failed: {
+                icon: './imgs/icons/failed.png',
+            },
         };
     }
 

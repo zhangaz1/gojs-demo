@@ -13,6 +13,7 @@
         nodeTemplateMap.add('device', ns.deviceTemplate.createDeviceTemplate(config));
         nodeTemplateMap.add('media', ns.mediaTemplate.createMediaTemplate(config));
         nodeTemplateMap.add('balance', ns.balanceTemplate.createBalanceTemplate(config));
+        nodeTemplateMap.add('failed', ns.failedTemplate.createFailedTemplate(config));
     }
 
 

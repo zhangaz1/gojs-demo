@@ -5,6 +5,7 @@ document.write('<script src="./js/config.js"></script>');
 document.write('<script src="./js/deviceNodeTemplate.js"></script>');
 document.write('<script src="./js/mediaNodeTemplate.js"></script>');
 document.write('<script src="./js/balanceNodeTemplate.js"></script>');
+document.write('<script src="./js/failedNodeTemplate.js"></script>');
 document.write('<script src="./js/nodeTemplates.js"></script>');
 document.write('<script src="./js/linkTemplates.js"></script>');
 document.write('<script src="./js/data.js"></script>');
