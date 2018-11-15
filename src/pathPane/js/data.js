@@ -18,11 +18,14 @@
             in: '', // detail中的in信息，没有可不填
             out: 'E0 10.10.10.1/24', // detail中的out信息，没有可不填
 
-            levels: [{ // device左侧显示的L2、L3等
-                name: 'L2', // level中显示名字
-                current: true, // 是否激活状态，决定颜色
+            levels: [{              // device左侧显示的L2、L3等
+                name: 'L2',         // level中显示名字
+                hasDownTip: true,   // 是否可以向下展开
+                hasUpTip: true,     // 是否可以向上折叠
+                current: true,      // 是否激活状态，决定颜色
             }, {
                 name: 'L3',
+                hasUpTip: true,
             }],
 
             elseLevels: [{ // 其他可选的level，切换后显示在Vxlan位置
@@ -95,9 +98,11 @@
 
             levels: [{
                 name: 'L2',
+                hasDownTip: true,
                 current: true,
             }, {
                 name: 'L3',
+                hasUpTip: true,
                 current: true,
             }, {
                 name: 'vxlan',
@@ -157,12 +162,12 @@
             toPort: 'L2',
             color: '#D98805'
         }, {
-            category: 'hopLink',
-            from: 102, // from node id
-            fromPort: 'L2', // from port
-            to: 103, // to ndoe id
-            toPort: 'L2', // to port
-            color: '#D98805' // link颜色，若有产生规则，可不传
+            category: 'hopLink',    // 值为：hopLink或rangeLink
+            from: 102,              // from node id
+            fromPort: 'L2',         // from port
+            to: 103,                // to ndoe id
+            toPort: 'L2',           // to port
+            color: '#D98805'        // link颜色，若有产生规则，可不传
         }, {
             category: 'hopLink',
             from: 103,

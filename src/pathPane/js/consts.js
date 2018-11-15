@@ -13,7 +13,11 @@
                     balance: 'balance',
                     failed: 'failed',
                     elseLevels: 'elseLevels',
-                }
+                },
+                linkCategories: {
+                    hopLink: 'hopLink',
+                    rangeLink: 'rangeLink',
+                },
             },
             config: {
                 style: {

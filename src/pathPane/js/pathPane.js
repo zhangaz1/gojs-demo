@@ -46,6 +46,8 @@
                 switchUpLevel: switchUpLevel,
                 switchDownLevel: switchDownLevel,
                 switchBalance: switchBalance,
+
+                getIcon: getIcon,
             };
         }
 
@@ -135,6 +137,15 @@
          * @param {object} eventData : 同上
          */
         function switchBalance(eventData) {
+
+        }
+
+        /**
+         * 获取node的icon
+         *
+         * @param {object} nodeData
+         */
+        function getIcon(nodeData) {
 
         }
     });
