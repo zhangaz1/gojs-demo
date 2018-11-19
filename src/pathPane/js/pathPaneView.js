@@ -5,7 +5,7 @@
         createView: createView,
     };
 
-    var layoutNodes = ns.layout.layoutNodes;
+    var layoutNodes = ns.nodesLayout.layout;
 
     return void(0);
 

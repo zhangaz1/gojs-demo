@@ -1,13 +1,13 @@
 ;
 (function(ns) {
 
-    ns.layout = {
-        layoutNodes: layoutNodes
+    ns.nodesLayout = {
+        layout: layout
     };
 
     return void(0);
 
-    function layoutNodes(data, config) {
+    function layout(data, config) {
         var x = '100 ';
         var y = 0;
         _.each(data.nodeDataArray, function(node, index) {
