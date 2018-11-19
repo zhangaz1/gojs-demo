@@ -12,7 +12,7 @@
             id: 101, // 节点唯一id，showTip会传递此几点信息
             // link也from、to也会用此值
 
-            category: 'device', // 类别决定使用何种模板，目前支持device、media、balance
+            category: 'device', // 类别决定使用何种模板，目前支持device、media、balance、failed等
 
             name: 'Host-1', // detail中的hostName信息
             in: '', // detail中的in信息，没有可不填
@@ -26,16 +26,16 @@
             }, {
                 name: 'L3',
                 hasUpTip: true,
-            }],
-
-            elseLevels: [{ // 其他可选的level，切换后显示在Vxlan位置
+            }, {
                 name: 'Vxlan', // level中显示名字
                 current: true, // 是否激活状态，决定颜色
-            }, {
+            }],
+
+            elseLevels: [{ // 其他可选的level,不包含L2、L3，仅与Vxlan同列的其他可选level，切换后显示在Vxlan位置
                 name: 'Vxxxx',
             }, {
                 name: 'Vxyyy',
-            }], // 其他可选levels(不包含L2、L3，仅与Vxlan同列的其他可选level)
+            }],
 
             icon: './imgs/icons/pc.png', // device有多中图标可能，需要指明图标路径，或者提供图标类别
             // abIcon: './imgs/icons/path_point_a.bmp',
@@ -106,6 +106,12 @@
                 current: true,
             }, {
                 name: 'Vxlan',
+            }],
+
+            elseLevels: [{ // 其他可选的level,不包含L2、L3，仅与Vxlan同列的其他可选level，切换后显示在Vxlan位置
+                name: 'Vxxxx',
+            }, {
+                name: 'Vxyyy',
             }],
 
             icon: './imgs/icons/router.png',

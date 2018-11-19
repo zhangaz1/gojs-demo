@@ -51,9 +51,45 @@
                     name: 'levelsPanel',
                     padding: 5,
                     background: deviceConfig.levels.backgroundColor,
+                },
+                createVisiableLevelsTemplate(),
+                createElseLevelsTemplate(),
+            );
+        }
+
+        function createElseLevelsTemplate() {
+            // 可以考虑改成icon
+            return $(
+                go.TextBlock, {
+                    text: '...',
+                    angle: 90,
+                    desiredSize: new go.Size(40, 18),
+                    textAlign: 'center',
+                    visible: false,
+                    click: function(event, textBlock) {
+                        console.log('click:', textBlock.part.data);
+                    },
+                },
+                new go.Binding('visible', 'elseLevels', function(value, graphObject) {
+                    console.log('xxxxxxxxxxx visible:', arguments);
+                    return (
+                            value &&
+                            value.length &&
+                            true
+                        ) ||
+                        false;
+                }),
+            );
+        }
+
+        function createVisiableLevelsTemplate() {
+            return $(
+                go.Panel,
+                'Horizontal', {
+                    name: 'levelsPanel',
                     itemTemplate: createLevelItemTemplate(),
                 },
-                new go.Binding('itemArray', 'levels')
+                new go.Binding('itemArray', 'levels'),
             );
         }
 
