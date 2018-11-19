@@ -97,6 +97,7 @@
                 go.Panel,
                 'Horizontal', {
                     name: type + 'TopoTypesPanel',
+                    alignment: go.Spot.Left,
                     itemTemplate: createTopoTypeItemTemplate(type),
                 },
                 new go.Binding('itemArray', type + 'TopoTypes'),
@@ -140,7 +141,7 @@
             return function(data) {
                 var key = data.name.toLowerCase();
                 var topoType = deviceConfig.topoTypes[key];
-                return data.current ?
+                return data.isUsed ?
                     topoType.active[colorKey] :
                     topoType[colorKey];
             }
