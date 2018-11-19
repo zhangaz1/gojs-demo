@@ -19,14 +19,32 @@
             out: 'E0 10.10.10.1/24', // detail中的out信息，没有可不填
 
             inTopoTypes: [{ // device左侧显示的L2、L3等
+                id: 'l2',
                 name: 'L2', // topoType中显示名字
                 hasDownTip: true, // 是否可以向下展开
                 hasUpTip: true, // 是否可以向上折叠
                 current: true, // 是否激活状态，决定颜色
             }, {
+                id: 'l3',
                 name: 'L3',
                 hasUpTip: true,
             }, {
+                id: 'vxlan',
+                name: 'Vxlan',
+            }],
+
+            outTopoTypes: [{ // device左侧显示的L2、L3等
+                id: 'l2',
+                name: 'L2', // topoType中显示名字
+                hasDownTip: true, // 是否可以向下展开
+                hasUpTip: true, // 是否可以向上折叠
+                current: true, // 是否激活状态，决定颜色
+            }, {
+                id: 'l3',
+                name: 'L3',
+                hasUpTip: true,
+            }, {
+                id: 'vxlan',
                 name: 'Vxlan',
             }],
 
@@ -49,16 +67,35 @@
             out: 'E2',
 
             inTopoTypes: [{
+                id: 'l2',
                 name: 'L2',
                 current: true,
             }, {
+                id: 'l3',
                 name: 'L3',
             }, {
+                id: 'vxlan',
                 name: 'Vxlan',
             }, {
+                id: 'ipSec',
                 name: 'IP Sec',
             }, {
                 name: 'GRE',
+            }],
+
+            outTopoTypes: [{
+                id: 'l2',
+                name: 'L2',
+                current: true,
+            }, {
+                id: 'l3',
+                name: 'L3',
+            }, {
+                id: 'vxlan',
+                name: 'Vxlan',
+            }, {
+                id: 'ipSec',
+                name: 'IP Sec',
             }],
 
             icon: './imgs/icons/router.png',
@@ -72,9 +109,21 @@
             out: 'E5 192.168.2.1/30',
 
             inTopoTypes: [{
+                id: 'l2',
                 name: 'L2',
                 current: true,
             }, {
+                id: 'l3',
+                name: 'L3',
+                current: true,
+            }],
+
+            outTopoTypes: [{
+                id: 'l2',
+                name: 'L2',
+                current: true,
+            }, {
+                id: 'l3',
                 name: 'L3',
                 current: true,
             }],
@@ -96,18 +145,41 @@
             out: 'E4',
 
             inTopoTypes: [{
+                id: 'l2',
                 name: 'L2',
                 hasDownTip: true,
                 current: true,
             }, {
+                id: 'l3',
                 name: 'L3',
                 hasUpTip: true,
                 current: true,
             }, {
+                id: 'vxlan',
                 name: 'Vxlan',
             }, {
+                id: 'ipSec',
                 name: 'IP Sec',
             }, {
+                id: 'gre',
+                name: 'GRE',
+            }],
+
+            outTopoTypes: [{
+                id: 'l2',
+                name: 'L2',
+                hasDownTip: true,
+                current: true,
+            }, {
+                id: 'l3',
+                name: 'L3',
+                hasUpTip: true,
+                current: true,
+            }, {
+                id: 'vxlan',
+                name: 'Vxlan',
+            }, {
+                id: 'gre',
                 name: 'GRE',
             }],
 
@@ -144,15 +216,22 @@
             isB: true,
 
             inTopoTypes: [{
+                id: 'l2',
                 name: 'L2',
                 current: true,
             }, {
+                id: 'l3',
                 name: 'L3',
             }],
 
-        }, {
-            id: 800,
-            category: 'failed',
+            outTopoTypes: [{
+                id: 'l2',
+                name: 'L2',
+                current: true,
+            }, {
+                id: 'l3',
+                name: 'L3',
+            }],
 
         }];
     }
@@ -161,21 +240,21 @@
         return [{
             category: 'hopLink',
             from: 101,
-            fromPort: 'L2',
+            fromPort: 'out_l2',
             to: 102,
-            toPort: 'L2',
+            toPort: 'in_l2',
             color: '#D98805'
         }, {
             category: 'hopLink', // 值为：hopLink或rangeLink
             from: 102, // from node id
-            fromPort: 'L2', // from port
+            fromPort: 'out_l2', // from port
             to: 103, // to ndoe id
-            toPort: 'L2', // to port
+            toPort: 'in_l2', // to port
             color: '#D98805' // link颜色，若有产生规则，可不传
         }, {
             category: 'hopLink',
             from: 103,
-            fromPort: 'L3',
+            fromPort: 'out_l3',
             to: 103.5,
             toPort: 'balance',
             color: '#4DBB00'
@@ -184,12 +263,12 @@
             from: 103.5,
             fromPort: 'balance',
             to: 104,
-            toPort: 'L3',
+            toPort: 'in_l3',
             color: '#4DBB00'
         }, {
             category: 'hopLink',
             from: 104,
-            fromPort: 'L2',
+            fromPort: 'out_l2',
             to: 104.5,
             toPort: 'media',
             color: '#D98805'
@@ -205,14 +284,14 @@
             from: 400,
             fromPort: 'failed',
             to: 105,
-            toPort: 'L2',
+            toPort: 'in_l2',
             color: '#D98805'
         }, {
             category: 'rangeLink',
             from: 102,
-            fromPort: 'Vxlan',
+            fromPort: 'in_vxlan',
             to: 104,
-            toPort: 'Vxlan',
+            toPort: 'out_vxlan',
             points: [{
                 x: 100,
                 y: 20,

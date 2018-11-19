@@ -12,7 +12,7 @@
         var y = 0;
         _.each(data.nodeDataArray, function(node, index) {
             node.location = x + y;
-            y += 100;
+            y += 130;
         });
         return data;
     }

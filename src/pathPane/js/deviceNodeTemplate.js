@@ -84,22 +84,35 @@
         function createVisiableTopoTypesTemplate() {
             return $(
                 go.Panel,
-                'Horizontal', {
+                'Vertical', {
                     name: 'topoTypesPanel',
-                    itemTemplate: createTopoTypeItemTemplate(),
                 },
-                new go.Binding('itemArray', 'inTopoTypes'),
+                createTopoTypesTemplate('in'),
+                createTopoTypesTemplate('out'),
             );
         }
 
-        function createTopoTypeItemTemplate() {
+        function createTopoTypesTemplate(type) {
+            return $(
+                go.Panel,
+                'Horizontal', {
+                    name: type + 'TopoTypesPanel',
+                    itemTemplate: createTopoTypeItemTemplate(type),
+                },
+                new go.Binding('itemArray', type + 'TopoTypes'),
+            );
+        }
+
+        function createTopoTypeItemTemplate(type) {
             return $(
                 go.Panel,
                 'Auto', {
-                    name: 'topoTypeItemPanel',
+                    name: type + 'TopoTypeItemPanel',
                     padding: 1,
                 },
-                new go.Binding('portId', 'name'),
+                new go.Binding('portId', 'id', function(value) {
+                    return type + '_' + value;
+                }),
                 new go.Binding('background', '', getTopoTypeColor('borderColor')),
 
                 createTopoTypeItemTextTemplate(),
