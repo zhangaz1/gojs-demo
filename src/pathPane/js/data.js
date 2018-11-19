@@ -41,7 +41,6 @@
             // abIcon: './imgs/icons/path_point_a.bmp',
             isA: true, // ab图标可以通过图标路径或isA、isB指定，可讨论后确定
 
-            location: '100 100' // location 无需指定，内部布局算法计算吧
         }, {
             id: 102,
             category: 'device',
@@ -61,7 +60,6 @@
 
             icon: './imgs/icons/router.png',
 
-            location: '100 200'
         }, {
             id: 103,
             category: 'device',
@@ -80,14 +78,12 @@
 
             icon: './imgs/icons/switch.png',
 
-            location: '100 300'
         }, {
             id: 103.5,
             category: 'balance',
 
             name: 50,
 
-            location: '100 400',
         }, {
             id: 104,
             category: 'device',
@@ -116,7 +112,6 @@
 
             icon: './imgs/icons/router.png',
 
-            location: '100 500'
         }, {
             id: 104.5, // 同deviceId
             category: 'media', // 选择模板用
@@ -125,12 +120,10 @@
 
             // icon: './imgs/icons/lan.png', // 可讨论，若多种图标，需要指定类别，或path
 
-            location: '100 600',
         }, {
             id: 400,
             category: 'failed',
 
-            location: '100 700',
         }, {
             id: 105,
             category: 'device',
@@ -150,12 +143,10 @@
                 name: 'L3',
             }],
 
-            location: '100 800'
         }, {
             id: 800,
             category: 'failed',
 
-            location: '100 900',
         }];
     }
 

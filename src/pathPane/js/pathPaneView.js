@@ -5,6 +5,8 @@
         createView: createView,
     };
 
+    var layoutNodes = ns.layout.layoutNodes;
+
     return void(0);
 
     /**
@@ -89,7 +91,7 @@
          *
          */
         function bindData(data) {
-            diagram.model = createModel(data);
+            diagram.model = createModel(data, config);
         }
 
         /**
@@ -121,7 +123,7 @@
         return jQuery('#' + containerId).width() - 50;
     }
 
-    function createModel(data) {
+    function createModel(data, config) {
         var model = new go.GraphLinksModel();
 
         model.nodeKeyProperty = 'id';
@@ -135,6 +137,8 @@
             hello: 'world',
             version: 42
         };
+
+        layoutNodes(data, config);
 
         model.nodeDataArray = data.nodeDataArray;
         model.linkDataArray = data.linkDataArray
