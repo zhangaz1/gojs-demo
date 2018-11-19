@@ -1,6 +1,7 @@
 ;
 (function(ns) {
     var $ = go.GraphObject.make;
+    var RangeLink = ns.RangeLink;
 
     ns.rangeLinkTemplate = {
         createRangeLinkTemplate: createRangeLinkTemplate,
@@ -10,7 +11,7 @@
 
     function createRangeLinkTemplate() {
         return $(
-            go.Link, {
+            RangeLink, {
                 routing: go.Link.Orthogonal,
             },
             $(go.Shape, {

@@ -206,6 +206,10 @@
             fromPort: 'Vxlan',
             to: 104,
             toPort: 'Vxlan',
+            points: [{
+                x: 100,
+                y: 20,
+            }],
             color: '#94CDF6'
         }];
     }
