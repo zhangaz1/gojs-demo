@@ -32,11 +32,10 @@
 
         function createDeviceNameTemplate() {
             return $(
-                go.Panel, 'Horizontal', {
+                go.Panel, 'Position', {
                     name: 'balanceNamePanel',
                     alignment: go.Spot.Left,
                     height: 50,
-                    margin: new go.Margin(0, 0, 0, 18),
                 },
                 $(
                     go.Picture, {
@@ -45,6 +44,7 @@
                         width: 16,
                         height: 16,
                         source: balanceConfig.icon,
+                        position: new go.Point(37, 17),
                     },
                     new go.Binding('source', 'icon'),
                 ),
@@ -54,6 +54,8 @@
                         font: 'bold 12px sans-serif',
                         stroke: '#111',
                         isMultiline: false,
+
+                        position: new go.Point(37 + 20, 17),
                     },
                     new go.Binding('text', 'name').makeTwoWay(),
                 ),

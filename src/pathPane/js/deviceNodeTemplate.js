@@ -71,7 +71,6 @@
                     },
                 },
                 new go.Binding('visible', 'elseLevels', function(value, graphObject) {
-                    console.log('xxxxxxxxxxx visible:', arguments);
                     return (
                             value &&
                             value.length &&
