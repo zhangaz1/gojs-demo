@@ -49,8 +49,6 @@
                 go.Panel,
                 'Horizontal', {
                     name: 'topoTypesPanel',
-                    padding: 5,
-                    background: deviceConfig.topoTypes.backgroundColor,
                 },
                 createVisiableTopoTypesTemplate(),
                 createElseTopoTypesTemplate(),
@@ -98,6 +96,9 @@
                 'Horizontal', {
                     name: type + 'TopoTypesPanel',
                     alignment: go.Spot.Left,
+                    margin: new go.Margin(1, 0, 1, 0),
+                    padding: 5,
+                    background: deviceConfig.topoTypes.backgroundColor,
                     itemTemplate: createTopoTypeItemTemplate(type),
                 },
                 new go.Binding('itemArray', type + 'TopoTypes'),

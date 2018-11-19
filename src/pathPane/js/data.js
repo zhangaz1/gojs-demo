@@ -251,14 +251,7 @@
             to: 400,
             toPort: 'failed',
             color: '#D98805'
-        }, {
-            category: 'hopLink',
-            from: 400,
-            fromPort: 'failed',
-            to: 105,
-            toPort: 'in_l2',
-            color: '#D98805'
-        }, {
+        },  {
             category: 'rangeLink',
             from: 102,
             fromPort: 'in_vxlan',
