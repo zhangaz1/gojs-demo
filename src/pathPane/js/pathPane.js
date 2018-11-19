@@ -41,7 +41,7 @@
 
                 showUpTip: showUpTip,
                 showDownTip: showDownTip,
-                showElseLevelsTip: showElseLevelsTip,
+                showElseTopoTypesTip: showElseTopoTypesTip,
 
                 switchUpLevel: switchUpLevel,
                 switchDownLevel: switchDownLevel,
@@ -61,11 +61,11 @@
                     x: 100,
                     y: 200
                 },
-                level: {            // 仅用于level相关调用
+                topoType: {            // 仅用于level相关调用
                     name: 'Vxlan',
                     // ...
                 },
-                elseLevels: [{      // 仅用于elseLevels相关调用
+                elseTopoTypes: [{      // 仅用于elseTopoTypes相关调用
                     name: 'Vxxxx',
                     // ...
                 }],
@@ -107,7 +107,7 @@
          *
          * @param {object} eventData : 同上
          */
-        function showElseLevelsTip(eventData) {
+        function showElseTopoTypesTip(eventData) {
 
         }
 

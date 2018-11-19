@@ -8,7 +8,7 @@
 
     function layout(points) {
         var offsetLeft = 80;
-        var portHeight = 40;
+        var portHeight = 41;
         var firstLength = 20;
         var secondOffsetY = portHeight + firstLength;
 

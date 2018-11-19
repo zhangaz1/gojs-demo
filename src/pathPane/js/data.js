@@ -18,7 +18,7 @@
             in: '', // detail中的in信息，没有可不填
             out: 'E0 10.10.10.1/24', // detail中的out信息，没有可不填
 
-            levels: [{ // device左侧显示的L2、L3等
+            inTopoTypes: [{ // device左侧显示的L2、L3等
                 name: 'L2', // level中显示名字
                 hasDownTip: true, // 是否可以向下展开
                 hasUpTip: true, // 是否可以向上折叠
@@ -27,15 +27,14 @@
                 name: 'L3',
                 hasUpTip: true,
             }, {
-                name: 'Vxlan', // level中显示名字
-                current: true, // 是否激活状态，决定颜色
+                name: 'Vxlan',
             }],
 
-            elseLevels: [{ // 其他可选的level,不包含L2、L3，仅与Vxlan同列的其他可选level，切换后显示在Vxlan位置
-                name: 'Vxxxx',
-            }, {
-                name: 'Vxyyy',
-            }],
+            // elseinTopoTypes: [{ // 其他可选的level,不包含L2、L3，仅与Vxlan同列的其他可选level，切换后显示在Vxlan位置
+            //     name: 'Vxxxx',
+            // }, {
+            //     name: 'Vxyyy',
+            // }],
 
             icon: './imgs/icons/pc.png', // device有多中图标可能，需要指明图标路径，或者提供图标类别
             // abIcon: './imgs/icons/path_point_a.bmp',
@@ -49,13 +48,17 @@
             in: 'E1',
             out: 'E2',
 
-            levels: [{
+            inTopoTypes: [{
                 name: 'L2',
                 current: true,
             }, {
                 name: 'L3',
             }, {
                 name: 'Vxlan',
+            }, {
+                name: 'IP Sec',
+            }, {
+                name: 'GRE',
             }],
 
             icon: './imgs/icons/router.png',
@@ -68,7 +71,7 @@
             in: 'E4',
             out: 'E5 192.168.2.1/30',
 
-            levels: [{
+            inTopoTypes: [{
                 name: 'L2',
                 current: true,
             }, {
@@ -92,7 +95,7 @@
             in: 'E3 192.169.2.2/30',
             out: 'E4',
 
-            levels: [{
+            inTopoTypes: [{
                 name: 'L2',
                 hasDownTip: true,
                 current: true,
@@ -102,13 +105,17 @@
                 current: true,
             }, {
                 name: 'Vxlan',
+            }, {
+                name: 'IP Sec',
+            }, {
+                name: 'GRE',
             }],
 
-            elseLevels: [{ // 其他可选的level,不包含L2、L3，仅与Vxlan同列的其他可选level，切换后显示在Vxlan位置
-                name: 'Vxxxx',
-            }, {
-                name: 'Vxyyy',
-            }],
+            // elseinTopoTypes: [{ // 其他可选的level,不包含L2、L3，仅与Vxlan同列的其他可选level，切换后显示在Vxlan位置
+            //     name: 'Vxxxx',
+            // }, {
+            //     name: 'Vxyyy',
+            // }],
 
             icon: './imgs/icons/router.png',
 
@@ -136,7 +143,7 @@
             // abIcon: './imgs/icons/path_point_b.bmp',
             isB: true,
 
-            levels: [{
+            inTopoTypes: [{
                 name: 'L2',
                 current: true,
             }, {

@@ -12,7 +12,7 @@
                     media: 'media',
                     balance: 'balance',
                     failed: 'failed',
-                    elseLevels: 'elseLevels',
+                    elseTopoTypes: 'elseTopoTypes',
                 },
                 linkCategories: {
                     hopLink: 'hopLink',
@@ -40,7 +40,7 @@
                 aIcon: './imgs/icons/path_point_a.bmp',
                 bIcon: './imgs/icons/path_point_b.bmp',
 
-                levels: createLevelsConfig(),
+                topoTypes: createTopoTypesConfig(),
                 details: {
 
                 },
@@ -57,8 +57,8 @@
         };
     }
 
-    function createLevelsConfig() {
-        // levels的默认颜色和激活颜色等
+    function createTopoTypesConfig() {
+        // topoTypes的默认颜色和激活颜色等
         return {
             backgroundColor: '#DEF0FB',
             borderColor: '#D98805',

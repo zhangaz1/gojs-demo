@@ -39,25 +39,25 @@
                     padding: 10,
                     background: nodeConfig.backgroundColor,
                 },
-                createDeviceLevelsTemplate(),
+                createDeviceTopoTypesTemplate(),
                 createDeviceDetailTemplate(),
             );
         }
 
-        function createDeviceLevelsTemplate() {
+        function createDeviceTopoTypesTemplate() {
             return $(
                 go.Panel,
                 'Horizontal', {
-                    name: 'levelsPanel',
+                    name: 'topoTypesPanel',
                     padding: 5,
-                    background: deviceConfig.levels.backgroundColor,
+                    background: deviceConfig.topoTypes.backgroundColor,
                 },
-                createVisiableLevelsTemplate(),
-                createElseLevelsTemplate(),
+                createVisiableTopoTypesTemplate(),
+                createElseTopoTypesTemplate(),
             );
         }
 
-        function createElseLevelsTemplate() {
+        function createElseTopoTypesTemplate() {
             // 可以考虑改成icon
             return $(
                 go.TextBlock, {
@@ -70,7 +70,7 @@
                         console.log('click:', textBlock.part.data);
                     },
                 },
-                new go.Binding('visible', 'elseLevels', function(value, graphObject) {
+                new go.Binding('visible', 'elseTopoTypes', function(value, graphObject) {
                     return (
                             value &&
                             value.length &&
@@ -81,14 +81,14 @@
             );
         }
 
-        function createVisiableLevelsTemplate() {
+        function createVisiableTopoTypesTemplate() {
             return $(
                 go.Panel,
                 'Horizontal', {
-                    name: 'levelsPanel',
+                    name: 'topoTypesPanel',
                     itemTemplate: createLevelItemTemplate(),
                 },
-                new go.Binding('itemArray', 'levels'),
+                new go.Binding('itemArray', 'inTopoTypes'),
             );
         }
 
@@ -110,6 +110,8 @@
             return $(
                 go.TextBlock, {
                     angle: 270,
+
+                    font: '10px sans-serif',
                     desiredSize: new go.Size(40, 18),
                     textAlign: 'center',
                     click: function(event, textBlock) {
@@ -124,10 +126,10 @@
         function getLevelColor(colorKey) {
             return function(data) {
                 var key = data.name.toLowerCase();
-                var level = deviceConfig.levels[key];
+                var topoType = deviceConfig.topoTypes[key];
                 return data.current ?
-                    level.active[colorKey] :
-                    level[colorKey];
+                    topoType.active[colorKey] :
+                    topoType[colorKey];
             }
         }
 
@@ -137,7 +139,7 @@
                 'Vertical', {
                     name: 'detailPanel',
                     width: 170,
-                    margin: new go.Margin(0, 0, 0, 90),
+                    margin: new go.Margin(0, 0, 0, 130),
                 },
                 createDeviceInTemplate(),
                 createDeviceNameTemplate(),
