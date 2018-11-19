@@ -86,27 +86,27 @@
                 go.Panel,
                 'Horizontal', {
                     name: 'topoTypesPanel',
-                    itemTemplate: createLevelItemTemplate(),
+                    itemTemplate: createTopoTypeItemTemplate(),
                 },
                 new go.Binding('itemArray', 'inTopoTypes'),
             );
         }
 
-        function createLevelItemTemplate() {
+        function createTopoTypeItemTemplate() {
             return $(
                 go.Panel,
                 'Auto', {
-                    name: 'levelItemPanel',
+                    name: 'topoTypeItemPanel',
                     padding: 1,
                 },
                 new go.Binding('portId', 'name'),
-                new go.Binding('background', '', getLevelColor('borderColor')),
+                new go.Binding('background', '', getTopoTypeColor('borderColor')),
 
-                createLevelItemTextTemplate(),
+                createTopoTypeItemTextTemplate(),
             );
         }
 
-        function createLevelItemTextTemplate() {
+        function createTopoTypeItemTextTemplate() {
             return $(
                 go.TextBlock, {
                     angle: 270,
@@ -119,11 +119,11 @@
                     },
                 },
                 new go.Binding('text', 'name'),
-                new go.Binding('background', '', getLevelColor('backgroundColor')),
+                new go.Binding('background', '', getTopoTypeColor('backgroundColor')),
             );
         }
 
-        function getLevelColor(colorKey) {
+        function getTopoTypeColor(colorKey) {
             return function(data) {
                 var key = data.name.toLowerCase();
                 var topoType = deviceConfig.topoTypes[key];

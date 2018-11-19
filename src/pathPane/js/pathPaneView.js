@@ -28,13 +28,13 @@
      *
         function init() {
             var api = {
-                getUpLevelRange:                    获取上一层的起止范围,
+                getUpTopoTypeRange:                    获取上一层的起止范围,
 
                 showUpTip:                          显示向上箭头tip,
                 showDownTip:                        显示向下箭头tip,
 
-                switchUpLevel:                      向上level切换,
-                switchDownLevel:                    向下level切换,
+                switchUpTopoType:                      向上topoType切换,
+                switchDownTopoType:                    向下topoType切换,
                 switchBalance:                      切换loadBalance,
             };
             var pathPaneView = ns.pathPaneView.createView('myDiagramDiv'， api);

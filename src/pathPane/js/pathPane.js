@@ -37,14 +37,14 @@
 
         function getApi() {
             return {
-                getUpLevelRange: getUpLevelRange,
+                getUpTopoTypeRange: getUpTopoTypeRange,
 
                 showUpTip: showUpTip,
                 showDownTip: showDownTip,
                 showElseTopoTypesTip: showElseTopoTypesTip,
 
-                switchUpLevel: switchUpLevel,
-                switchDownLevel: switchDownLevel,
+                switchUpTopoType: switchUpTopoType,
+                switchDownTopoType: switchDownTopoType,
                 switchBalance: switchBalance,
 
                 getIcon: getIcon,
@@ -61,7 +61,7 @@
                     x: 100,
                     y: 200
                 },
-                topoType: {            // 仅用于level相关调用
+                topoType: {            // 仅用于topoType相关调用
                     name: 'Vxlan',
                     // ...
                 },
@@ -79,7 +79,7 @@
          * @returns {object} : linkData // 结构参见linkData
          *
          */
-        function getUpLevelRange(eventData) {
+        function getUpTopoTypeRange(eventData) {
 
         }
 
@@ -112,22 +112,22 @@
         }
 
         /**
-         * 向上level切换
+         * 向上topoType切换
          *
          * @param {object} eventData : 同上
          *
          */
-        function switchUpLevel(eventData) {
+        function switchUpTopoType(eventData) {
 
         }
 
         /**
-         * 向下level切换
+         * 向下topoType切换
          *
          * @param {object} eventData : 同上
          *
          */
-        function switchDownLevel(eventData) {
+        function switchDownTopoType(eventData) {
 
         }
 

@@ -19,7 +19,7 @@
             out: 'E0 10.10.10.1/24', // detail中的out信息，没有可不填
 
             inTopoTypes: [{ // device左侧显示的L2、L3等
-                name: 'L2', // level中显示名字
+                name: 'L2', // topoType中显示名字
                 hasDownTip: true, // 是否可以向下展开
                 hasUpTip: true, // 是否可以向上折叠
                 current: true, // 是否激活状态，决定颜色
@@ -30,7 +30,7 @@
                 name: 'Vxlan',
             }],
 
-            // elseinTopoTypes: [{ // 其他可选的level,不包含L2、L3，仅与Vxlan同列的其他可选level，切换后显示在Vxlan位置
+            // elseinTopoTypes: [{ // 其他可选的topoType,不包含L2、L3，仅与Vxlan同列的其他可选topoType，切换后显示在Vxlan位置
             //     name: 'Vxxxx',
             // }, {
             //     name: 'Vxyyy',
@@ -111,7 +111,7 @@
                 name: 'GRE',
             }],
 
-            // elseinTopoTypes: [{ // 其他可选的level,不包含L2、L3，仅与Vxlan同列的其他可选level，切换后显示在Vxlan位置
+            // elseinTopoTypes: [{ // 其他可选的topoType,不包含L2、L3，仅与Vxlan同列的其他可选topoType，切换后显示在Vxlan位置
             //     name: 'Vxxxx',
             // }, {
             //     name: 'Vxyyy',
