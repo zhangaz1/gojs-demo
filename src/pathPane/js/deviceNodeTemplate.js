@@ -342,9 +342,11 @@
 
         function showRangeLink(inputEvent, graphObject) {
             var eventData = createEventData(inputEvent, graphObject);
-            var rangeLink = option.api.getUpTopoTypeRange(eventData);
-            eventData.topoType.rangeLink = rangeLink;
-            option.diagram.model.addLinkData(rangeLink);
+            if (eventData.topoType.hasUpTip) {
+                var rangeLink = option.api.getUpTopoTypeRange(eventData);
+                eventData.topoType.rangeLink = rangeLink;
+                option.diagram.model.addLinkData(rangeLink);
+            }
         }
 
         function switchTopoType(inputEvent, graphObject) {
