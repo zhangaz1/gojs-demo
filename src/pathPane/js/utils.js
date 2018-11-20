@@ -13,11 +13,12 @@
 
     function createEventData(inputEvent, graphObject) {
         return {
-            node: graphObject.part.data,
             location: {
                 x: inputEvent.event.pageX,
                 y: inputEvent.event.pageY,
             },
+            topoType: graphObject.data,
+            node: graphObject.part.data,
         };
     }
 

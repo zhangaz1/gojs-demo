@@ -8,6 +8,8 @@
         createDeviceTemplate: createDeviceTemplate
     };
 
+    var createEventData = ns.utils.createEventData;
+
     return void(0);
 
     function createDeviceTemplate(option) {
@@ -113,9 +115,18 @@
                     name: type + 'TopoTypeItemPanel',
                     padding: 1,
                     margin: 1,
+
+                    mouseHover: showTopoTypeTip,
+                    mouseLeave: mouseLeave,
+                    click: switchTopoType,
                 },
                 new go.Binding('portId', 'id', function(value) {
                     return type + '_' + value;
+                }),
+                new go.Binding('cursor', '', function(topoType) {
+                    if (topoType.hasUpTip || topoType.hasDownTip) {
+                        return 'pointer';
+                    }
                 }),
             ];
 
@@ -157,6 +168,7 @@
         function createTopoTypeItemTextWithPanelTemplate() {
             return $(
                 go.Panel, {
+                    name: 'topoTypeTextBlockPanel',
                     padding: 1,
                 },
                 new go.Binding('background', '', getTopoTypeColor('borderColor')),
@@ -174,10 +186,6 @@
                     textAlign: 'center',
 
                     margin: 0,
-
-                    click: function(event, textBlock) {
-                        console.log('click:', textBlock.part.data);
-                    },
                 },
                 new go.Binding('text', 'name'),
                 new go.Binding('background', '', getTopoTypeColor('backgroundColor')),
@@ -306,6 +314,59 @@
                     new Binding('text', 'out'),
                 )
             );
+        }
+
+        function mouseLeave(inputEvent, graphObject) {
+            var eventData = createEventData(inputEvent, graphObject);
+            var topoType = eventData.topoType;
+
+            if (topoType.rangeLink) {
+                option.diagram.model.removeLinkData(topoType.rangeLink);
+                topoType.rangeLink = null;
+            }
+
+            if (topoType.tipId) {
+                option.api.closeTip(topoType.tipId);
+                topoType.tipId = null;
+            }
+        }
+
+        function showTopoTypeTip(inputEvent, graphObject) {
+            var eventData = createEventData(inputEvent, graphObject);
+            showRangeLink(inputEvent, graphObject);
+            eventData.topoType.tipId = callApi(inputEvent, graphObject, {
+                up: 'showUpTip',
+                down: 'showDownTip',
+            });
+        }
+
+        function showRangeLink(inputEvent, graphObject) {
+            var eventData = createEventData(inputEvent, graphObject);
+            var rangeLink = option.api.getUpTopoTypeRange(eventData);
+            eventData.topoType.rangeLink = rangeLink;
+            option.diagram.model.addLinkData(rangeLink);
+        }
+
+        function switchTopoType(inputEvent, graphObject) {
+            callApi(inputEvent, graphObject, {
+                up: 'switchUpTopoType',
+                down: 'switchDownTopoType',
+            });
+        }
+
+        function callApi(inputEvent, graphObject, handlers) {
+            var eventData = createEventData(inputEvent, graphObject);
+            var handler = _.noop;
+
+            var api = option.api;
+            var topoType = eventData.topoType;
+            if (topoType.hasUpTip) {
+                handler = api[handlers.up];
+            } else if (topoType.hasDownTip) {
+                handler = api[handlers.down];
+            }
+
+            return handler(eventData);
         }
 
     }

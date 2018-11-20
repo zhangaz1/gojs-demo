@@ -66,8 +66,8 @@
             );
         }
 
-        function switchBalance(inputEvent, picture) {
-            var eventData = createEventData(inputEvent, picture);
+        function switchBalance(inputEvent, graphObject) {
+            var eventData = createEventData(inputEvent, graphObject);
             option.api.switchBalance(eventData);
         }
     }

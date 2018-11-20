@@ -48,6 +48,8 @@
                 switchBalance: switchBalance,
 
                 getIcon: getIcon,
+
+                closeTip: closeTip,
             };
         }
 
@@ -80,7 +82,19 @@
          *
          */
         function getUpTopoTypeRange(eventData) {
-
+            console.log('getUpTopoTypeRange:', eventData);
+            return {
+                category: 'rangeLink',
+                from: 102,
+                fromPort: 'in_vxlan',
+                to: 104,
+                toPort: 'out_vxlan',
+                points: [{
+                    x: 100,
+                    y: 20,
+                }],
+                color: '#94CDF6'
+            };
         }
 
         /**
@@ -90,7 +104,8 @@
          *
          */
         function showUpTip(eventData) {
-
+            console.log('showUpTip:', eventData);
+            return 1;
         }
 
         /**
@@ -100,7 +115,8 @@
          *
          */
         function showDownTip(eventData) {
-
+            console.log('showDownTip:', eventData);
+            return 2;
         }
 
         /**
@@ -108,7 +124,7 @@
          * @param {object} eventData : 同上
          */
         function showElseTopoTypesTip(eventData) {
-
+            console.log('showElseTopoTypesTip:', eventData);
         }
 
         /**
@@ -118,7 +134,7 @@
          *
          */
         function switchUpTopoType(eventData) {
-
+            console.log('switchUpTopoType:', eventData);
         }
 
         /**
@@ -128,7 +144,7 @@
          *
          */
         function switchDownTopoType(eventData) {
-
+            console.log('switchDownTopoType:', eventData);
         }
 
         /**
@@ -137,7 +153,7 @@
          * @param {object} eventData : 同上
          */
         function switchBalance(eventData) {
-            console.log('switch balance:', eventData);
+            console.log('switchBalance:', eventData);
         }
 
         /**
@@ -146,7 +162,17 @@
          * @param {object} nodeData
          */
         function getIcon(nodeData) {
-
+            console.log('getIcon:', eventData);
         }
+
+        /**
+         * 关闭指定的tip
+         *
+         * @param {Number} id
+         */
+        function closeTip(id) {
+            console.log('closeTip:', id);
+        }
+
     });
 })(NetBrain);

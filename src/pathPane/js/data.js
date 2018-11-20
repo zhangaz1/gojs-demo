@@ -252,18 +252,7 @@
             to: 400,
             toPort: 'failed',
             color: '#D98805'
-        }, {
-            category: 'rangeLink',
-            from: 102,
-            fromPort: 'in_vxlan',
-            to: 104,
-            toPort: 'out_vxlan',
-            points: [{
-                x: 100,
-                y: 20,
-            }],
-            color: '#94CDF6'
-        }];
+        }, ];
     }
 
 
