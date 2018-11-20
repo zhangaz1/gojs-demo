@@ -11,7 +11,7 @@
 
         function init() {
             var api = getApi();
-            var pathPaneView = ns.pathPaneView.createView('myDiagramDiv');
+            var pathPaneView = ns.pathPaneView.createView('myDiagramDiv', api);
             bindData(pathPaneView);
 
             var diagram = pathPaneView.getDiagram();
@@ -137,7 +137,7 @@
          * @param {object} eventData : 同上
          */
         function switchBalance(eventData) {
-
+            console.log('switch balance:', eventData);
         }
 
         /**

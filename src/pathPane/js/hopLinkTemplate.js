@@ -8,7 +8,7 @@
 
     return void(0);
 
-    function createHopLinkTemplate() {
+    function createHopLinkTemplate(option) {
         return $(
             go.Link, {
                 routing: go.Link.Orthogonal,

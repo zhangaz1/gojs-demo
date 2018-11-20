@@ -53,7 +53,6 @@
         var nodeWidth = getDiagramWidth(containerId);
         var config = ns.config.getConfig({
             containerId: containerId,
-            api: api,
             style: {
                 nodes: {
                     width: nodeWidth,
@@ -61,7 +60,10 @@
             },
         });
 
-        var diagram = createPathPanelDiagram(config);
+        var diagram = createPathPanelDiagram({
+            config: config,
+            api: api,
+        });
 
         return {
             getDiagram: getDiagram,
@@ -146,20 +148,21 @@
         return model;
     }
 
-    function createPathPanelDiagram(config) {
-        var diagram = createDiagram(config);
+    function createPathPanelDiagram(option) {
+        var diagram = createDiagram(option);
 
-        ns.nodeTemplates.mappingNodeTeamplates(diagram, config);
-        ns.linkTemplates.mappingLinkTemplates(diagram, config);
+        option.diagram = diagram;
+        ns.nodeTemplates.mappingNodeTeamplates(option);
+        ns.linkTemplates.mappingLinkTemplates(option);
 
         return diagram;
     }
 
-    function createDiagram(config) {
+    function createDiagram(option) {
         var diagram = go.GraphObject
             .make(
                 go.Diagram,
-                config.containerId,
+                option.config.containerId,
                 getDiagramConfig(), {
                     // temp: for test
                     allowSelect: true,

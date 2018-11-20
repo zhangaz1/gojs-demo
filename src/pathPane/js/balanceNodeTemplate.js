@@ -7,10 +7,12 @@
         createBalanceTemplate: createBalanceTemplate
     };
 
+    var createEventData = ns.utils.createEventData;
+
     return void(0);
 
-    function createBalanceTemplate(config) {
-        var nodeConfig = config.style.nodes;
+    function createBalanceTemplate(option) {
+        var nodeConfig = option.config.style.nodes;
         var balanceConfig = nodeConfig.balance;
 
         return $(
@@ -45,6 +47,8 @@
                         height: 16,
                         source: balanceConfig.icon,
                         position: new go.Point(37, 17),
+                        cursor: 'pointer',
+                        click: switchBalance,
                     },
                     new go.Binding('source', 'icon'),
                 ),
@@ -62,6 +66,10 @@
             );
         }
 
+        function switchBalance(inputEvent, picture) {
+            var eventData = createEventData(inputEvent, picture);
+            option.api.switchBalance(eventData);
+        }
     }
 
 })(NetBrain);

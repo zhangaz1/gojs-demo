@@ -10,8 +10,8 @@
 
     return void(0);
 
-    function createDeviceTemplate(config) {
-        var nodeConfig = config.style.nodes;
+    function createDeviceTemplate(option) {
+        var nodeConfig = option.config.style.nodes;
         var deviceConfig = nodeConfig.device;
 
         return $(

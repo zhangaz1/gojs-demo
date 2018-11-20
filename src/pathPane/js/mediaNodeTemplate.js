@@ -9,8 +9,8 @@
 
     return void(0);
 
-    function createMediaTemplate(config) {
-        var nodeConfig = config.style.nodes;
+    function createMediaTemplate(option) {
+        var nodeConfig = option.config.style.nodes;
         var mediaConfig = nodeConfig.media;
 
         return $(

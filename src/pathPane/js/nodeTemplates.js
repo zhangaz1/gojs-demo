@@ -7,13 +7,13 @@
 
     return void(0);
 
-    function mappingNodeTeamplates(diagram, config) {
-        var nodeTemplateMap = diagram.nodeTemplateMap;
+    function mappingNodeTeamplates(option) {
+        var nodeTemplateMap = option.diagram.nodeTemplateMap;
 
-        nodeTemplateMap.add('device', ns.deviceTemplate.createDeviceTemplate(config));
-        nodeTemplateMap.add('media', ns.mediaTemplate.createMediaTemplate(config));
-        nodeTemplateMap.add('balance', ns.balanceTemplate.createBalanceTemplate(config));
-        nodeTemplateMap.add('failed', ns.failedTemplate.createFailedTemplate(config));
+        nodeTemplateMap.add('device', ns.deviceTemplate.createDeviceTemplate(option));
+        nodeTemplateMap.add('media', ns.mediaTemplate.createMediaTemplate(option));
+        nodeTemplateMap.add('balance', ns.balanceTemplate.createBalanceTemplate(option));
+        nodeTemplateMap.add('failed', ns.failedTemplate.createFailedTemplate(option));
     }
 
 

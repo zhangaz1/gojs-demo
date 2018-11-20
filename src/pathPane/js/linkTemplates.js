@@ -8,11 +8,11 @@
 
     return void(0);
 
-    function mappingLinkTemplates(diagram, config) {
-        var linkTemplateMap = diagram.linkTemplateMap;
+    function mappingLinkTemplates(option) {
+        var linkTemplateMap = option.diagram.linkTemplateMap;
 
-        linkTemplateMap.add('hopLink', ns.hopLinkTemplate.createHopLinkTemplate(config));
-        linkTemplateMap.add('rangeLink', ns.rangeLinkTemplate.createRangeLinkTemplate(config));
+        linkTemplateMap.add('hopLink', ns.hopLinkTemplate.createHopLinkTemplate(option));
+        linkTemplateMap.add('rangeLink', ns.rangeLinkTemplate.createRangeLinkTemplate(option));
     }
 
 })(NetBrain);

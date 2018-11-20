@@ -9,7 +9,7 @@
 
     return void(0);
 
-    function createRangeLinkTemplate() {
+    function createRangeLinkTemplate(option) {
         return $(
             RangeLink, {
                 routing: go.Link.Orthogonal,

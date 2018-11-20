@@ -9,8 +9,8 @@
 
     return void(0);
 
-    function createFailedTemplate(config) {
-        var nodeConfig = config.style.nodes;
+    function createFailedTemplate(option) {
+        var nodeConfig = option.config.style.nodes;
         var failedConfig = nodeConfig.failed;
 
         return $(
