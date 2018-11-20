@@ -97,7 +97,8 @@
                     name: type + 'TopoTypesPanel',
                     alignment: go.Spot.Left,
                     margin: new go.Margin(1, 0, 1, 0),
-                    padding: 5,
+                    padding: 1,
+
                     background: deviceConfig.topoTypes.backgroundColor,
                     itemTemplate: createTopoTypeItemTemplate(type),
                 },
@@ -106,17 +107,59 @@
         }
 
         function createTopoTypeItemTemplate(type) {
-            return $(
+            var args = [
                 go.Panel,
-                'Auto', {
+                'Vertical', {
                     name: type + 'TopoTypeItemPanel',
                     padding: 1,
+                    margin: 1,
                 },
                 new go.Binding('portId', 'id', function(value) {
                     return type + '_' + value;
                 }),
-                new go.Binding('background', '', getTopoTypeColor('borderColor')),
+            ];
 
+            if (type === 'in') {
+                args.push(createTopoTypeArrowTemplate('up'));
+            }
+
+            args.push(createTopoTypeItemTextWithPanelTemplate());
+
+            if (type === 'out') {
+                args.push(createTopoTypeArrowTemplate('down'));
+            }
+
+            return $.apply(null, args);
+        }
+
+        function createTopoTypeArrowTemplate(direction) {
+            var hasTip;
+
+            if (direction === 'up') {
+                hasTip = 'hasUpTip';
+            }
+
+            if (direction === 'down') {
+                hasTip = 'hasDownTip';
+            }
+
+            return $(
+                go.Picture, {
+                    opacity: 0,
+                    source: './imgs/icons/' + direction + '.png'
+                },
+                new go.Binding('opacity', hasTip, function(value) {
+                    return value ? 1 : 0;
+                }),
+            );
+        }
+
+        function createTopoTypeItemTextWithPanelTemplate() {
+            return $(
+                go.Panel, {
+                    padding: 1,
+                },
+                new go.Binding('background', '', getTopoTypeColor('borderColor')),
                 createTopoTypeItemTextTemplate(),
             );
         }
@@ -129,6 +172,9 @@
                     font: '10px sans-serif',
                     desiredSize: new go.Size(40, 18),
                     textAlign: 'center',
+
+                    margin: 0,
+
                     click: function(event, textBlock) {
                         console.log('click:', textBlock.part.data);
                     },

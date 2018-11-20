@@ -21,13 +21,13 @@
             outTopoTypes: [{ // device左侧显示的L2、L3等
                 id: 'l2',
                 name: 'L2', // topoType中显示名字
-                hasDownTip: true, // 是否可以向下展开
-                hasUpTip: true, // 是否可以向上折叠
+                hasDownTip: false, // 是否可以向下展开
+                hasUpTip: false, // 是否可以向上折叠
                 isUsed: true, // 是否激活状态，决定颜色
             }, {
                 id: 'l3',
                 name: 'L3',
-                hasUpTip: true,
+                hasUpTip: false,
             }, {
                 id: 'vxlan',
                 name: 'Vxlan',
@@ -58,14 +58,18 @@
             }, {
                 id: 'l3',
                 name: 'L3',
+                hasUpTip: true,
             }, {
                 id: 'vxlan',
                 name: 'Vxlan',
+                hasUpTip: true,
             }, {
                 id: 'ipSec',
                 name: 'IP Sec',
             }, {
+                id: 'gre',
                 name: 'GRE',
+                hasUpTip: true,
             }],
 
             outTopoTypes: [{
@@ -105,6 +109,7 @@
             outTopoTypes: [{
                 id: 'l2',
                 name: 'L2',
+                hasDownTip: true,
             }, {
                 id: 'l3',
                 name: 'L3',
@@ -130,11 +135,9 @@
             inTopoTypes: [{
                 id: 'l2',
                 name: 'L2',
-                hasDownTip: true,
             }, {
                 id: 'l3',
                 name: 'L3',
-                hasUpTip: true,
                 isUsed: true,
             }, {
                 id: 'vxlan',
@@ -147,12 +150,10 @@
             outTopoTypes: [{
                 id: 'l2',
                 name: 'L2',
-                hasDownTip: true,
                 isUsed: true,
             }, {
                 id: 'l3',
                 name: 'L3',
-                hasUpTip: true,
             }, {
                 id: 'vxlan',
                 name: 'Vxlan',
@@ -251,7 +252,7 @@
             to: 400,
             toPort: 'failed',
             color: '#D98805'
-        },  {
+        }, {
             category: 'rangeLink',
             from: 102,
             fromPort: 'in_vxlan',
