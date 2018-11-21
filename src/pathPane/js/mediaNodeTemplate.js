@@ -34,14 +34,14 @@
             return $(
                 go.Panel, 'Horizontal', {
                     name: 'mediaNamePanel',
-                    alignment: go.Spot.Left,
-                    height: 50,
-                    margin: new go.Margin(0, 0, 0, 18),
+                    height: 35,
                 },
+                new go.Binding('margin', 'iconMargin', go.Margin.parse),
+                // new go.Binding('margin', '', calculateIconMargin),
                 $(
                     go.Picture, {
                         name: 'mediaIcon',
-                        portId: 'media',
+                        portId: 'icon',
                         width: 16,
                         height: 16,
                         source: mediaConfig.icon,
@@ -54,11 +54,23 @@
                         font: 'bold 12px sans-serif',
                         stroke: '#111',
                         isMultiline: false,
+                        margin: 5,
                     },
                     new go.Binding('text', 'name').makeTwoWay(),
                 ),
             );
         }
+
+        // function calculateIconMargin(data, graphObject) {
+        //     var inLink = graphObject.part.findLinksInto('icon').first();
+        //     if (inLink) {
+        //         var bounds = graphObject.part.actualBounds;
+        //         var left = inLink.points.first().x -
+        //             bounds.x -
+        //             graphObject.findObject('mediaIcon').width / 2;
+        //         return new go.Margin(0, 0, 0, left);
+        //     }
+        // }
 
     }
 

@@ -5,7 +5,9 @@
         createView: createView,
     };
 
-    var layoutNodes = ns.nodesDataLayout.layout;
+    var layoutNodesData = ns.nodesDataLayout.layout;
+    var layoutNodes = ns.nodesLayout.layout;
+    var delayTimeouts = ns.utils.delayTimeouts;
 
     return void(0);
 
@@ -52,11 +54,12 @@
     function createView(containerId, api) {
         var nodeWidth = getDiagramWidth(containerId);
         var config = mergeNewConfig();
-
-        var diagram = createPathPanelDiagram({
+        var option = {
             config: config,
             api: api,
-        });
+        };
+
+        var diagram = createPathPanelDiagram(option);
 
         var view = createViewInstance();
 
@@ -133,12 +136,18 @@
          */
         function bindData(data) {
             diagram.model = createModel(data, config);
-            return refresh(this)
-                .then(layout); // 奇怪
+
+            // return refresh(this) // 奇怪
+            //     .then(doNodesLayout);
+
+            return doNodesLayout();
         }
 
-        function layout() {
-            // layoutNodes();
+        function doNodesLayout() {
+            return delayTimeouts(4)
+                .then(function() {
+                    return layoutNodes(diagram.nodes, config);
+                });
         }
 
         /**
@@ -147,15 +156,10 @@
          * @param {object} pathPaneView
          */
         function refresh(pathPaneView) {
-            return new Promise(function(resolve, reject) {
-                setTimeout(function() {
-                    setTimeout(function() {
-                        // pathPaneView.scroll(-20);
-                        diagram.updateAllTargetBindings();
-                        resolve();
-                    }, 0);
-                }, 0);
-            });
+            return delayTimeouts(2)
+                .then(function() {
+                    // return diagram.updateAllTargetBindings();
+                });
         }
 
         /**
@@ -180,8 +184,6 @@
          *
          */
         function getScrollInfo() {
-            // var bounds = diagram.computeBounds();
-
             return {
                 contentHeight: diagram.documentBounds.height,
                 contentY: diagram.documentBounds.y,
@@ -278,7 +280,7 @@
         //     version: 42
         // };
 
-        layoutNodes(data, config);
+        layoutNodesData(data, config);
 
         model.nodeDataArray = data.nodeDataArray;
         model.linkDataArray = data.linkDataArray

@@ -179,6 +179,8 @@
 
             name: 'VPC1', // 显示用
 
+            iconMargin: '0 0 0 28',
+
             // icon: './imgs/icons/lan.png', // 可讨论，若多种图标，需要指定类别，或path
 
         }, {
@@ -229,12 +231,12 @@
             from: 103,
             fromPort: 'out_l3',
             to: 103.5,
-            toPort: 'balance',
+            toPort: 'icon',
             color: '#4DBB00'
         }, {
             category: 'hopLink',
             from: 103.5,
-            fromPort: 'balance',
+            fromPort: 'icon',
             to: 104,
             toPort: 'in_l3',
             color: '#4DBB00'
@@ -243,14 +245,14 @@
             from: 104,
             fromPort: 'out_l2',
             to: 104.5,
-            toPort: 'media',
+            toPort: 'icon',
             color: '#D98805'
         }, {
             category: 'hopLink',
             from: 104.5,
-            fromPort: 'media',
+            fromPort: 'icon',
             to: 400,
-            toPort: 'failed',
+            toPort: 'icon',
             color: '#D98805'
         }, ];
     }

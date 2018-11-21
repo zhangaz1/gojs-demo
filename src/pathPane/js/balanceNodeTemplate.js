@@ -20,49 +20,40 @@
             'Auto', {
                 name: 'balanceNode',
                 locationSpot: go.Spot.Center,
-                padding: new go.Margin(1, 0, 1, 0),
-                background: nodeConfig.borderColor,
-
-                width: nodeConfig.width,
             },
             new go.Binding('location', 'location', go.Point.parse),
 
-            createDeviceNameTemplate(),
+
+            createBalanceIconTemplate(),
+            createBalanceCountTemplate(),
         );
 
         // return void(0);
 
-        function createDeviceNameTemplate() {
+        function createBalanceIconTemplate() {
             return $(
-                go.Panel, 'Position', {
-                    name: 'balanceNamePanel',
-                    alignment: go.Spot.Left,
-                    height: 50,
+                go.Picture, {
+                    name: 'balanceIcon',
+                    portId: 'icon',
+                    width: 32,
+                    height: 32,
+                    source: balanceConfig.icon,
+                    cursor: 'pointer',
+                    click: switchBalance,
                 },
-                $(
-                    go.Picture, {
-                        name: 'balanceIcon',
-                        portId: 'balance',
-                        width: 16,
-                        height: 16,
-                        source: balanceConfig.icon,
-                        position: new go.Point(37, 17),
-                        cursor: 'pointer',
-                        click: switchBalance,
-                    },
-                    new go.Binding('source', 'icon'),
-                ),
-                $(
-                    go.TextBlock, {
-                        name: 'balanceHostNameText',
-                        font: 'bold 12px sans-serif',
-                        stroke: '#111',
-                        isMultiline: false,
+                new go.Binding('source', 'icon'),
+            );
+        }
 
-                        position: new go.Point(37 + 20, 17),
-                    },
-                    new go.Binding('text', 'name').makeTwoWay(),
-                ),
+        function createBalanceCountTemplate() {
+            return $(
+                go.TextBlock, {
+                    name: 'balanceHostNameText',
+                    font: '10px sans-serif',
+                    stroke: '#111',
+                    isMultiline: false,
+                },
+                new go.Binding('text', 'name').makeTwoWay(),
             );
         }
 
