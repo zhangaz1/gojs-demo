@@ -69,6 +69,7 @@
             };
 
             view.bindData = bindData.bind(view);
+            view.getData = getData.bind(view);
 
             view.getScrollInfo = getScrollInfo.bind(view);
             view.canMoveUp = canMoveUp.bind(view);
@@ -76,17 +77,6 @@
             view.scroll = scroll.bind(view);
 
             return view;
-        }
-
-        function canMoveUp() {
-            var scrollInfo = this.getScrollInfo();
-            return canDiagramMoveUp(scrollInfo);
-        }
-
-
-        function canMoveDown() {
-            var scrollInfo = this.getScrollInfo();
-            return canDiagramMoveDown(scrollInfo);
         }
 
         function mergeNewConfig() {
@@ -134,6 +124,15 @@
         }
 
         /**
+         * 获取当前绑定的数据
+         *
+         * @returns {Object}：
+         */
+        function getData() {
+            return diagram.model.toJson();
+        }
+
+        /**
          * 获取视图大小和位置，以用于滚动
          *
          * @return {object}：例：
@@ -152,6 +151,26 @@
                 current: this.currentPosition,
                 viewPortHeight: diagram.viewportBounds.height,
             };
+        }
+
+        /**
+         * 是否可以向上移动（viewPort）（即内容向下移动）
+         *
+         * @returns {boolean}
+         */
+        function canMoveUp() {
+            var scrollInfo = this.getScrollInfo();
+            return canDiagramMoveUp(scrollInfo);
+        }
+
+        /**
+         * 是否可以向下移动（viewPort）（即内容向上移动）
+         *
+         * @returns {boolean}
+         */
+        function canMoveDown() {
+            var scrollInfo = this.getScrollInfo();
+            return canDiagramMoveDown(scrollInfo);
         }
 
         /**

@@ -24,6 +24,12 @@
             $('#getData').click(function() {
                 $('#data').val(pathPaneView.getData());
             });
+
+            $('#setData').click(function() {
+                var dataStr = $('#data').val();
+                var data = JSON.parse(dataStr);
+                pathPaneView.bindData(data);
+            });
         }
 
         function bindMoveHandler(pathPaneView) {
