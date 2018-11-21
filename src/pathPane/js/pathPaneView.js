@@ -7,6 +7,7 @@
 
     var layoutNodesData = ns.nodesDataLayout.layout;
     var layoutNodes = ns.nodesLayout.layout;
+    var delayTwoTimeout = ns.utils.delayTwoTimeout;
 
     return void(0);
 
@@ -134,16 +135,15 @@
          */
         function bindData(data) {
             diagram.model = createModel(data, config);
-            return refresh(this)
-                .then(layout); // 奇怪
+            return refresh(this) // 奇怪
+                .then(doNodesLayout);
         }
 
-        function layout() {
-            setTimeout(function() {
-                setTimeout(function() {
-                    layoutNodes(diagram.nodes);
-                }, 0);
-            }, 0);
+        function doNodesLayout() {
+            return delayTwoTimeout()
+                .then(function() {
+                    return layoutNodes(diagram.nodes);
+                });
         }
 
         /**
@@ -152,15 +152,10 @@
          * @param {object} pathPaneView
          */
         function refresh(pathPaneView) {
-            return new Promise(function(resolve, reject) {
-                setTimeout(function() {
-                    setTimeout(function() {
-                        // pathPaneView.scroll(-20);
-                        diagram.updateAllTargetBindings();
-                        resolve();
-                    }, 0);
-                }, 0);
-            });
+            return delayTwoTimeout()
+                .then(function() {
+                    return diagram.updateAllTargetBindings();
+                });
         }
 
         /**
@@ -185,8 +180,6 @@
          *
          */
         function getScrollInfo() {
-            // var bounds = diagram.computeBounds();
-
             return {
                 contentHeight: diagram.documentBounds.height,
                 contentY: diagram.documentBounds.y,
