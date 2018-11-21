@@ -5,7 +5,8 @@
         createView: createView,
     };
 
-    var layoutNodes = ns.nodesDataLayout.layout;
+    var layoutNodesData = ns.nodesDataLayout.layout;
+    var layoutNodes = ns.nodesLayout.layout;
 
     return void(0);
 
@@ -138,7 +139,11 @@
         }
 
         function layout() {
-            // layoutNodes();
+            setTimeout(function() {
+                setTimeout(function() {
+                    layoutNodes(diagram.nodes);
+                }, 0);
+            }, 0);
         }
 
         /**
@@ -278,7 +283,7 @@
         //     version: 42
         // };
 
-        layoutNodes(data, config);
+        layoutNodesData(data, config);
 
         model.nodeDataArray = data.nodeDataArray;
         model.linkDataArray = data.linkDataArray
