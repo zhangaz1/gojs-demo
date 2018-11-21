@@ -103,16 +103,17 @@
          */
         function bindData(data) {
             diagram.model = createModel(data, config);
-            refresh(diagram); // 奇怪
+            refresh(this); // 奇怪
         }
 
-        function refresh(diagram) {
+        function refresh(pathPaneView) {
             setTimeout(function() {
-                diagram.updateAllTargetBindings();
                 setTimeout(function() {
+                    pathPaneView.scroll(-20);
+                    pathPaneView.currentPosition = 0;
                     diagram.updateAllTargetBindings();
-                }, 100);
-            }, 100);
+                }, 0);
+            }, 0);
         }
 
         /**
