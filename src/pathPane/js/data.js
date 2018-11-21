@@ -179,6 +179,8 @@
 
             name: 'VPC1', // 显示用
 
+            iconMargin: '0 0 0 28',
+
             // icon: './imgs/icons/lan.png', // 可讨论，若多种图标，需要指定类别，或path
 
         }, {

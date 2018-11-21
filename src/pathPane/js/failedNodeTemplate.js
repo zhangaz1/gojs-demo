@@ -20,6 +20,7 @@
                 locationSpot: go.Spot.Center,
             },
             new go.Binding('location', 'location', go.Point.parse),
+            // new go.Binding('location', '', calculateLocation),
 
             createFailedIconTemplate(),
         );
@@ -38,6 +39,14 @@
                 new go.Binding('source', 'icon'),
             );
         }
+
+        // function calculateLocation(data, graphObject) {
+        //     var inLink = graphObject.part.findLinksInto('icon').first();
+        //     if (inLink) {
+        //         var x = inLink.points.first().x;
+        //         data.location = x + ' ' + graphObject.part.actualBounds.y;
+        //     }
+        // }
 
     }
 

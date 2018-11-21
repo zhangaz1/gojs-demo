@@ -36,7 +36,8 @@
                     name: 'mediaNamePanel',
                     height: 35,
                 },
-                new go.Binding('margin', '', calculateIconMargin),
+                new go.Binding('margin', 'iconMargin', go.Margin.parse),
+                // new go.Binding('margin', '', calculateIconMargin),
                 $(
                     go.Picture, {
                         name: 'mediaIcon',
@@ -60,16 +61,16 @@
             );
         }
 
-        function calculateIconMargin(data, graphObject) {
-            var inLink = graphObject.part.findLinksInto('icon').first();
-            if (inLink) {
-                var bounds = graphObject.part.actualBounds;
-                var left = inLink.points.first().x -
-                    bounds.x -
-                    graphObject.findObject('mediaIcon').width / 2;
-                return new go.Margin(0, 0, 0, left);
-            }
-        }
+        // function calculateIconMargin(data, graphObject) {
+        //     var inLink = graphObject.part.findLinksInto('icon').first();
+        //     if (inLink) {
+        //         var bounds = graphObject.part.actualBounds;
+        //         var left = inLink.points.first().x -
+        //             bounds.x -
+        //             graphObject.findObject('mediaIcon').width / 2;
+        //         return new go.Margin(0, 0, 0, left);
+        //     }
+        // }
 
     }
 

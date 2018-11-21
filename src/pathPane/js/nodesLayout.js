@@ -25,6 +25,10 @@
                 node.data.location = x + ' ' + y;
 
                 lastY = y;
+
+                if (node.data.category === consts.enums.nodeCategories.media) {
+                    updateMediaIconMargin(node);
+                }
             } else {
                 lastY = node.location.y;
             }
@@ -35,25 +39,39 @@
         lastNode.diagram.updateAllTargetBindings();
     }
 
+    function updateMediaIconMargin(node) {
+        var inLink = node.findLinksInto('icon').first();
+        var bounds = node.actualBounds;
+        var left = inLink.points.first().x -
+            bounds.x -
+            node.findObject('mediaIcon').width / 2;
+        node.data.iconMargin = '0 0 0 ' + left;
+    }
+
     function calculateX(node, config) {
         var nodeCategories = consts.enums.nodeCategories;
 
-        var x = node.location.x;
-        // switch (node.data.category) {
-        //     case nodeCategories.failed:
-        //     case nodeCategories.balance:
-        //         x = getLinkAnotherX(node, config);
-        //         break;
-        //     default:
-        //         x = node.location.x;
-        //         break;
-        // }
+        // return node.location.x;
+
+        var x;
+        switch (node.data.category) {
+            case nodeCategories.failed:
+            case nodeCategories.balance:
+                x = getLinkAnotherX(node, config);
+                break;
+            default:
+                x = node.location.x;
+                break;
+        }
 
         return x;
     }
 
     function getLinkAnotherX(node, config) {
         var inLink = node.findLinksInto('icon').first();
+        if (inLink.fromNode.data.category === consts.enums.nodeCategories.media) {
+            inLink = inLink.fromNode.findLinksInto('icon').first();
+        }
         return inLink.points.first().x;
     }
 
