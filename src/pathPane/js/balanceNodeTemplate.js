@@ -34,7 +34,7 @@
             return $(
                 go.Picture, {
                     name: 'balanceIcon',
-                    portId: 'balance',
+                    portId: 'icon',
                     width: 32,
                     height: 32,
                     source: balanceConfig.icon,

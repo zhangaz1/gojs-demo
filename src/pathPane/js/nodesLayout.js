@@ -36,8 +36,25 @@
     }
 
     function calculateX(node, config) {
-        console.log(consts, config);
-        return node.location.x;
+        var nodeCategories = consts.enums.nodeCategories;
+
+        var x;
+        switch (node.data.category) {
+            case nodeCategories.failed:
+            case nodeCategories.balance:
+                x = getLinkAnotherX(node, config);
+                break;
+            default:
+                x = node.location.x;
+                break;
+        }
+
+        return x;
+    }
+
+    function getLinkAnotherX(node, config) {
+        var inLink = node.findLinksInto('icon').first();
+        return inLink.points.first().x;
     }
 
     function calculateY(lastY, lastNode, node) {

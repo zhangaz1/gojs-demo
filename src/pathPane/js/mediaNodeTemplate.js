@@ -41,7 +41,7 @@
                 $(
                     go.Picture, {
                         name: 'mediaIcon',
-                        portId: 'media',
+                        portId: 'icon',
                         width: 16,
                         height: 16,
                         source: mediaConfig.icon,

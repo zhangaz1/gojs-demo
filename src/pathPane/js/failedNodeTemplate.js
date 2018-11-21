@@ -30,7 +30,7 @@
             return $(
                 go.Picture, {
                     name: 'failedIcon',
-                    portId: 'failed',
+                    portId: 'icon',
                     width: 16,
                     height: 16,
                     source: failedConfig.icon,
