@@ -180,12 +180,16 @@
          */
         function scroll(step) {
             this.currentPosition += step;
-            diagram.position = new go.Point(diagram.position.x, diagram.position.y + step);
+            var oldPosition = diagram.position;
+            diagram.position = new go.Point(
+                oldPosition.x,
+                oldPosition.y + step,
+            );
         }
     }
 
     function getDiagramWidth(containerId) {
-        return jQuery('#' + containerId).width() - 50;
+        return jQuery('#' + containerId).width(); //- 50;
     }
 
     function createModel(data, config) {
@@ -197,11 +201,11 @@
 
         // test
         // some shared model data
-        model.modelData = {
-            test: true,
-            hello: 'world',
-            version: 42
-        };
+        // model.modelData = {
+        //     test: true,
+        //     hello: 'world',
+        //     version: 42
+        // };
 
         layoutNodes(data, config);
 
@@ -229,7 +233,7 @@
                 getDiagramConfig(), {
                     // temp: for test
                     allowSelect: true,
-                    allowMove: true,
+                    // allowMove: true,
                     // automatically show the state of the diagram's model on the page
                     'ModelChanged': function(e) {
                         if (e.isTransactionFinished) {
@@ -244,6 +248,7 @@
 
     function getDiagramConfig() {
         return {
+            padding: 0,
             initialContentAlignment: go.Spot.Top, // 上对齐布局
             allowMove: false,
             allowHorizontalScroll: false,
