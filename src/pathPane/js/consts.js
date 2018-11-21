@@ -1,26 +1,71 @@
 ;
 (function(ns) {
 
-    var topoTypes = [{
-        id: 'l2',
-        name: 'L2',
-    }, {
-        id: 'l3',
-        name: 'L3',
-    }, {
-        id: 'vxlan',
-        name: 'Vxlan',
-    }, {
-        id: 'ipSec',
-        name: 'IP Sec',
-    }, {
-        id: 'gre',
-        name: 'GRE',
-    }];
+    var topoTypes = createTopoTypes();
+    var topoTypesDic = createTopoTypesDic();
 
     ns.consts = createConsts();
 
     return void(0);
+
+    /**
+     * TopoTypes config for support
+     *
+     * 可以动态添加新的topoType
+     */
+    function createTopoTypes() {
+        return [{
+            id: 'l2',
+            name: 'L2',
+
+            backgroundColor: 'green',
+            borderColor: 'red',
+            active: {
+                backgroundColor: '#F8A200',
+                borderColor: '#D98805',
+            },
+        }, {
+            id: 'l3',
+            name: 'L3',
+
+            borderColor: '#B2E88E',
+            backgroundColor: '#E8FDDA',
+            active: {
+                borderColor: '#3F9105',
+                backgroundColor: '#4DBB00',
+            },
+        }, {
+            id: 'vxlan',
+            name: 'Vxlan',
+
+            borderColor: '#94CDF6',
+            backgroundColor: '#DDF0FF',
+            active: {
+                borderColor: 'green',
+                backgroundColor: 'red',
+            },
+        }, {
+            id: 'ipSec',
+            name: 'IP Sec',
+
+            backgroundColor: 'green',
+            borderColor: 'red',
+            active: {
+                backgroundColor: '#F8A200',
+                borderColor: '#D98805',
+            },
+        }, {
+            id: 'gre',
+            name: 'GRE',
+
+            backgroundColor: 'green',
+            borderColor: 'red',
+            active: {
+                backgroundColor: '#F8A200',
+                borderColor: '#D98805',
+            },
+        }];
+    }
 
     function createConsts() {
         return {
@@ -36,7 +81,7 @@
                     hopLink: 'hopLink',
                     rangeLink: 'rangeLink',
                 },
-                topoTypes: createTopoTypesDic(),
+                topoTypes: topoTypesDic,
             },
             config: {
                 style: {
@@ -47,14 +92,26 @@
         };
     }
 
+    /**
+     * 把topoTypes数组构造成字典，方便访问
+     */
     function createTopoTypesDic() {
-        var dic = Object.create(null);
+        // var dic = Object.create(null);
+        var dic = {
+            backgroundColor: '#DEF0FB',
+            borderColor: '#D98805',
+        };
+
         _.each(topoTypes, function(topoType) {
             dic[topoType.id] = topoType;
         });
+
         return dic;
     }
 
+    /**
+     * node 样式配置
+     */
     function createNodesStyleConfig() {
         return {
             // device的一些默认颜色、图标等信息
@@ -67,7 +124,7 @@
                 aIcon: './imgs/icons/path_point_a.bmp',
                 bIcon: './imgs/icons/path_point_b.bmp',
 
-                topoTypes: createTopoTypesConfig(),
+                topoTypes: topoTypesDic,
                 details: {
 
                 },
@@ -80,39 +137,6 @@
             },
             failed: {
                 icon: './imgs/icons/failed.png',
-            },
-        };
-    }
-
-    function createTopoTypesConfig() {
-        // topoTypes的默认颜色和激活颜色等
-        return {
-            backgroundColor: '#DEF0FB',
-            borderColor: '#D98805',
-
-            l2: {
-                backgroundColor: 'green',
-                borderColor: 'red',
-                active: {
-                    backgroundColor: '#F8A200',
-                    borderColor: '#D98805',
-                },
-            },
-            l3: {
-                borderColor: '#B2E88E',
-                backgroundColor: '#E8FDDA',
-                active: {
-                    borderColor: '#3F9105',
-                    backgroundColor: '#4DBB00',
-                },
-            },
-            vxlan: {
-                borderColor: '#94CDF6',
-                backgroundColor: '#DDF0FF',
-                active: {
-                    borderColor: 'green',
-                    backgroundColor: 'red',
-                },
             },
         };
     }
