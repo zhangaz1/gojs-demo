@@ -120,9 +120,6 @@
                     mouseLeave: mouseLeave,
                     click: switchTopoType,
                 },
-                new go.Binding('portId', 'id', function(value) {
-                    return type + '_' + value;
-                }),
                 new go.Binding('cursor', '', function(topoType) {
                     if (topoType.hasUpTip || topoType.hasDownTip) {
                         return 'pointer';
@@ -134,7 +131,7 @@
                 args.push(createTopoTypeArrowTemplate('up'));
             }
 
-            args.push(createTopoTypeItemTextWithPanelTemplate());
+            args.push(createTopoTypeItemTextWithPanelTemplate(type));
 
             if (type === 'out') {
                 args.push(createTopoTypeArrowTemplate('down'));
@@ -165,18 +162,23 @@
             );
         }
 
-        function createTopoTypeItemTextWithPanelTemplate() {
+        function createTopoTypeItemTextWithPanelTemplate(type) {
             return $(
-                go.Panel, {
+                go.Panel,
+                'Auto', {
                     name: 'topoTypeTextBlockPanel',
                     padding: 1,
                 },
+
+                new go.Binding('portId', 'id', function(value) {
+                    return type + '_' + value;
+                }),
                 new go.Binding('background', '', getTopoTypeColor('borderColor')),
-                createTopoTypeItemTextTemplate(),
+                createTopoTypeItemTextTemplate(type),
             );
         }
 
-        function createTopoTypeItemTextTemplate() {
+        function createTopoTypeItemTextTemplate(type) {
             return $(
                 go.TextBlock, {
                     angle: 270,

@@ -3,8 +3,6 @@
 
     jQuery(function() {
 
-        var $ = go.GraphObject.make;
-
         init();
 
         return void(0);
@@ -14,8 +12,66 @@
             var pathPaneView = ns.pathPaneView.createView('myDiagramDiv', api);
             bindData(pathPaneView);
 
+            bindMoveHandler(pathPaneView);
+
             var diagram = pathPaneView.getDiagram();
             testInspector(diagram);
+        }
+
+        function bindMoveHandler(pathPaneView) {
+            var step = 50;
+            $('#up').click(createMoveHandler(pathPaneView, -step));
+            $('#down').click(createMoveHandler(pathPaneView, step));
+
+            updateMoveButtonStatus(pathPaneView);
+        }
+
+        function createMoveHandler(pathPaneView, step) {
+            return function() {
+                pathPaneView.scroll(step);
+                updateMoveButtonStatus(pathPaneView);
+            };
+        }
+
+        function updateMoveButtonStatus(pathPaneView) {
+            var scrollInfo = pathPaneView.getScrollInfo();
+            var max = scrollInfo.viewPortHeight - scrollInfo.height;
+
+            var upButton = $('#up');
+            if (canMoveUp(scrollInfo)) {
+                upButton.show();
+            } else {
+                upButton.hide();
+            }
+
+            var downButton = $('#down');
+            if (canMoveDown(scrollInfo)) {
+                downButton.show();
+            } else {
+                downButton.hide();
+            }
+        }
+
+        function canMoveUp(scrollInfo) {
+            return (
+                    scrollInfo.viewPortHeight < scrollInfo.height &&
+                    scrollInfo.viewPortHeight - scrollInfo.current < scrollInfo.height
+                ) ||
+                (
+                    scrollInfo.viewPortHeight > scrollInfo.height &&
+                    scrollInfo.current > 0
+                );
+        }
+
+        function canMoveDown(scrollInfo) {
+            return (
+                    scrollInfo.viewPortHeight < scrollInfo.height &&
+                    scrollInfo.viewPortHeight - scrollInfo.current < scrollInfo.height
+                ) ||
+                (
+                    scrollInfo.viewPortHeight > scrollInfo.height &&
+                    scrollInfo.current > 0
+                );
         }
 
         function bindData(pathPaneView) {

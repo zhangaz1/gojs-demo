@@ -66,6 +66,7 @@
         });
 
         return {
+            currentPosition: 0,
             getDiagram: getDiagram,
             bindData: bindData,
             getScrollInfo: getScrollInfo,
@@ -94,6 +95,16 @@
          */
         function bindData(data) {
             diagram.model = createModel(data, config);
+            refresh(diagram); // 奇怪
+        }
+
+        function refresh(diagram) {
+            setTimeout(function() {
+                diagram.updateAllTargetBindings();
+                setTimeout(function() {
+                    diagram.updateAllTargetBindings();
+                }, 100);
+            }, 100);
         }
 
         /**
@@ -104,11 +115,17 @@
             {
                 height: 800,    // 画布高度
                 current: 0,     // 当前上端偏移位置
+                viewPortHeight: 300, // 可视区域的高度
             }
          *
          */
         function getScrollInfo() {
-
+            var bounds = diagram.computeBounds()
+            return {
+                height: bounds.height,
+                current: this.currentPosition,
+                viewPortHeight: diagram.viewportBounds.height,
+            };
         }
 
         /**
@@ -117,7 +134,9 @@
          * @param {number} step
          */
         function scroll(step) {
-
+            console.log('scroll step:', step);
+            this.currentPosition += step;
+            diagram.position = new go.Point(diagram.position.x, diagram.position.y + step);
         }
     }
 
@@ -166,6 +185,7 @@
                 getDiagramConfig(), {
                     // temp: for test
                     allowSelect: true,
+                    allowMove: true,
                     // automatically show the state of the diagram's model on the page
                     'ModelChanged': function(e) {
                         if (e.isTransactionFinished) {
