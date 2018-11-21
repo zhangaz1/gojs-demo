@@ -38,16 +38,16 @@
     function calculateX(node, config) {
         var nodeCategories = consts.enums.nodeCategories;
 
-        var x;
-        switch (node.data.category) {
-            case nodeCategories.failed:
-            case nodeCategories.balance:
-                x = getLinkAnotherX(node, config);
-                break;
-            default:
-                x = node.location.x;
-                break;
-        }
+        var x = node.location.x;
+        // switch (node.data.category) {
+        //     case nodeCategories.failed:
+        //     case nodeCategories.balance:
+        //         x = getLinkAnotherX(node, config);
+        //         break;
+        //     default:
+        //         x = node.location.x;
+        //         break;
+        // }
 
         return x;
     }
