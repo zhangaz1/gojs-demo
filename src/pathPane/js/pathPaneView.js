@@ -54,11 +54,12 @@
     function createView(containerId, api) {
         var nodeWidth = getDiagramWidth(containerId);
         var config = mergeNewConfig();
-
-        var diagram = createPathPanelDiagram({
+        var option = {
             config: config,
             api: api,
-        });
+        };
+
+        var diagram = createPathPanelDiagram(option);
 
         var view = createViewInstance();
 
@@ -145,7 +146,7 @@
         function doNodesLayout() {
             return delayTimeouts(4)
                 .then(function() {
-                    return layoutNodes(diagram.nodes);
+                    return layoutNodes(diagram.nodes, config);
                 });
         }
 

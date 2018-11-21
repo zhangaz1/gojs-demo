@@ -1,5 +1,23 @@
 ;
 (function(ns) {
+
+    var topoTypes = [{
+        id: 'l2',
+        name: 'L2',
+    }, {
+        id: 'l3',
+        name: 'L3',
+    }, {
+        id: 'vxlan',
+        name: 'Vxlan',
+    }, {
+        id: 'ipSec',
+        name: 'IP Sec',
+    }, {
+        id: 'gre',
+        name: 'GRE',
+    }];
+
     ns.consts = createConsts();
 
     return void(0);
@@ -18,6 +36,7 @@
                     hopLink: 'hopLink',
                     rangeLink: 'rangeLink',
                 },
+                topoTypes: createTopoTypesDic(),
             },
             config: {
                 style: {
@@ -26,6 +45,14 @@
                 },
             },
         };
+    }
+
+    function createTopoTypesDic() {
+        var dic = Object.create(null);
+        _.each(topoTypes, function(topoType) {
+            dic[topoType.id] = topoType;
+        });
+        return dic;
     }
 
     function createNodesStyleConfig() {

@@ -1,13 +1,15 @@
 ;
 (function(ns) {
 
+    var consts = ns.consts;
+
     ns.nodesLayout = {
         layout: layout
     };
 
     return void(0);
 
-    function layout(nodes) {
+    function layout(nodes, config) {
         if (nodes.count < 1) {
             return;
         }
@@ -18,7 +20,7 @@
         nodes.each(function(node) {
             if (lastNode) {
                 var y = calculateY(lastY, lastNode, node);
-                var x = calculateX(node);
+                var x = calculateX(node, config);
 
                 node.data.location = x + ' ' + y;
 
@@ -33,7 +35,8 @@
         lastNode.diagram.updateAllTargetBindings();
     }
 
-    function calculateX(node) {
+    function calculateX(node, config) {
+        console.log(consts, config);
         return node.location.x;
     }
 
