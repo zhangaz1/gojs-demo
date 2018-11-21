@@ -53,33 +53,33 @@
                     name: 'topoTypesPanel',
                 },
                 createVisiableTopoTypesTemplate(),
-                createElseTopoTypesTemplate(),
+                // createElseTopoTypesTemplate(),
             );
         }
 
-        function createElseTopoTypesTemplate() {
-            // 可以考虑改成icon
-            return $(
-                go.TextBlock, {
-                    text: '...',
-                    angle: 90,
-                    desiredSize: new go.Size(40, 18),
-                    textAlign: 'center',
-                    visible: false,
-                    click: function(event, textBlock) {
-                        console.log('click:', textBlock.part.data);
-                    },
-                },
-                new go.Binding('visible', 'elseTopoTypes', function(value, graphObject) {
-                    return (
-                            value &&
-                            value.length &&
-                            true
-                        ) ||
-                        false;
-                }),
-            );
-        }
+        // function createElseTopoTypesTemplate() {
+        //     // 可以考虑改成icon
+        //     return $(
+        //         go.TextBlock, {
+        //             text: '...',
+        //             angle: 90,
+        //             desiredSize: new go.Size(40, 18),
+        //             textAlign: 'center',
+        //             visible: false,
+        //             click: function(event, textBlock) {
+        //                 console.log('click:', textBlock.part.data);
+        //             },
+        //         },
+        //         new go.Binding('visible', 'elseTopoTypes', function(value, graphObject) {
+        //             return (
+        //                     value &&
+        //                     value.length &&
+        //                     true
+        //                 ) ||
+        //                 false;
+        //         }),
+        //     );
+        // }
 
         function createVisiableTopoTypesTemplate() {
             return $(
@@ -116,7 +116,7 @@
                     padding: 1,
                     margin: 1,
 
-                    mouseHover: showTopoTypeTip,
+                    mouseEnter: showTopoTypeTip,
                     mouseLeave: mouseLeave,
                     click: switchTopoType,
                 },
