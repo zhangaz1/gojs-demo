@@ -51,37 +51,54 @@
      */
     function createView(containerId, api) {
         var nodeWidth = getDiagramWidth(containerId);
-        var config = ns.config.getConfig({
-            containerId: containerId,
-            style: {
-                nodes: {
-                    width: nodeWidth,
-                },
-            },
-        });
+        var config = mergeNewConfig();
 
         var diagram = createPathPanelDiagram({
             config: config,
             api: api,
         });
 
-        return {
-            currentPosition: 0,
-            getDiagram: getDiagram,
-            bindData: bindData,
-            getScrollInfo: getScrollInfo,
-            scroll: scroll,
-            canMoveUp: function() {
-                var scrollInfo = this.getScrollInfo();
-                return canMoveUp(scrollInfo);
-            },
-            canMoveDown: function() {
-                var scrollInfo = this.getScrollInfo();
-                return canMoveDown(scrollInfo);
-            },
-        };
+        return createViewInstance();
 
         // return void(0);
+
+        function createViewInstance() {
+            var view = {
+                currentPosition: 0,
+                getDiagram: getDiagram,
+            };
+
+            view.bindData = bindData.bind(view);
+
+            view.getScrollInfo = getScrollInfo.bind(view);
+            view.canMoveUp = canMoveUp.bind(view);
+            view.canMoveDown = canMoveDown.bind(view);
+            view.scroll = scroll.bind(view);
+
+            return view;
+        }
+
+        function canMoveUp() {
+            var scrollInfo = this.getScrollInfo();
+            return canDiagramMoveUp(scrollInfo);
+        }
+
+
+        function canMoveDown() {
+            var scrollInfo = this.getScrollInfo();
+            return canDiagramMoveDown(scrollInfo);
+        }
+
+        function mergeNewConfig() {
+            return ns.config.getConfig({
+                containerId: containerId,
+                style: {
+                    nodes: {
+                        width: nodeWidth,
+                    },
+                },
+            });
+        }
 
         /**
          * 为方便暂提供，不建议使用，有需求可以通过api提供
@@ -223,7 +240,7 @@
         };
     }
 
-    function canMoveUp(scrollInfo) {
+    function canDiagramMoveUp(scrollInfo) {
         return (
                 scrollInfo.viewPortHeight < scrollInfo.height &&
                 scrollInfo.viewPortHeight - scrollInfo.current < scrollInfo.height
@@ -234,7 +251,7 @@
             );
     }
 
-    function canMoveDown(scrollInfo) {
+    function canDiagramMoveDown(scrollInfo) {
         return (
                 scrollInfo.viewPortHeight < scrollInfo.height &&
                 scrollInfo.viewPortHeight - scrollInfo.current < scrollInfo.height

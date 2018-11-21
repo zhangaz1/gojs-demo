@@ -16,6 +16,14 @@
 
             var diagram = pathPaneView.getDiagram();
             testInspector(diagram);
+
+            bindDataHandler(pathPaneView);
+        }
+
+        function bindDataHandler(pathPaneView) {
+            $('#getData').click(function() {
+                $('#data').val(pathPaneView.getData());
+            });
         }
 
         function bindMoveHandler(pathPaneView) {
