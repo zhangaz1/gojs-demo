@@ -87,7 +87,6 @@
 
         function createViewInstance() {
             return {
-                currentPosition: 0,
                 getDiagram: getDiagram,
 
                 bindData: bindData,
@@ -131,17 +130,19 @@
          */
         function bindData(data) {
             diagram.model = createModel(data, config);
-            refresh(this); // 奇怪
+            return refresh(this); // 奇怪
         }
 
         function refresh(pathPaneView) {
-            setTimeout(function() {
+            return new Promise(function(resolve, reject) {
                 setTimeout(function() {
-                    pathPaneView.scroll(-20);
-                    pathPaneView.currentPosition = 0;
-                    diagram.updateAllTargetBindings();
+                    setTimeout(function() {
+                        pathPaneView.scroll(-20);
+                        diagram.updateAllTargetBindings();
+                        resolve();
+                    }, 0);
                 }, 0);
-            }, 0);
+            });
         }
 
         /**
@@ -159,18 +160,21 @@
          * @return {object}：例：
          *
             {
-                height: 800,    // 画布高度
-                current: 0,     // 当前上端偏移位置
+                contentHeight: 800,    // 内容高度
                 viewPortHeight: 300, // 可视区域的高度
+                // current: 0,     // 当前上端偏移位置
             }
          *
          */
         function getScrollInfo() {
-            var bounds = diagram.computeBounds()
+            // var bounds = diagram.computeBounds();
+
             return {
-                height: bounds.height,
-                current: this.currentPosition,
-                viewPortHeight: diagram.viewportBounds.height,
+                contentHeight: diagram.documentBounds.height,
+                contentY: diagram.documentBounds.y,
+                viewportHeight: diagram.viewportBounds.height,
+                viewportY: diagram.viewportBounds.y,
+                current: diagram.documentBounds.y - diagram.viewportBounds.y,
             };
         }
 
@@ -209,17 +213,15 @@
                 oldPosition.x,
                 oldPosition.y + step,
             );
-
-            this.currentPosition += step;
         }
 
         function canMove(step) {
             if (step < 0) {
-                return this.canMoveDown();
+                return this.canMoveUp();
             }
 
             if (step > 0) {
-                return this.canMoveUp();
+                return this.canMoveDown();
             }
 
             return false;
@@ -303,25 +305,13 @@
     }
 
     function canDiagramMoveUp(scrollInfo) {
-        return (
-                scrollInfo.viewPortHeight < scrollInfo.height &&
-                scrollInfo.viewPortHeight - scrollInfo.current < scrollInfo.height
-            ) ||
-            (
-                scrollInfo.viewPortHeight > scrollInfo.height &&
-                scrollInfo.current > 0
-            );
+        return scrollInfo.viewportHeight < scrollInfo.contentHeight &&
+            scrollInfo.current < 0;
     }
 
     function canDiagramMoveDown(scrollInfo) {
-        return (
-                scrollInfo.viewPortHeight < scrollInfo.height &&
-                scrollInfo.viewPortHeight - scrollInfo.current < scrollInfo.height
-            ) ||
-            (
-                scrollInfo.viewPortHeight > scrollInfo.height &&
-                scrollInfo.current > 0
-            );
+        return scrollInfo.viewportHeight < scrollInfo.contentHeight &&
+            scrollInfo.viewportHeight - scrollInfo.current < scrollInfo.contentHeight;
     }
 
 })(NetBrain);

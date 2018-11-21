@@ -10,9 +10,10 @@
         function init() {
             var api = getApi();
             var pathPaneView = ns.pathPaneView.createView('myDiagramDiv', api);
-            bindData(pathPaneView);
-
-            bindMoveHandler(pathPaneView);
+            initData(pathPaneView)
+                .then(function() {
+                    bindMoveHandler(pathPaneView);
+                });
 
             var diagram = pathPaneView.getDiagram();
             testInspector(diagram);
@@ -28,8 +29,8 @@
             $('#setData').click(function() {
                 var dataStr = $('#data').val();
                 var data = JSON.parse(dataStr);
-                pathPaneView.bindData(data);
-                updateMoveButtonStatus(pathPaneView);
+
+                bindPathPaneViewData(pathPaneView, data);
             });
         }
 
@@ -49,29 +50,24 @@
         }
 
         function updateMoveButtonStatus(pathPaneView) {
-            var upButton = $('#up');
-            if (pathPaneView.canMoveUp()) {
-                upButton.show();
-            } else {
-                upButton.hide();
-            }
-
-            var downButton = $('#down');
-            if (pathPaneView.canMoveDown()) {
-                downButton.show();
-            } else {
-                downButton.hide();
-            }
+            $('#up').prop('disabled', !pathPaneView.canMoveUp());
+            $('#down').prop('disabled', !pathPaneView.canMoveDown());
         }
 
-        function bindData(pathPaneView) {
+        function initData(pathPaneView) {
             var data = {
                 nodeDataArray: ns.data.getNodes(),
                 linkDataArray: ns.data.getLinks()
             };
 
-            pathPaneView.bindData(data);
-            updateMoveButtonStatus(pathPaneView);
+            return bindPathPaneViewData(pathPaneView, data);
+        }
+
+        function bindPathPaneViewData(pathPaneView, data) {
+            return pathPaneView.bindData(data)
+                .then(function() {
+                    updateMoveButtonStatus(pathPaneView);
+                });
         }
 
         function testInspector(diagram) {
