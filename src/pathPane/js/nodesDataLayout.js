@@ -1,7 +1,7 @@
 ;
 (function(ns) {
 
-    ns.nodesLayout = {
+    ns.nodesDataLayout = {
         layout: layout
     };
 

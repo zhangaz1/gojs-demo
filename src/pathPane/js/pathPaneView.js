@@ -5,7 +5,7 @@
         createView: createView,
     };
 
-    var layoutNodes = ns.nodesLayout.layout;
+    var layoutNodes = ns.nodesDataLayout.layout;
 
     return void(0);
 
@@ -133,7 +133,12 @@
          */
         function bindData(data) {
             diagram.model = createModel(data, config);
-            return refresh(this); // 奇怪
+            return refresh(this)
+                .then(layout); // 奇怪
+        }
+
+        function layout() {
+            // layoutNodes();
         }
 
         /**
