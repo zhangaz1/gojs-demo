@@ -34,44 +34,19 @@
         }
 
         function updateMoveButtonStatus(pathPaneView) {
-            var scrollInfo = pathPaneView.getScrollInfo();
-            var max = scrollInfo.viewPortHeight - scrollInfo.height;
-
             var upButton = $('#up');
-            if (canMoveUp(scrollInfo)) {
+            if (pathPaneView.canMoveUp()) {
                 upButton.show();
             } else {
                 upButton.hide();
             }
 
             var downButton = $('#down');
-            if (canMoveDown(scrollInfo)) {
+            if (pathPaneView.canMoveDown()) {
                 downButton.show();
             } else {
                 downButton.hide();
             }
-        }
-
-        function canMoveUp(scrollInfo) {
-            return (
-                    scrollInfo.viewPortHeight < scrollInfo.height &&
-                    scrollInfo.viewPortHeight - scrollInfo.current < scrollInfo.height
-                ) ||
-                (
-                    scrollInfo.viewPortHeight > scrollInfo.height &&
-                    scrollInfo.current > 0
-                );
-        }
-
-        function canMoveDown(scrollInfo) {
-            return (
-                    scrollInfo.viewPortHeight < scrollInfo.height &&
-                    scrollInfo.viewPortHeight - scrollInfo.current < scrollInfo.height
-                ) ||
-                (
-                    scrollInfo.viewPortHeight > scrollInfo.height &&
-                    scrollInfo.current > 0
-                );
         }
 
         function bindData(pathPaneView) {

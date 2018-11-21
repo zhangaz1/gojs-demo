@@ -71,6 +71,14 @@
             bindData: bindData,
             getScrollInfo: getScrollInfo,
             scroll: scroll,
+            canMoveUp: function() {
+                var scrollInfo = this.getScrollInfo();
+                return canMoveUp(scrollInfo);
+            },
+            canMoveDown: function() {
+                var scrollInfo = this.getScrollInfo();
+                return canMoveDown(scrollInfo);
+            },
         };
 
         // return void(0);
@@ -134,7 +142,6 @@
          * @param {number} step
          */
         function scroll(step) {
-            console.log('scroll step:', step);
             this.currentPosition += step;
             diagram.position = new go.Point(diagram.position.x, diagram.position.y + step);
         }
@@ -213,6 +220,28 @@
             'dragSelectingTool.isEnabled': false,
             'undoManager.isEnabled': true,
         };
+    }
+
+    function canMoveUp(scrollInfo) {
+        return (
+                scrollInfo.viewPortHeight < scrollInfo.height &&
+                scrollInfo.viewPortHeight - scrollInfo.current < scrollInfo.height
+            ) ||
+            (
+                scrollInfo.viewPortHeight > scrollInfo.height &&
+                scrollInfo.current > 0
+            );
+    }
+
+    function canMoveDown(scrollInfo) {
+        return (
+                scrollInfo.viewPortHeight < scrollInfo.height &&
+                scrollInfo.viewPortHeight - scrollInfo.current < scrollInfo.height
+            ) ||
+            (
+                scrollInfo.viewPortHeight > scrollInfo.height &&
+                scrollInfo.current > 0
+            );
     }
 
 })(NetBrain);
