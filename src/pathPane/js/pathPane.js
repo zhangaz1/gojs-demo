@@ -29,6 +29,7 @@
                 var dataStr = $('#data').val();
                 var data = JSON.parse(dataStr);
                 pathPaneView.bindData(data);
+                updateMoveButtonStatus(pathPaneView);
             });
         }
 
@@ -70,6 +71,7 @@
             };
 
             pathPaneView.bindData(data);
+            updateMoveButtonStatus(pathPaneView);
         }
 
         function testInspector(diagram) {

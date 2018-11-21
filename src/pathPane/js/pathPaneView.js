@@ -58,25 +58,46 @@
             api: api,
         });
 
-        return createViewInstance();
+        var view = createViewInstance();
+
+        var publicMethods = [
+            'getDiagram',
+
+            'bindData',
+            'getData',
+            'getScrollInfo',
+            'canMoveUp',
+            'canMoveDown',
+            'scroll',
+        ];
+
+        return publish(view, publicMethods);
 
         // return void(0);
 
+        function publish(obj, methods) {
+            var proxy = {};
+
+            _.each(methods, function(method) {
+                proxy[method] = obj[method].bind(obj);
+            });
+
+            return proxy;
+        }
+
         function createViewInstance() {
-            var view = {
+            return {
                 currentPosition: 0,
                 getDiagram: getDiagram,
+
+                bindData: bindData,
+                getData: getData,
+                getScrollInfo: getScrollInfo,
+                canMoveUp: canMoveUp,
+                canMoveDown: canMoveDown,
+                scroll: scroll,
+                canMove: canMove,
             };
-
-            view.bindData = bindData.bind(view);
-            view.getData = getData.bind(view);
-
-            view.getScrollInfo = getScrollInfo.bind(view);
-            view.canMoveUp = canMoveUp.bind(view);
-            view.canMoveDown = canMoveDown.bind(view);
-            view.scroll = scroll.bind(view);
-
-            return view;
         }
 
         function mergeNewConfig() {
@@ -179,12 +200,29 @@
          * @param {number} step
          */
         function scroll(step) {
-            this.currentPosition += step;
+            if (!this.canMove(step)) {
+                return;
+            }
+
             var oldPosition = diagram.position;
             diagram.position = new go.Point(
                 oldPosition.x,
                 oldPosition.y + step,
             );
+
+            this.currentPosition += step;
+        }
+
+        function canMove(step) {
+            if (step < 0) {
+                return this.canMoveDown();
+            }
+
+            if (step > 0) {
+                return this.canMoveUp();
+            }
+
+            return false;
         }
     }
 
@@ -248,7 +286,7 @@
 
     function getDiagramConfig() {
         return {
-            padding: 0,
+            padding: new go.Margin(5, 0, 5, 0),
             initialContentAlignment: go.Spot.Top, // 上对齐布局
             allowMove: false,
             allowHorizontalScroll: false,

@@ -7,7 +7,7 @@
     return void(0);
 
     function layout(points) {
-        var offsetLeft = 80;
+        var offsetLeft = 65;
         var portHeight = 41;
         var firstLength = 20;
         var secondOffsetY = portHeight + firstLength;
