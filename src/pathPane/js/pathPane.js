@@ -36,15 +36,15 @@
 
         function bindMoveHandler(pathPaneView) {
             var step = 50;
-            $('#up').click(createMoveHandler(pathPaneView, -step));
-            $('#down').click(createMoveHandler(pathPaneView, step));
+            $('#up').click(createMoveHandler(pathPaneView, step, 'moveUp'));
+            $('#down').click(createMoveHandler(pathPaneView, step, 'moveDown'));
 
             updateMoveButtonStatus(pathPaneView);
         }
 
-        function createMoveHandler(pathPaneView, step) {
+        function createMoveHandler(pathPaneView, step, action) {
             return function() {
-                pathPaneView.scroll(step);
+                pathPaneView[action](step);
                 updateMoveButtonStatus(pathPaneView);
             };
         }

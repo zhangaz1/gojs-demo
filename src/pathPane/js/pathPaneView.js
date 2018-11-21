@@ -65,10 +65,11 @@
 
             'bindData',
             'getData',
-            'getScrollInfo',
+
             'canMoveUp',
             'canMoveDown',
-            'scroll',
+            'moveUp',
+            'moveDown',
         ];
 
         return publish(view, publicMethods);
@@ -94,6 +95,8 @@
                 getScrollInfo: getScrollInfo,
                 canMoveUp: canMoveUp,
                 canMoveDown: canMoveDown,
+                moveUp: moveUp,
+                moveDown: moveDown,
                 scroll: scroll,
                 canMove: canMove,
             };
@@ -133,11 +136,16 @@
             return refresh(this); // 奇怪
         }
 
+        /**
+         * 不确定为什么需要这个操作
+         *
+         * @param {object} pathPaneView
+         */
         function refresh(pathPaneView) {
             return new Promise(function(resolve, reject) {
                 setTimeout(function() {
                     setTimeout(function() {
-                        pathPaneView.scroll(-20);
+                        // pathPaneView.scroll(-20);
                         diagram.updateAllTargetBindings();
                         resolve();
                     }, 0);
@@ -196,6 +204,24 @@
         function canMoveDown() {
             var scrollInfo = this.getScrollInfo();
             return canDiagramMoveDown(scrollInfo);
+        }
+
+        /**
+         * 向上移动内容
+         *
+         * @param {Number} step: 移动的距离
+         */
+        function moveUp(step) {
+            this.scroll(-step);
+        }
+
+        /**
+         * 向下移动内容
+         *
+         * @param {Number} step: 移动的距离
+         */
+        function moveDown(step) {
+            this.scroll(step);
         }
 
         /**
