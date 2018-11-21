@@ -3,7 +3,7 @@
     ns.utils = {
         opacityByValue: opacityByValue,
         createEventData: createEventData,
-        delayTwoTimeout: delayTwoTimeout,
+        delayTimeouts: delayTimeouts,
     };
 
     return void(0);
@@ -23,14 +23,24 @@
         };
     }
 
-    function delayTwoTimeout() {
+    function delayTimeouts(n) {
         return new Promise(function(resolve, reject) {
-            setTimeout(function() {
-                setTimeout(function() {
-                    resolve();
-                }, 0);
-            }, 0);
+            var boot = resolve;
+            while (n-- > 0) {
+                boot = wrapCallback(boot);
+            }
+            boot();
         });
+    }
+
+    function wrapCallback(callback) {
+        return function() {
+            callTimeout(callback);
+        };
+    }
+
+    function callTimeout(callback) {
+        setTimeout(callback, 0);
     }
 
 })(NetBrain);

@@ -7,7 +7,7 @@
 
     var layoutNodesData = ns.nodesDataLayout.layout;
     var layoutNodes = ns.nodesLayout.layout;
-    var delayTwoTimeout = ns.utils.delayTwoTimeout;
+    var delayTimeouts = ns.utils.delayTimeouts;
 
     return void(0);
 
@@ -135,12 +135,15 @@
          */
         function bindData(data) {
             diagram.model = createModel(data, config);
-            return refresh(this) // 奇怪
-                .then(doNodesLayout);
+
+            // return refresh(this) // 奇怪
+            //     .then(doNodesLayout);
+
+            return doNodesLayout();
         }
 
         function doNodesLayout() {
-            return delayTwoTimeout()
+            return delayTimeouts(4)
                 .then(function() {
                     return layoutNodes(diagram.nodes);
                 });
@@ -152,9 +155,9 @@
          * @param {object} pathPaneView
          */
         function refresh(pathPaneView) {
-            return delayTwoTimeout()
+            return delayTimeouts(2)
                 .then(function() {
-                    return diagram.updateAllTargetBindings();
+                    // return diagram.updateAllTargetBindings();
                 });
         }
 
