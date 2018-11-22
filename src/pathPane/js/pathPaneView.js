@@ -144,10 +144,33 @@
         }
 
         function doNodesLayout() {
-            return delayTimeouts(4)
-                .then(function() {
-                    return layoutNodes(diagram.nodes, config);
-                });
+            var eventName = 'AnimationFinished';
+
+            return new Promise(function(resolve, reject) {
+                if (diagram.animationManager.isEnabled) {
+                    diagram.addDiagramListener(eventName, handler);
+                } else {
+                    return layout();
+                }
+
+                return void(0);
+
+                function handler() {
+                    console.log('AnimationFinished');
+                    diagram.removeDiagramListener(eventName, handler);
+                    return layout()
+                        .then(resolve);
+                }
+            });
+
+            // return void(0);
+
+            function layout() {
+                return delayTimeouts(4)
+                    .then(function() {
+                        return layoutNodes(diagram.nodes, config);
+                    });
+            }
         }
 
         /**
@@ -333,7 +356,8 @@
             allowSelect: false,
 
             'dragSelectingTool.isEnabled': false,
-            'undoManager.isEnabled': true,
+            'undoManager.isEnabled': false,
+            'animationManager.isEnabled': false,
         };
     }
 
