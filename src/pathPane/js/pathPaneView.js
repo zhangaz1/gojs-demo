@@ -150,26 +150,25 @@
                 if (diagram.animationManager.isEnabled) {
                     diagram.addDiagramListener(eventName, handler);
                 } else {
-                    return layout();
+                    return layout(resolve);
                 }
 
                 return void(0);
 
                 function handler() {
-                    console.log('AnimationFinished');
                     diagram.removeDiagramListener(eventName, handler);
-                    return layout()
-                        .then(resolve);
+                    layout(resolve);
                 }
             });
 
             // return void(0);
 
-            function layout() {
-                return delayTimeouts(4)
+            function layout(callback) {
+                return delayTimeouts(0)
                     .then(function() {
                         return layoutNodes(diagram.nodes, config);
-                    });
+                    })
+                    .then(callback);
             }
         }
 
@@ -357,7 +356,7 @@
 
             'dragSelectingTool.isEnabled': false,
             'undoManager.isEnabled': false,
-            'animationManager.isEnabled': false,
+            'animationManager.isEnabled': true,
         };
     }
 
