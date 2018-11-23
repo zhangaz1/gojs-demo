@@ -93,6 +93,8 @@
                 getIcon: getIcon,
 
                 closeTip: closeTip,
+
+                suggestPaneWidth: suggestPaneWidth,
             };
         }
 
@@ -215,6 +217,11 @@
          */
         function closeTip(id) {
             console.log('closeTip:', id);
+        }
+
+        function suggestPaneWidth(width) {
+            console.log('suggestPaneWidth:', width);
+            $('#myDiagramDiv').width(width);
         }
 
     });

@@ -9,15 +9,22 @@
 
     return void(0);
 
-    function layout(nodes, config) {
+    function layout(nodes, option) {
         if (nodes.count < 1) {
             return;
         }
 
+        var config = option.config;
         var lastNode = null;
         var lastY = 0;
+        var maxNodeWidth = 0;
 
         nodes.each(function(node) {
+            var nodeWidth = node.actualBounds.width;
+            if (nodeWidth > maxNodeWidth) {
+                maxNodeWidth = nodeWidth;
+            }
+
             if (lastNode) {
                 var y = calculateY(lastY, lastNode, node);
                 var x = calculateX(node, config);
@@ -37,6 +44,7 @@
         });
 
         lastNode.diagram.updateAllTargetBindings();
+        option.api.suggestPaneWidth(maxNodeWidth);
     }
 
     function updateMediaIconMargin(node) {

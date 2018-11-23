@@ -110,7 +110,7 @@
                 containerId: containerId,
                 style: {
                     nodes: {
-                        width: nodeWidth,
+                        width: nodeWidth + 50,
                     },
                 },
             });
@@ -164,7 +164,7 @@
             function layout(callback) {
                 return delayTimeouts(4)
                     .then(function() {
-                        return layoutNodes(diagram.nodes, config);
+                        return layoutNodes(diagram.nodes, option);
                     })
                     .then(callback);
             }
