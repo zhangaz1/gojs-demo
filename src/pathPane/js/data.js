@@ -93,7 +93,7 @@
             id: 103,
             category: 'device',
 
-            name: 'N7L-RP',
+            name: 'N7L-RP xdfwe sdf xdfwe sdf xdfwe sdf xdfwe sdf xdfwe sdf xdfwe sdf',
             in: 'E4',
             out: 'E5 192.168.2.1/30',
 

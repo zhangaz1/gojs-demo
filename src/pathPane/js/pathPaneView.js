@@ -144,14 +144,21 @@
         }
 
         function doNodesLayout() {
-            var eventName = 'AnimationFinished';
+
+
+            diagram.addDiagramListener('AnimationFinished', function() {
+                console.log('AnimationFinished');
+            });
+            diagram.addDiagramListener('InitialLayoutCompleted', function() {
+                console.log('InitialLayoutCompleted');
+            });
 
             return new Promise(function(resolve, reject) {
-                if (diagram.animationManager.isEnabled) {
-                    diagram.addDiagramListener(eventName, handler);
-                } else {
-                    return layout(resolve);
-                }
+                var eventName = diagram.animationManager.isEnabled ?
+                    'AnimationFinished' :
+                    'LayoutCompleted';
+
+                diagram.addDiagramListener(eventName, handler);
 
                 return void(0);
 
@@ -356,7 +363,7 @@
 
             'dragSelectingTool.isEnabled': false,
             'undoManager.isEnabled': false,
-            'animationManager.isEnabled': true,
+            'animationManager.isEnabled': false,
         };
     }
 
