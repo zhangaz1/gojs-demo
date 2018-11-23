@@ -144,15 +144,6 @@
         }
 
         function doNodesLayout() {
-
-
-            diagram.addDiagramListener('AnimationFinished', function() {
-                console.log('AnimationFinished');
-            });
-            diagram.addDiagramListener('InitialLayoutCompleted', function() {
-                console.log('InitialLayoutCompleted');
-            });
-
             return new Promise(function(resolve, reject) {
                 var eventName = diagram.animationManager.isEnabled ?
                     'AnimationFinished' :
@@ -171,7 +162,7 @@
             // return void(0);
 
             function layout(callback) {
-                return delayTimeouts(0)
+                return delayTimeouts(4)
                     .then(function() {
                         return layoutNodes(diagram.nodes, config);
                     })
@@ -363,7 +354,7 @@
 
             'dragSelectingTool.isEnabled': false,
             'undoManager.isEnabled': false,
-            'animationManager.isEnabled': false,
+            'animationManager.isEnabled': true,
         };
     }
 
