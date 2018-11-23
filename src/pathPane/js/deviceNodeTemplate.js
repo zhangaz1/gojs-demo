@@ -209,7 +209,6 @@
                 go.Panel,
                 'Vertical', {
                     name: 'detailPanel',
-                    width: 170,
                     margin: new go.Margin(0, 0, 0, 130),
                 },
                 createDeviceInTemplate(),
@@ -264,6 +263,9 @@
                         font: 'bold 12px sans-serif',
                         stroke: '#111',
                         isMultiline: false,
+                        width: 170,
+                        maxLines: 1,
+                        overflow: go.TextBlock.OverflowEllipsis,
                     },
                     new go.Binding('text', 'name').makeTwoWay(),
                 ),

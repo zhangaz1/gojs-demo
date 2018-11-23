@@ -53,6 +53,7 @@
      */
     function createView(containerId, api) {
         var nodeWidth = getDiagramWidth(containerId);
+
         var config = mergeNewConfig();
         var option = {
             config: config,
@@ -110,7 +111,7 @@
                 containerId: containerId,
                 style: {
                     nodes: {
-                        width: nodeWidth + 50,
+                        width: nodeWidth,
                     },
                 },
             });
