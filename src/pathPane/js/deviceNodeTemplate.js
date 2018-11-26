@@ -22,10 +22,11 @@
                 name: 'deviceNode',
                 locationSpot: go.Spot.Center,
 
-                width: nodeConfig.width,
+                // width: nodeConfig.width,
                 padding: new go.Margin(1, 0, 1, 0),
                 background: nodeConfig.borderColor,
             },
+            new go.Binding('width', 'width'),
             new go.Binding('location', 'location', go.Point.parse),
 
             createMainLayout(),

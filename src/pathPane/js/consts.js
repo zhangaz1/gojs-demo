@@ -134,9 +134,19 @@
             },
             balance: {
                 icon: './imgs/icons/balance.png',
+                iconSize: {
+                    width: 32,
+                    height: 32,
+                },
+                font: '10px sans-serif',
+                color: 'black',
             },
             failed: {
                 icon: './imgs/icons/failed.png',
+                iconSize: {
+                    width: 16,
+                    height: 16,
+                },
             },
         };
     }

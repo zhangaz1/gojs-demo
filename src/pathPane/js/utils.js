@@ -4,6 +4,8 @@
         opacityByValue: opacityByValue,
         createEventData: createEventData,
         delayTimeouts: delayTimeouts,
+        updateDiagram: updateDiagram,
+        diagramReady: diagramReady,
     };
 
     return void(0);
@@ -41,6 +43,57 @@
 
     function callTimeout(callback) {
         setTimeout(callback, 0);
+    }
+
+
+    function updateDiagram(diagram, action) {
+        return new Promise(function(resolve, reject) {
+            var eventName = diagram.animationManager.isEnabled ?
+                'AnimationFinished' :
+                'LayoutCompleted';
+
+            autoDelay(function() {
+                diagram.addDiagramListener(eventName, handlerAfter);
+                action();
+                autoDelay(handlerAfter);
+            });
+
+            return void(0);
+
+            function handlerAfter() {
+                diagram.removeDiagramListener(eventName, handlerAfter);
+                autoDelay(resolve);
+            }
+        });
+    }
+
+    function diagramReady(diagram, action) {
+        return new Promise(function(resolve, reject) {
+            var eventName = diagram.animationManager.isEnabled ?
+                'AnimationFinished' :
+                'LayoutCompleted';
+
+            diagram.addDiagramListener(eventName, handlerBefore);
+            autoDelay(handlerBefore);
+
+            return void(0);
+
+            function handlerBefore() {
+                diagram.removeDiagramListener(eventName, handlerBefore);
+                diagram.addDiagramListener(eventName, handlerAfter);
+                autoDelay(action);
+            }
+
+            function handlerAfter() {
+                diagram.removeDiagramListener(eventName, handlerAfter);
+                autoDelay(resolve);
+            }
+        });
+    }
+
+    function autoDelay(callback) {
+        return delayTimeouts(1)
+            .then(callback);
     }
 
 })(NetBrain);

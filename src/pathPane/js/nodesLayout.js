@@ -3,6 +3,8 @@
 
     var consts = ns.consts;
 
+    var updateDiagram = ns.utils.updateDiagram;
+
     ns.nodesLayout = {
         layout: layout
     };
@@ -14,17 +16,22 @@
             return;
         }
 
+        return updateDiagram(option.diagram, function() {
+                resetNodesWidth(nodes, option);
+            })
+            .then(function() {
+                return updateDiagram(option.diagram, function() {
+                    doLayout(nodes, option);
+                });
+            });
+    }
+
+    function doLayout(nodes, option) {
         var config = option.config;
         var lastNode = null;
         var lastY = 0;
-        var maxNodeWidth = 0;
 
         nodes.each(function(node) {
-            var nodeWidth = node.actualBounds.width;
-            if (nodeWidth > maxNodeWidth) {
-                maxNodeWidth = nodeWidth;
-            }
-
             if (lastNode) {
                 var y = calculateY(lastY, lastNode, node);
                 var x = calculateX(node, config);
@@ -44,6 +51,22 @@
         });
 
         lastNode.diagram.updateAllTargetBindings();
+    }
+
+    function resetNodesWidth(nodes, option) {
+        var maxNodeWidth = 0;
+        nodes.each(function(node) {
+            var nodeWidth = node.actualBounds.width;
+            if (nodeWidth > maxNodeWidth) {
+                maxNodeWidth = nodeWidth;
+            }
+        });
+
+        nodes.each(function(node) {
+            node.data.width = maxNodeWidth;
+        });
+
+        nodes.first().diagram.updateAllTargetBindings();
         option.api.suggestPaneWidth(maxNodeWidth);
     }
 
