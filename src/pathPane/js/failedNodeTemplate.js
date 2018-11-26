@@ -39,14 +39,6 @@
             );
         }
 
-        // function calculateLocation(data, graphObject) {
-        //     var inLink = graphObject.part.findLinksInto('icon').first();
-        //     if (inLink) {
-        //         var x = inLink.points.first().x;
-        //         data.location = x + ' ' + graphObject.part.actualBounds.y;
-        //     }
-        // }
-
     }
 
 })(NetBrain);
