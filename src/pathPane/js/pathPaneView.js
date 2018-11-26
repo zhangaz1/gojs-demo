@@ -8,6 +8,7 @@
     var layoutNodesData = ns.nodesDataLayout.layout;
     var layoutNodes = ns.nodesLayout.layout;
     var delayTimeouts = ns.utils.delayTimeouts;
+    var updateDiagram = ns.utils.updateDiagram;
 
     return void(0);
 
@@ -141,12 +142,10 @@
                 config.style.nodes.device.details,
             );
 
-            diagram.model = createModel(data, config);
-
-            // return refresh(this) // 奇怪
-            //     .then(doNodesLayout);
-
-            return doNodesLayout();
+            return updateDiagram(diagram, function() {
+                    diagram.model = createModel(data, config);
+                })
+                .then(doNodesLayout);
         }
 
         function calculateDeviceDetailLeft(nodes, detailsConfig) {
@@ -175,30 +174,7 @@
         }
 
         function doNodesLayout() {
-            return new Promise(function(resolve, reject) {
-                var eventName = diagram.animationManager.isEnabled ?
-                    'AnimationFinished' :
-                    'LayoutCompleted';
-
-                diagram.addDiagramListener(eventName, handler);
-
-                return void(0);
-
-                function handler() {
-                    diagram.removeDiagramListener(eventName, handler);
-                    layout(resolve);
-                }
-            });
-
-            // return void(0);
-
-            function layout(callback) {
-                return delayTimeouts(4)
-                    .then(function() {
-                        return layoutNodes(diagram.nodes, option);
-                    })
-                    .then(callback);
-            }
+            layoutNodes(diagram.nodes, option);
         }
 
         /**
