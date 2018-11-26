@@ -209,8 +209,11 @@
                 go.Panel,
                 'Vertical', {
                     name: 'detailPanel',
-                    margin: new go.Margin(0, 0, 0, 130),
+                    margin: new go.Margin(0, 0, 0, 65),
                 },
+                new go.Binding('margin', '', function() {
+                    return new go.Margin(0, 0, 0, deviceConfig.details.left);
+                }),
                 createDeviceInTemplate(),
                 createDeviceNameTemplate(),
                 createDeviceOutTemplate(),

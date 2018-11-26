@@ -136,12 +136,42 @@
          *
          */
         function bindData(data) {
+            calculateDeviceDetailLeft(
+                data.nodeDataArray,
+                config.style.nodes.device.details,
+            );
+
             diagram.model = createModel(data, config);
 
             // return refresh(this) // 奇怪
             //     .then(doNodesLayout);
 
             return doNodesLayout();
+        }
+
+        function calculateDeviceDetailLeft(nodes, detailsConfig) {
+            var baseLeft = 10;
+            var topoTypeWidth = 25;
+            var maxTopoTypes = getMaxTopoTypes(nodes);
+            config.style.nodes.device.details.left = baseLeft + maxTopoTypes * topoTypeWidth;
+        }
+
+        function getMaxTopoTypes(nodes) {
+            return _.chain(nodes)
+                .map(topoTypesCountMax)
+                .max()
+                .value();
+        }
+
+        function topoTypesCountMax(node) {
+            var inCount = getLength(node.inTopoTypes);
+            var outCount = getLength(node.outTopoTypes);
+            return Math.max(inCount, outCount);
+        }
+
+        function getLength(arr) {
+            return arr && arr.length ||
+                0;
         }
 
         function doNodesLayout() {
