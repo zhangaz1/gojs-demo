@@ -137,6 +137,10 @@
             },
             failed: {
                 icon: './imgs/icons/failed.png',
+                iconSize: {
+                    width: 16,
+                    height: 16,
+                },
             },
         };
     }

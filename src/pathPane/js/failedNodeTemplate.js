@@ -20,7 +20,6 @@
                 locationSpot: go.Spot.Center,
             },
             new go.Binding('location', 'location', go.Point.parse),
-            // new go.Binding('location', '', calculateLocation),
 
             createFailedIconTemplate(),
         );
@@ -28,15 +27,15 @@
         // return void(0);
 
         function createFailedIconTemplate() {
+            var iconSize = failedConfig.iconSize;
             return $(
                 go.Picture, {
                     name: 'failedIcon',
                     portId: 'icon',
-                    width: 16,
-                    height: 16,
+                    width: iconSize.width,
+                    height: iconSize.height,
                     source: failedConfig.icon,
                 },
-                new go.Binding('source', 'icon'),
             );
         }
 
