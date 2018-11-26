@@ -174,7 +174,7 @@
         }
 
         function doNodesLayout() {
-            layoutNodes(diagram.nodes, option);
+            return layoutNodes(diagram.nodes, option);
         }
 
         /**

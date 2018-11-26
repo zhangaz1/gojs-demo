@@ -3,6 +3,8 @@
 
     var consts = ns.consts;
 
+    var updateDiagram = ns.utils.updateDiagram;
+
     ns.nodesLayout = {
         layout: layout
     };
@@ -14,8 +16,17 @@
             return;
         }
 
-        resetNodesWidth(nodes, option);
+        return updateDiagram(option.diagram, function() {
+                resetNodesWidth(nodes, option);
+            })
+            .then(function() {
+                return updateDiagram(option.diagram, function() {
+                    doLayout(nodes, option);
+                });
+            });
+    }
 
+    function doLayout(nodes, option) {
         var config = option.config;
         var lastNode = null;
         var lastY = 0;

@@ -54,6 +54,8 @@
 
             diagram.addDiagramListener(eventName, handlerAfter);
             action();
+            delayTimeouts(8)
+                .then(handlerAfter);
 
             return void(0);
 
@@ -71,6 +73,8 @@
                 'LayoutCompleted';
 
             diagram.addDiagramListener(eventName, handlerBefore);
+            delayTimeouts(8)
+                .then(handlerBefore);
 
             return void(0);
 
