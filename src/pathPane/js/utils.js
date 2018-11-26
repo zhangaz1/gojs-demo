@@ -5,6 +5,7 @@
         createEventData: createEventData,
         delayTimeouts: delayTimeouts,
         updateDiagram: updateDiagram,
+        diagramReady: diagramReady,
     };
 
     return void(0);
@@ -44,14 +45,32 @@
         setTimeout(callback, 0);
     }
 
+
     function updateDiagram(diagram, action) {
         return new Promise(function(resolve, reject) {
             var eventName = diagram.animationManager.isEnabled ?
                 'AnimationFinished' :
                 'LayoutCompleted';
 
+            diagram.addDiagramListener(eventName, handlerAfter);
+            action();
+
+            return void(0);
+
+            function handlerAfter() {
+                diagram.removeDiagramListener(eventName, handlerAfter);
+                resolve();
+            }
+        });
+    }
+
+    function diagramReady(diagram, action) {
+        return new Promise(function(resolve, reject) {
+            var eventName = diagram.animationManager.isEnabled ?
+                'AnimationFinished' :
+                'LayoutCompleted';
+
             diagram.addDiagramListener(eventName, handlerBefore);
-            diagram.updateAllTargetBindings();
 
             return void(0);
 
