@@ -52,16 +52,17 @@
                 'AnimationFinished' :
                 'LayoutCompleted';
 
-            diagram.addDiagramListener(eventName, handlerAfter);
-            action();
-            delayTimeouts(8)
-                .then(handlerAfter);
+            autoDelay(function() {
+                diagram.addDiagramListener(eventName, handlerAfter);
+                action();
+                autoDelay(handlerAfter);
+            });
 
             return void(0);
 
             function handlerAfter() {
                 diagram.removeDiagramListener(eventName, handlerAfter);
-                resolve();
+                autoDelay(resolve);
             }
         });
     }
@@ -73,22 +74,26 @@
                 'LayoutCompleted';
 
             diagram.addDiagramListener(eventName, handlerBefore);
-            delayTimeouts(8)
-                .then(handlerBefore);
+            autoDelay(handlerBefore);
 
             return void(0);
 
             function handlerBefore() {
                 diagram.removeDiagramListener(eventName, handlerBefore);
                 diagram.addDiagramListener(eventName, handlerAfter);
-                action();
+                autoDelay(action);
             }
 
             function handlerAfter() {
                 diagram.removeDiagramListener(eventName, handlerAfter);
-                resolve();
+                autoDelay(resolve);
             }
         });
+    }
+
+    function autoDelay(callback) {
+        return delayTimeouts(1)
+            .then(callback);
     }
 
 })(NetBrain);

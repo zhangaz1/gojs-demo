@@ -13,12 +13,12 @@
             initData(pathPaneView)
                 .then(function() {
                     bindMoveHandler(pathPaneView);
+
+                    var diagram = pathPaneView.getDiagram();
+                    testInspector(diagram);
+
+                    bindDataHandler(pathPaneView);
                 });
-
-            var diagram = pathPaneView.getDiagram();
-            testInspector(diagram);
-
-            bindDataHandler(pathPaneView);
         }
 
         function bindDataHandler(pathPaneView) {

@@ -7,7 +7,6 @@
 
     var layoutNodesData = ns.nodesDataLayout.layout;
     var layoutNodes = ns.nodesLayout.layout;
-    var delayTimeouts = ns.utils.delayTimeouts;
     var updateDiagram = ns.utils.updateDiagram;
 
     return void(0);
@@ -177,17 +176,17 @@
             return layoutNodes(diagram.nodes, option);
         }
 
-        /**
-         * 不确定为什么需要这个操作
-         *
-         * @param {object} pathPaneView
-         */
-        function refresh(pathPaneView) {
-            return delayTimeouts(2)
-                .then(function() {
-                    // return diagram.updateAllTargetBindings();
-                });
-        }
+        // /**
+        //  * 不确定为什么需要这个操作
+        //  *
+        //  * @param {object} pathPaneView
+        //  */
+        // function refresh(pathPaneView) {
+        //     return delayTimeouts(2)
+        //         .then(function() {
+        //             // return diagram.updateAllTargetBindings();
+        //         });
+        // }
 
         /**
          * 获取当前绑定的数据
@@ -361,7 +360,7 @@
 
             'dragSelectingTool.isEnabled': false,
             'undoManager.isEnabled': false,
-            'animationManager.isEnabled': true,
+            'animationManager.isEnabled': false,
         };
     }
 
