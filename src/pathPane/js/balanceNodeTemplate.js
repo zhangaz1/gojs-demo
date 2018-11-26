@@ -31,12 +31,13 @@
         // return void(0);
 
         function createBalanceIconTemplate() {
+            var iconSize = balanceConfig.iconSize;
             return $(
                 go.Picture, {
                     name: 'balanceIcon',
                     portId: 'icon',
-                    width: 32,
-                    height: 32,
+                    width: iconSize.width,
+                    height: iconSize.height,
                     source: balanceConfig.icon,
                     cursor: 'pointer',
                     click: switchBalance,
@@ -49,8 +50,8 @@
             return $(
                 go.TextBlock, {
                     name: 'balanceHostNameText',
-                    font: '10px sans-serif',
-                    stroke: '#111',
+                    font: balanceConfig.font,
+                    stroke: balanceConfig.color,
                     isMultiline: false,
                 },
                 new go.Binding('text', 'name').makeTwoWay(),
