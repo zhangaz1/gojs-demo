@@ -143,10 +143,37 @@
             mergeNodesTopoTypes(nodes);
             calculateDeviceDetailLeft(nodes);
 
+            var links = data.linkDataArray;
+            addDefaultLinks(nodes, links);
+
             return updateDiagram(diagram, function() {
                     diagram.model = createModel(data, config);
                 })
                 .then(doNodesLayout);
+        }
+
+        function addDefaultLinks(nodes, links) {
+            var lastNode = null;
+            var isFailed = false;
+            _.each(nodes, function(node) {
+                if (!isFailed && lastNode) {
+                    links.push({
+                        category: 'hopLink',
+                        from: lastNode.id,
+                        fromPort: 'icon',
+                        to: node.id,
+                        toPort: 'icon',
+                        color: '#D98805'
+                    });
+                }
+
+                isFailed = isFailedNode(node);
+                lastNode = node;
+            });
+        }
+
+        function isFailedNode(node) {
+            return node.category === nodeCategories.failed;
         }
 
         function mergeNodesTopoTypes(nodes) {

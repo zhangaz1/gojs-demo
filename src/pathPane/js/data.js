@@ -230,30 +230,9 @@
             category: 'hopLink',
             from: 103,
             fromPort: 'l3',
-            to: 103.5,
-            toPort: 'icon',
-            color: '#4DBB00'
-        }, {
-            category: 'hopLink',
-            from: 103.5,
-            fromPort: 'icon',
             to: 104,
             toPort: 'l3',
             color: '#4DBB00'
-        }, {
-            category: 'hopLink',
-            from: 104,
-            fromPort: 'l2',
-            to: 104.5,
-            toPort: 'icon',
-            color: '#D98805'
-        }, {
-            category: 'hopLink',
-            from: 104.5,
-            fromPort: 'icon',
-            to: 400,
-            toPort: 'icon',
-            color: '#D98805'
         }, ];
     }
 

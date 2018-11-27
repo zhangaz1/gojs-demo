@@ -208,6 +208,7 @@
                 $(
                     go.Picture, {
                         name: 'deviceIcon',
+                        portId: 'icon',
                         width: 16,
                         height: 16,
                     },
