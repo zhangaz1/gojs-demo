@@ -50,46 +50,11 @@
         function createDeviceTopoTypesTemplate() {
             return $(
                 go.Panel,
-                'Horizontal', {
-                    name: 'topoTypesPanel',
-                },
-                createVisiableTopoTypesTemplate(),
-                // createElseTopoTypesTemplate(),
-            );
-        }
-
-        // function createElseTopoTypesTemplate() {
-        //     // 可以考虑改成icon
-        //     return $(
-        //         go.TextBlock, {
-        //             text: '...',
-        //             angle: 90,
-        //             desiredSize: new go.Size(40, 18),
-        //             textAlign: 'center',
-        //             visible: false,
-        //             click: function(event, textBlock) {
-        //                 console.log('click:', textBlock.part.data);
-        //             },
-        //         },
-        //         new go.Binding('visible', 'elseTopoTypes', function(value, graphObject) {
-        //             return (
-        //                     value &&
-        //                     value.length &&
-        //                     true
-        //                 ) ||
-        //                 false;
-        //         }),
-        //     );
-        // }
-
-        function createVisiableTopoTypesTemplate() {
-            return $(
-                go.Panel,
                 'Vertical', {
                     name: 'topoTypesPanel',
                 },
                 createTopoTypesTemplate('in'),
-                createTopoTypesTemplate('out'),
+                // createTopoTypesTemplate('out'),
             );
         }
 

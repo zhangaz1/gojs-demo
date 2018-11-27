@@ -130,7 +130,14 @@
                 },
             },
             media: {
+                height: 35,
                 icon: './imgs/icons/lan.png',
+                iconSize: {
+                    width: 16,
+                    height: 16,
+                },
+                font: 'bold 12px sans-serif',
+                color: 'black',
             },
             balance: {
                 icon: './imgs/icons/balance.png',
