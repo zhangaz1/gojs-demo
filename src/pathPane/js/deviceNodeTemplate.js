@@ -3,6 +3,7 @@
 
     var $ = go.GraphObject.make;
     var opacityByValue = ns.utils.opacityByValue;
+    var upperCaseFirstChar = ns.utils.upperCaseFirstChar;
 
     ns.deviceTemplate = {
         createDeviceTemplate: createDeviceTemplate
@@ -50,70 +51,34 @@
         function createDeviceTopoTypesTemplate() {
             return $(
                 go.Panel,
-                'Horizontal', {
-                    name: 'topoTypesPanel',
-                },
-                createVisiableTopoTypesTemplate(),
-                // createElseTopoTypesTemplate(),
-            );
-        }
-
-        // function createElseTopoTypesTemplate() {
-        //     // 可以考虑改成icon
-        //     return $(
-        //         go.TextBlock, {
-        //             text: '...',
-        //             angle: 90,
-        //             desiredSize: new go.Size(40, 18),
-        //             textAlign: 'center',
-        //             visible: false,
-        //             click: function(event, textBlock) {
-        //                 console.log('click:', textBlock.part.data);
-        //             },
-        //         },
-        //         new go.Binding('visible', 'elseTopoTypes', function(value, graphObject) {
-        //             return (
-        //                     value &&
-        //                     value.length &&
-        //                     true
-        //                 ) ||
-        //                 false;
-        //         }),
-        //     );
-        // }
-
-        function createVisiableTopoTypesTemplate() {
-            return $(
-                go.Panel,
                 'Vertical', {
                     name: 'topoTypesPanel',
                 },
-                createTopoTypesTemplate('in'),
-                createTopoTypesTemplate('out'),
+                createTopoTypesTemplate(),
             );
         }
 
-        function createTopoTypesTemplate(type) {
+        function createTopoTypesTemplate() {
             return $(
                 go.Panel,
                 'Horizontal', {
-                    name: type + 'TopoTypesPanel',
+                    name: 'topoTypesPanel',
                     alignment: go.Spot.Left,
                     margin: new go.Margin(1, 0, 1, 0),
                     padding: 1,
 
                     background: deviceConfig.topoTypes.backgroundColor,
-                    itemTemplate: createTopoTypeItemTemplate(type),
+                    itemTemplate: createTopoTypeItemTemplate(),
                 },
-                new go.Binding('itemArray', type + 'TopoTypes'),
+                new go.Binding('itemArray', 'topoTypes'),
             );
         }
 
-        function createTopoTypeItemTemplate(type) {
+        function createTopoTypeItemTemplate() {
             var args = [
                 go.Panel,
                 'Vertical', {
-                    name: type + 'TopoTypeItemPanel',
+                    name: 'topoTypeItemPanel',
                     padding: 1,
                     margin: 1,
 
@@ -128,34 +93,21 @@
                 }),
             ];
 
-            if (type === 'in') {
-                args.push(createTopoTypeArrowTemplate('up'));
-            }
 
-            args.push(createTopoTypeItemTextWithPanelTemplate(type));
-
-            if (type === 'out') {
-                args.push(createTopoTypeArrowTemplate('down'));
-            }
+            args.push(createTopoTypeArrowTemplate('in'));
+            args.push(createTopoTypeItemTextWithPanelTemplate());
+            args.push(createTopoTypeArrowTemplate('out'));
 
             return $.apply(null, args);
         }
 
-        function createTopoTypeArrowTemplate(direction) {
-            var hasTip;
-
-            if (direction === 'up') {
-                hasTip = 'hasUpTip';
-            }
-
-            if (direction === 'down') {
-                hasTip = 'hasDownTip';
-            }
+        function createTopoTypeArrowTemplate(key) {
+            var hasTip = 'is' + upperCaseFirstChar(key);
 
             return $(
                 go.Picture, {
                     opacity: 0,
-                    source: './imgs/icons/' + direction + '.png'
+                    source: './imgs/icons/' + key + '.png'
                 },
                 new go.Binding('opacity', hasTip, function(value) {
                     return value ? 1 : 0;
@@ -163,7 +115,7 @@
             );
         }
 
-        function createTopoTypeItemTextWithPanelTemplate(type) {
+        function createTopoTypeItemTextWithPanelTemplate() {
             return $(
                 go.Panel,
                 'Auto', {
@@ -172,14 +124,14 @@
                 },
 
                 new go.Binding('portId', 'id', function(value) {
-                    return type + '_' + value;
+                    return value;
                 }),
                 new go.Binding('background', '', getTopoTypeColor('borderColor')),
-                createTopoTypeItemTextTemplate(type),
+                createTopoTypeItemTextTemplate(),
             );
         }
 
-        function createTopoTypeItemTextTemplate(type) {
+        function createTopoTypeItemTextTemplate() {
             return $(
                 go.TextBlock, {
                     angle: 270,
@@ -256,6 +208,7 @@
                 $(
                     go.Picture, {
                         name: 'deviceIcon',
+                        portId: 'icon',
                         width: 16,
                         height: 16,
                     },

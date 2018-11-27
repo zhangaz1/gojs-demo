@@ -72,11 +72,13 @@
 
     function updateMediaIconMargin(node) {
         var inLink = node.findLinksInto('icon').first();
-        var bounds = node.actualBounds;
-        var left = inLink.points.first().x -
-            bounds.x -
-            node.findObject('mediaIcon').width / 2;
-        node.data.iconMargin = '0 0 0 ' + left;
+        if (inLink) {
+            var bounds = node.actualBounds;
+            var left = inLink.points.first().x -
+                bounds.x -
+                node.findObject('mediaIcon').width / 2;
+            node.data.iconMargin = '0 0 0 ' + left;
+        }
     }
 
     function calculateX(node, config) {
@@ -100,10 +102,16 @@
 
     function getLinkAnotherX(node, config) {
         var inLink = node.findLinksInto('icon').first();
-        if (inLink.fromNode.data.category === consts.enums.nodeCategories.media) {
+        if (
+            inLink &&
+            inLink.fromNode.data.category === consts.enums.nodeCategories.media
+        ) {
             inLink = inLink.fromNode.findLinksInto('icon').first();
         }
-        return inLink.points.first().x;
+
+        return inLink ?
+            inLink.points.first().x :
+            100;
     }
 
     function calculateY(lastY, lastNode, node) {

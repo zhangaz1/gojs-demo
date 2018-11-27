@@ -30,19 +30,19 @@
         // return void(0);
 
         function createDeviceNameTemplate() {
+            var iconSize = mediaConfig.iconSize;
             return $(
                 go.Panel, 'Horizontal', {
                     name: 'mediaNamePanel',
-                    height: 35,
+                    height: mediaConfig.height,
                 },
                 new go.Binding('margin', 'iconMargin', go.Margin.parse),
-                // new go.Binding('margin', '', calculateIconMargin),
                 $(
                     go.Picture, {
                         name: 'mediaIcon',
                         portId: 'icon',
-                        width: 16,
-                        height: 16,
+                        width: iconSize.width,
+                        height: iconSize.height,
                         source: mediaConfig.icon,
                     },
                     new go.Binding('source', 'icon'),
@@ -50,8 +50,8 @@
                 $(
                     go.TextBlock, {
                         name: 'mediaHostNameText',
-                        font: 'bold 12px sans-serif',
-                        stroke: '#111',
+                        font: mediaConfig.font,
+                        stroke: mediaConfig.color,
                         isMultiline: false,
                         margin: 5,
                     },
@@ -59,17 +59,6 @@
                 ),
             );
         }
-
-        // function calculateIconMargin(data, graphObject) {
-        //     var inLink = graphObject.part.findLinksInto('icon').first();
-        //     if (inLink) {
-        //         var bounds = graphObject.part.actualBounds;
-        //         var left = inLink.points.first().x -
-        //             bounds.x -
-        //             graphObject.findObject('mediaIcon').width / 2;
-        //         return new go.Margin(0, 0, 0, left);
-        //     }
-        // }
 
     }
 
