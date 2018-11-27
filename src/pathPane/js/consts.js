@@ -24,6 +24,8 @@
                 backgroundColor: '#F8A200',
                 borderColor: '#D98805',
             },
+
+            order: 1, // 显示顺序
         }, {
             id: 'l3',
             name: 'L3',
@@ -34,6 +36,8 @@
                 borderColor: '#3F9105',
                 backgroundColor: '#4DBB00',
             },
+
+            order: 2,
         }, {
             id: 'vxlan',
             name: 'Vxlan',
@@ -44,6 +48,8 @@
                 borderColor: 'green',
                 backgroundColor: 'red',
             },
+
+            order: 3,
         }, {
             id: 'ipSec',
             name: 'IP Sec',
@@ -54,6 +60,8 @@
                 backgroundColor: '#F8A200',
                 borderColor: '#D98805',
             },
+
+            order: 4,
         }, {
             id: 'gre',
             name: 'GRE',
@@ -64,6 +72,8 @@
                 backgroundColor: '#F8A200',
                 borderColor: '#D98805',
             },
+
+            order: 5,
         }];
     }
 

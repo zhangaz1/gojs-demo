@@ -6,9 +6,17 @@
         delayTimeouts: delayTimeouts,
         updateDiagram: updateDiagram,
         diagramReady: diagramReady,
+        upperCaseFirstChar: upperCaseFirstChar,
     };
 
     return void(0);
+
+    function upperCaseFirstChar(str) {
+        if (str.length > 0) {
+            return str[0].toUpperCase() + str.slice(1);
+        }
+        return str;
+    }
 
     function opacityByValue(value) {
         return value ? 1 : 0;

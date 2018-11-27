@@ -1,5 +1,8 @@
 ;
 (function(ns) {
+    var nodeCategories = ns.consts.enums.nodeCategories;
+    var topoTypes = ns.consts.enums.topoTypes;
+    var upperCaseFirstChar = ns.utils.upperCaseFirstChar;
 
     ns.pathPaneView = {
         createView: createView,
@@ -136,6 +139,7 @@
          *
          */
         function bindData(data) {
+            mergeNodesTopoTypes(data.nodeDataArray);
             calculateDeviceDetailLeft(
                 data.nodeDataArray,
                 config.style.nodes.device.details,
@@ -145,6 +149,43 @@
                     diagram.model = createModel(data, config);
                 })
                 .then(doNodesLayout);
+        }
+
+        function mergeNodesTopoTypes(nodes) {
+            _.chain(nodes)
+                .filter(isDeviceNode)
+                .map(mergeNodeTopoTypes);
+        }
+
+        function isDeviceNode(node) {
+            return node.category === nodeCategories.device;
+        }
+
+        function mergeNodeTopoTypes(node) {
+            console.log('mergeTopoTypes:', node);
+
+            var topoTypesDic = {};
+            addSpecialTopoTypes(topoTypesDic, 'in', node);
+            addSpecialTopoTypes(topoTypesDic, 'out', node);
+
+            node.topoTypes = _.chain(topoTypesDic)
+                .values()
+                .sortBy('order')
+                .value();
+        }
+
+        function addSpecialTopoTypes(topoTypesDic, key, node) {
+            var types = node[key + 'TopoTypes'];
+            var typeKey = 'is' + upperCaseFirstChar(key);
+            if (types) {
+                _.each(types, function(type) {
+                    if (!topoTypesDic[type.id]) {
+                        topoTypesDic[type.id] = type;
+                        type.order = topoTypes[type.id].order;
+                    }
+                    topoTypesDic[type.id][typeKey] = true;
+                });
+            }
         }
 
         function calculateDeviceDetailLeft(nodes, detailsConfig) {
@@ -175,18 +216,6 @@
         function doNodesLayout() {
             return layoutNodes(diagram.nodes, option);
         }
-
-        // /**
-        //  * 不确定为什么需要这个操作
-        //  *
-        //  * @param {object} pathPaneView
-        //  */
-        // function refresh(pathPaneView) {
-        //     return delayTimeouts(2)
-        //         .then(function() {
-        //             // return diagram.updateAllTargetBindings();
-        //         });
-        // }
 
         /**
          * 获取当前绑定的数据
