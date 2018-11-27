@@ -139,11 +139,9 @@
          *
          */
         function bindData(data) {
-            mergeNodesTopoTypes(data.nodeDataArray);
-            calculateDeviceDetailLeft(
-                data.nodeDataArray,
-                config.style.nodes.device.details,
-            );
+            var nodes = data.nodeDataArray;
+            mergeNodesTopoTypes(nodes);
+            calculateDeviceDetailLeft(nodes);
 
             return updateDiagram(diagram, function() {
                     diagram.model = createModel(data, config);
@@ -188,7 +186,7 @@
             }
         }
 
-        function calculateDeviceDetailLeft(nodes, detailsConfig) {
+        function calculateDeviceDetailLeft(nodes) {
             var baseLeft = 10;
             var topoTypeWidth = 25;
             var maxTopoTypes = getMaxTopoTypes(nodes);
@@ -203,9 +201,7 @@
         }
 
         function topoTypesCountMax(node) {
-            var inCount = getLength(node.inTopoTypes);
-            var outCount = getLength(node.outTopoTypes);
-            return Math.max(inCount, outCount);
+            return getLength(node.topoTypes);
         }
 
         function getLength(arr) {
