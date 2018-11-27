@@ -159,14 +159,28 @@
 
         function createDeviceDetailTemplate() {
             return $(
-                go.Panel,
-                'Vertical', {
-                    name: 'detailPanel',
-                    margin: new go.Margin(0, 0, 0, 65),
+                go.Panel, 'Horizontal', {
+                    name: 'deviceDetailPanel',
+                    alignment: go.Spot.Left,
                 },
+
                 new go.Binding('margin', '', function() {
                     return new go.Margin(0, 0, 0, deviceConfig.details.left);
                 }),
+
+                createABIconTemplate(),
+                createDeviceIconTemplate(),
+                createDeviceDetailTextsTemplate(),
+            );
+
+        }
+
+        function createDeviceDetailTextsTemplate() {
+            return $(
+                go.Panel,
+                'Vertical', {
+                    name: 'detailTextsPanel',
+                },
                 createDeviceInTemplate(),
                 createDeviceNameTemplate(),
                 createDeviceOutTemplate(),
@@ -200,32 +214,28 @@
 
         function createDeviceNameTemplate() {
             return $(
-                go.Panel, 'Horizontal', {
-                    name: 'deviceNamePanel',
-                    alignment: go.Spot.Left,
+                go.TextBlock, {
+                    name: 'deviceHostNameText',
+                    font: 'bold 12px sans-serif',
+                    stroke: '#111',
+                    isMultiline: false,
+                    width: 170,
+                    maxLines: 1,
+                    overflow: go.TextBlock.OverflowEllipsis,
                 },
-                createABIconTemplate(),
-                $(
-                    go.Picture, {
-                        name: 'deviceIcon',
-                        portId: 'icon',
-                        width: 16,
-                        height: 16,
-                    },
-                    new go.Binding('source', 'icon')
-                ),
-                $(
-                    go.TextBlock, {
-                        name: 'deviceHostNameText',
-                        font: 'bold 12px sans-serif',
-                        stroke: '#111',
-                        isMultiline: false,
-                        width: 170,
-                        maxLines: 1,
-                        overflow: go.TextBlock.OverflowEllipsis,
-                    },
-                    new go.Binding('text', 'name').makeTwoWay(),
-                ),
+                new go.Binding('text', 'name').makeTwoWay(),
+            );
+        }
+
+        function createDeviceIconTemplate() {
+            return $(
+                go.Picture, {
+                    name: 'deviceIcon',
+                    portId: 'icon',
+                    width: 16,
+                    height: 16,
+                },
+                new go.Binding('source', 'icon')
             );
         }
 
@@ -233,21 +243,19 @@
             return $(
                 go.Picture, {
                     name: 'abIcon',
-                    visible: false,
                     width: 16,
                     height: 16,
                 },
-                new go.Binding('source', 'abIcon'),
-                new go.Binding('visible', '', function(data, picture) {
+                new go.Binding('source', '', function(data, picture) {
+                    var icon = '';
                     if (!picture.source) {
                         if (data.isA) {
-                            picture.source = deviceConfig.aIcon;
+                            icon = deviceConfig.aIcon;
                         } else if (data.isB) {
-                            picture.source = deviceConfig.bIcon;
+                            icon = deviceConfig.bIcon;
                         }
                     }
-
-                    return data.isA || data.isB || false;
+                    return icon;
                 }),
             );
         }

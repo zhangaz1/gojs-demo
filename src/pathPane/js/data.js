@@ -31,7 +31,14 @@
             }, {
                 id: 'vxlan',
                 name: 'Vxlan',
-            }],
+            }, {
+                id: 'ipSec',
+                name: 'IP Sec',
+            }, {
+                id: 'gre',
+                name: 'GRE',
+                hasUpTip: true,
+            }, ],
 
             // elseinTopoTypes: [{ // 其他可选的topoType,不包含L2、L3，仅与Vxlan同列的其他可选topoType，切换后显示在Vxlan位置
             //     name: 'Vxxxx',
@@ -70,7 +77,7 @@
                 id: 'gre',
                 name: 'GRE',
                 hasUpTip: true,
-            }],
+            }, ],
 
             outTopoTypes: [{
                 id: 'l2',

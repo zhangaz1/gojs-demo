@@ -49,7 +49,7 @@
                 backgroundColor: 'red',
             },
 
-            order: 3,
+            order: 10,
         }, {
             id: 'ipSec',
             name: 'IP Sec',
@@ -61,7 +61,7 @@
                 borderColor: '#D98805',
             },
 
-            order: 4,
+            order: 10,
         }, {
             id: 'gre',
             name: 'GRE',
@@ -73,7 +73,7 @@
                 borderColor: '#D98805',
             },
 
-            order: 5,
+            order: 10,
         }];
     }
 
