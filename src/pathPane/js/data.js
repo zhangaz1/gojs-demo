@@ -215,21 +215,21 @@
         return [{
             category: 'hopLink',
             from: 101,
-            fromPort: 'out_l2',
+            fromPort: 'l2',
             to: 102,
-            toPort: 'in_l2',
+            toPort: 'l2',
             color: '#D98805'
         }, {
             category: 'hopLink', // 值为：hopLink或rangeLink
             from: 102, // from node id
-            fromPort: 'out_l2', // from port
+            fromPort: 'l2', // from port
             to: 103, // to ndoe id
-            toPort: 'in_l2', // to port
+            toPort: 'l2', // to port
             color: '#D98805' // link颜色，若有产生规则，可不传
         }, {
             category: 'hopLink',
             from: 103,
-            fromPort: 'out_l3',
+            fromPort: 'l3',
             to: 103.5,
             toPort: 'icon',
             color: '#4DBB00'
@@ -238,12 +238,12 @@
             from: 103.5,
             fromPort: 'icon',
             to: 104,
-            toPort: 'in_l3',
+            toPort: 'l3',
             color: '#4DBB00'
         }, {
             category: 'hopLink',
             from: 104,
-            fromPort: 'out_l2',
+            fromPort: 'l2',
             to: 104.5,
             toPort: 'icon',
             color: '#D98805'
