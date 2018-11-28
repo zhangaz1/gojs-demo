@@ -8,16 +8,26 @@
         diagramReady: diagramReady,
         upperCaseFirstChar: upperCaseFirstChar,
         createLinkShape: createLinkShape,
+        createLinkShapeByStyle: createLinkShapeByStyle,
     };
 
     return void(0);
 
-    function createLinkShape(geometry, color) {
+    function createLinkShapeByStyle(style) {
+        return createLinkShape(
+            style.geometry,
+            style.color,
+            style.width,
+        );
+    }
+
+    function createLinkShape(geometry, color, width) {
         return go.GraphObject
             .make(
                 go.Shape, {
-                    geometryString: geometry,
-                    stroke: color,
+                    geometryString: geometry || 'M0 0 M3 0 L6 0',
+                    stroke: color || 'black',
+                    strokeWidth: width || 1,
                 },
             );
     }

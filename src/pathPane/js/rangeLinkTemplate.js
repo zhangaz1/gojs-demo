@@ -2,6 +2,7 @@
 (function(ns) {
     var $ = go.GraphObject.make;
     var RangeLink = ns.RangeLink;
+    var createLinkShapeByStyle = ns.utils.createLinkShapeByStyle;
 
     ns.rangeLinkTemplate = {
         createRangeLinkTemplate: createRangeLinkTemplate,
@@ -16,14 +17,16 @@
             RangeLink, {
                 routing: go.Link.Orthogonal,
             },
+            new go.Binding('', '', function(data) {
+                data.deviceConfig = option.config.style.nodes.device;
+            }),
             $(
                 go.Shape, {
-                    strokeWidth: 2,
-                    stroke: rangeLinkStyle.color,
+                    isPanelMain: true,
+                    stroke: 'transparent',
                 },
-                new go.Binding('stroke', 'color'),
-                new go.Binding('', '', function(data) {
-                    data.deviceConfig = option.config.style.nodes.device;
+                new go.Binding('pathPattern', '', function() {
+                    return createLinkShapeByStyle(rangeLinkStyle);
                 }),
             ),
         );

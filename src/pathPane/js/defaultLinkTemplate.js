@@ -1,6 +1,7 @@
 ;
 (function(ns) {
     var $ = go.GraphObject.make;
+    var createLinkShapeByStyle = ns.utils.createLinkShapeByStyle;
 
     ns.defaultLinkTemplate = {
         createDefaultLinkTemplate: createDefaultLinkTemplate,
@@ -14,11 +15,14 @@
             go.Link, {
                 routing: go.Link.Orthogonal,
             },
-            $(go.Shape, {
-                    strokeWidth: 2,
-                    stroke: defaultLinkStyle.color,
+            $(
+                go.Shape, {
+                    isPanelMain: true,
+                    stroke: 'transparent',
                 },
-                new go.Binding('stroke', 'color'),
+                new go.Binding('pathPattern', '', function() {
+                    return createLinkShapeByStyle(defaultLinkStyle);
+                }),
             ),
         );
     }
