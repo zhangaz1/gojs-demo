@@ -187,8 +187,6 @@
         }
 
         function mergeNodeTopoTypes(node) {
-            console.log('mergeTopoTypes:', node);
-
             var topoTypesDic = {};
             addSpecialTopoTypes(topoTypesDic, 'in', node);
             addSpecialTopoTypes(topoTypesDic, 'out', node);
