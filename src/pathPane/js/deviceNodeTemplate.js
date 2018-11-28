@@ -20,6 +20,7 @@
         var deviceConfig = nodeConfig.device;
         var topoTypeBase = deviceConfig.topoTypeBase;
         var group = deviceConfig.topoTypesPanel.group;
+        var details = deviceConfig.details;
 
         return $(
             go.Node,
@@ -114,12 +115,14 @@
         }
 
         function createTopoGroupPanelTemplate(type) {
+            var group = deviceConfig.topoTypesPanel.group;
+
             return $(
                 go.Panel, {
                     name: 'topoTypeGroupPanel_' + type,
                     background: group[type + 'BackgroundColor'],
                     opacity: 0,
-                    desiredSize: new go.Size(20, 3),
+                    desiredSize: new go.Size(group.width, group.height),
                 },
 
                 new go.Binding('opacity', '', function(data) {
@@ -132,10 +135,10 @@
         function createTopoTypeItemTextTemplate() {
             return $(
                 go.TextBlock, {
-                    angle: 270,
+                    angle: topoTypeBase.angle,
 
-                    font: '10px sans-serif',
-                    desiredSize: new go.Size(40, 20),
+                    font: topoTypeBase.font,
+                    desiredSize: new go.Size(topoTypeBase.height, topoTypeBase.width),
                     textAlign: 'center',
                 },
                 new go.Binding('text', 'name'),
@@ -175,70 +178,84 @@
                 'Vertical', {
                     name: 'detailTextsPanel',
                 },
-                createDeviceInTemplate(),
+
+                createDeviceInOutTemplate('in'),
                 createDeviceNameTemplate(),
-                createDeviceOutTemplate(),
+                createDeviceInOutTemplate('out'),
             );
         }
 
-        function createDeviceInTemplate() {
+        function createDeviceInOutTemplate(key) {
+            var outIn = details[key];
+            var uppercaseKey = upperCaseFirstChar(key);
+
             return $(
                 go.Panel,
                 'Horizontal', {
-                    name: 'devcieInPanel',
+                    name: 'devcie' + uppercaseKey + 'Panel',
                     alignment: go.Spot.Left,
+                    padding: 3,
                 },
-                new go.Binding('opacity', 'in', opacityByValue),
+                new go.Binding('opacity', key, opacityByValue),
                 $(
                     go.TextBlock, {
-                        name: 'deviceInLabel',
-                        text: 'In:',
-                        font: '10px sans-serif',
+                        name: 'device' + uppercaseKey + 'Label',
+                        text: uppercaseKey + ':',
+                        font: outIn.labelFont,
                     },
                 ),
                 $(
                     go.TextBlock, {
-                        name: 'deviceInText',
-                        font: 'bold 8px ans-serif',
+                        name: 'device' + uppercaseKey + 'Text',
+                        font: outIn.labelFont,
                     },
-                    new Binding('text', 'in'),
+                    new Binding('text', key),
                 )
             );
         }
 
         function createDeviceNameTemplate() {
+            var hostName = details.hostName;
+
             return $(
                 go.TextBlock, {
                     name: 'deviceHostNameText',
-                    font: 'bold 12px sans-serif',
-                    stroke: '#111',
+                    font: hostName.font,
+                    stroke: hostName.color,
+
+                    width: hostName.width,
+
                     isMultiline: false,
-                    width: 170,
                     maxLines: 1,
                     overflow: go.TextBlock.OverflowEllipsis,
+
+                    margin: 3,
                 },
                 new go.Binding('text', 'name').makeTwoWay(),
             );
         }
 
         function createDeviceIconTemplate() {
+            var icon = details.icon;
             return $(
                 go.Picture, {
                     name: 'deviceIcon',
                     portId: 'icon',
-                    width: 16,
-                    height: 16,
+                    width: icon.width,
+                    height: icon.height,
                 },
                 new go.Binding('source', 'icon')
             );
         }
 
         function createABIconTemplate() {
+            var abIcon = details.abIcon;
+
             return $(
                 go.Picture, {
                     name: 'abIcon',
-                    width: 16,
-                    height: 16,
+                    width: abIcon.width,
+                    height: abIcon.height,
                 },
                 new go.Binding('source', '', function(data, picture) {
                     var icon = '';
@@ -251,31 +268,6 @@
                     }
                     return icon;
                 }),
-            );
-        }
-
-        function createDeviceOutTemplate() {
-            return $(
-                go.Panel,
-                'Horizontal', {
-                    name: 'devcieOutPanel',
-                    alignment: go.Spot.Left,
-                },
-                new go.Binding('opacity', 'out', opacityByValue),
-                $(
-                    go.TextBlock, {
-                        name: 'deviceOutLabel',
-                        text: 'Out:',
-                        font: '10px sans-serif',
-                    },
-                ),
-                $(
-                    go.TextBlock, {
-                        name: 'deviceOutText',
-                        font: 'bold 8px ans-serif',
-                    },
-                    new Binding('text', 'out'),
-                )
             );
         }
 

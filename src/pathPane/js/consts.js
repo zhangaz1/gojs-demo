@@ -120,6 +120,10 @@
                         backgroundColor: '#88CBFC',
                         borderColor: '#88CBFC',
                     },
+                    angle: 270,
+                    font: '10px sans-serif',
+                    width: 20,
+                    height: 40,
                 },
                 topoTypes: topoTypesDic,
                 topoTypesPanel: {
@@ -128,11 +132,33 @@
                     group: {
                         inBackgroundColor: '#666A63',
                         outBackgroundColor: '#2778A7',
+                        width: 20,
+                        height: 3,
                     },
                 },
 
                 details: {
-
+                    in: {
+                        font: 'bold 10px ans-serif',
+                        labelFont: '10px sans-serif',
+                    },
+                    hostName: {
+                        font: 'bold 12px sans-serif',
+                        color: '#111',
+                        width: 170,
+                    },
+                    out: {
+                        font: 'bold 10px ans-serif',
+                        labelFont: '10px sans-serif',
+                    },
+                    icon: {
+                        width: 24,
+                        height: 24,
+                    },
+                    abIcon: {
+                        width: 16,
+                        height: 16,
+                    },
                 },
             },
             media: {
