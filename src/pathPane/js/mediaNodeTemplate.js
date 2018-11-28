@@ -12,6 +12,7 @@
     function createMediaTemplate(option) {
         var nodeConfig = option.config.style.nodes;
         var mediaConfig = nodeConfig.media;
+        var api = option.api;
 
         return $(
             go.Node,
@@ -45,7 +46,9 @@
                         height: iconSize.height,
                         source: mediaConfig.icon,
                     },
-                    new go.Binding('source', 'icon'),
+                    new go.Binding('source', '', function(data) {
+                        return data.icon || api.getIcon(data);
+                    }),
                 ),
                 $(
                     go.TextBlock, {
