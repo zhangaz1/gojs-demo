@@ -1,6 +1,7 @@
 ;
 (function(ns) {
     var $ = go.GraphObject.make;
+    var createLinkShape = ns.utils.createLinkShape;
 
     ns.hopLinkTemplate = {
         createHopLinkTemplate: createHopLinkTemplate,
@@ -10,15 +11,22 @@
 
     function createHopLinkTemplate(option) {
         var hopLinkStyle = option.config.style.links.hopLink;
+
         return $(
             go.Link, {
                 routing: go.Link.Orthogonal,
             },
-            $(go.Shape, {
-                    strokeWidth: 2,
-                    stroke: hopLinkStyle.color,
+            $(
+                go.Shape, {
+                    isPanelMain: true,
+                    stroke: 'transparent',
                 },
-                new go.Binding('stroke', 'color'),
+                new go.Binding('pathPattern', '', function(data) {
+                    return createLinkShape(
+                        hopLinkStyle.geometry,
+                        hopLinkStyle.color,
+                    );
+                }),
             ),
         );
     }

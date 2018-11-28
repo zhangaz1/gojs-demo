@@ -71,6 +71,7 @@
                     links: {
                         hopLink: {
                             color: '#7F8A90',
+                            geometry: 'M0 0 M3 0 L6 0',
                         },
                         rangeLink: {
                             color: 'red',
@@ -137,8 +138,7 @@
                     },
                 },
 
-                details: {
-                    in: {
+                details: { in: {
                         font: 'bold 10px ans-serif',
                         labelFont: '10px sans-serif',
                     },

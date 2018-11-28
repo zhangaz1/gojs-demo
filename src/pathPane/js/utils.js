@@ -7,9 +7,20 @@
         updateDiagram: updateDiagram,
         diagramReady: diagramReady,
         upperCaseFirstChar: upperCaseFirstChar,
+        createLinkShape: createLinkShape,
     };
 
     return void(0);
+
+    function createLinkShape(geometry, color) {
+        return go.GraphObject
+            .make(
+                go.Shape, {
+                    geometryString: geometry,
+                    stroke: color,
+                },
+            );
+    }
 
     function upperCaseFirstChar(str) {
         if (str.length > 0) {
