@@ -389,7 +389,7 @@
                 option.config.containerId,
                 getDiagramConfig(), {
                     // temp: for test
-                    allowSelect: true,
+                    // allowSelect: true,
                     // allowMove: true,
                     // automatically show the state of the diagram's model on the page
                     'ModelChanged': function(e) {

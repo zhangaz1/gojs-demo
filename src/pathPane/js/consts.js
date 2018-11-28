@@ -122,6 +122,7 @@
                 topoTypeBase: {
                     backgroundColor: '#D1E6FA',
                     borderColor: '#D1E6FA',
+                    highlightColor: '#F5A623',
                     active: {
                         backgroundColor: '#88CBFC',
                         borderColor: '#88CBFC',

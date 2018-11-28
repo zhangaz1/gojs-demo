@@ -59,10 +59,36 @@
                 'Horizontal', {
                     name: 'topoTypesPanel',
 
-                    itemTemplate: createTopoTypeItemTemplate(),
+                    itemTemplate: createTopoTypeItemWithBorderTemplate(),
                 },
                 new go.Binding('itemArray', 'topoTypes'),
             );
+        }
+
+        function createTopoTypeItemWithBorderTemplate() {
+            return $(
+                go.Panel,
+                'Auto', {
+                    background: nodeConfig.backgroundColor,
+                    padding: 1,
+
+                    mouseEnter: showTopoTypeTip,
+                    mouseLeave: mouseLeave,
+                    click: switchTopoType,
+                },
+
+                new go.Binding('cursor', '', function(topoType) {
+                    if (hasTip(topoType)) {
+                        return 'pointer';
+                    }
+                }),
+
+                createTopoTypeItemTemplate(),
+            );
+        }
+
+        function hasTip(topoType) {
+            return topoType.hasUpTip || topoType.hasDownTip;
         }
 
         function createTopoTypeItemTemplate() {
@@ -70,16 +96,8 @@
                 go.Panel,
                 'Vertical', {
                     name: 'topoTypeItemPanel',
-
-                    mouseEnter: showTopoTypeTip,
-                    mouseLeave: mouseLeave,
-                    click: switchTopoType,
+                    background: nodeConfig.backgroundColor,
                 },
-                new go.Binding('cursor', '', function(topoType) {
-                    if (topoType.hasUpTip || topoType.hasDownTip) {
-                        return 'pointer';
-                    }
-                }),
 
                 createTopoTypeArrowTemplate('UpTip'),
                 createTopoTypeItemTextWithPanelTemplate(),
@@ -288,9 +306,16 @@
                 option.api.closeTip(topoType.tipId);
                 topoType.tipId = null;
             }
+
+            graphObject.background = nodeConfig.backgroundColor;
         }
 
         function showTopoTypeTip(inputEvent, graphObject) {
+            if (!hasTip(graphObject.data)) {
+                return;
+            }
+
+            graphObject.background = topoTypeBase.highlightColor;
             var eventData = createEventData(inputEvent, graphObject);
             showRangeLink(inputEvent, graphObject);
             eventData.topoType.tipId = callApi(inputEvent, graphObject, {
