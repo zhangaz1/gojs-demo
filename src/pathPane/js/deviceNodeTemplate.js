@@ -158,7 +158,6 @@
             return $(
                 go.Panel, 'Horizontal', {
                     name: 'deviceDetailPanel',
-                    alignment: go.Spot.Left,
                 },
 
                 new go.Binding('margin', '', function() {
@@ -177,6 +176,7 @@
                 go.Panel,
                 'Vertical', {
                     name: 'detailTextsPanel',
+                    alignment: go.Spot.Left,
                 },
 
                 createDeviceInOutTemplate('in'),
@@ -230,6 +230,8 @@
                     overflow: go.TextBlock.OverflowEllipsis,
 
                     margin: 3,
+
+                    alignment: go.Spot.Left,
                 },
                 new go.Binding('text', 'name').makeTwoWay(),
             );
