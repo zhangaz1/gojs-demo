@@ -23,21 +23,13 @@
                 name: 'L2', // topoType中显示名字
                 hasDownTip: false, // 是否可以向下展开
                 hasUpTip: false, // 是否可以向上折叠
-                isUsed: true, // 是否激活状态，决定颜色
+                isActived: true, // 是否激活状态，决定颜色
             }, {
                 id: 'l3',
                 name: 'L3',
-                hasUpTip: false,
             }, {
                 id: 'vxlan',
                 name: 'Vxlan',
-            }, {
-                id: 'ipSec',
-                name: 'IP Sec',
-            }, {
-                id: 'gre',
-                name: 'GRE',
-                hasUpTip: true,
             }, ],
 
             // elseinTopoTypes: [{ // 其他可选的topoType,不包含L2、L3，仅与Vxlan同列的其他可选topoType，切换后显示在Vxlan位置
@@ -61,18 +53,10 @@
             inTopoTypes: [{
                 id: 'l2',
                 name: 'L2',
-                isUsed: true,
+                isActived: true,
             }, {
                 id: 'l3',
                 name: 'L3',
-                hasUpTip: true,
-            }, {
-                id: 'vxlan',
-                name: 'Vxlan',
-                hasUpTip: true,
-            }, {
-                id: 'ipSec',
-                name: 'IP Sec',
             }, {
                 id: 'gre',
                 name: 'GRE',
@@ -82,10 +66,12 @@
             outTopoTypes: [{
                 id: 'l2',
                 name: 'L2',
-                isUsed: true,
+                isActived: true,
             }, {
                 id: 'l3',
                 name: 'L3',
+
+                hasUpTip: true,
             }, {
                 id: 'vxlan',
                 name: 'Vxlan',
@@ -107,7 +93,7 @@
             inTopoTypes: [{
                 id: 'l2',
                 name: 'L2',
-                isUsed: true,
+                isActived: true,
             }, {
                 id: 'l3',
                 name: 'L3',
@@ -120,7 +106,7 @@
             }, {
                 id: 'l3',
                 name: 'L3',
-                isUsed: true,
+                isActived: true,
             }],
 
             icon: './imgs/icons/switch.png',
@@ -145,7 +131,7 @@
             }, {
                 id: 'l3',
                 name: 'L3',
-                isUsed: true,
+                isActived: true,
             }, {
                 id: 'vxlan',
                 name: 'Vxlan',
@@ -157,7 +143,7 @@
             outTopoTypes: [{
                 id: 'l2',
                 name: 'L2',
-                isUsed: true,
+                isActived: true,
             }, {
                 id: 'l3',
                 name: 'L3',
@@ -209,7 +195,7 @@
             inTopoTypes: [{
                 id: 'l2',
                 name: 'L2',
-                isUsed: true,
+                isActived: true,
             }, {
                 id: 'l3',
                 name: 'L3',

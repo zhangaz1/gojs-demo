@@ -145,7 +145,7 @@
         function getTopoTypeColor(colorKey) {
             return function(data) {
                 var topoType = deviceConfig.topoTypes[data.id];
-                return data.isUsed ?
+                return data.isActived ?
                     (topoType.active && topoType.active[colorKey]) || topoTypeBase.active[colorKey] :
                     topoType[colorKey] || topoTypeBase[colorKey];
             }

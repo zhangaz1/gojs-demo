@@ -209,7 +209,7 @@
                         topoTypesDic[type.id] = existType;
                         existType.order = topoTypes[type.id].order;
                     } else {
-                        existType.isUsed = existType.isUsed || type.isUsed;
+                        existType.isActived = existType.isActived || type.isActived;
                         existType.hasUpTip = existType.hasUpTip || type.hasUpTip;
                         existType.hasDownTip = existType.hasDownTip || type.hasDownTip;
                     }
