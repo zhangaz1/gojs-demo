@@ -19,8 +19,8 @@
         var nodeConfig = option.config.style.nodes;
         var deviceConfig = nodeConfig.device;
         var topoTypeBase = deviceConfig.topoTypeBase;
-        var group = deviceConfig.topoTypesPanel.group;
         var details = deviceConfig.details;
+        var api = option.api;
 
         return $(
             go.Node,
@@ -246,7 +246,9 @@
                     width: icon.width,
                     height: icon.height,
                 },
-                new go.Binding('source', 'icon')
+                new go.Binding('source', '', function(data) {
+                    return data.icon || api.getIcon(data);
+                }),
             );
         }
 

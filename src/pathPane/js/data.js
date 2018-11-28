@@ -38,7 +38,7 @@
             //     name: 'Vxyyy',
             // }],
 
-            icon: './imgs/icons/pc.png', // device有多中图标可能，需要指明图标路径，或者提供图标类别
+            // icon: './imgs/icons/pc.png', // device有多中图标可能，需要指明图标路径，或者提供图标类别
             // abIcon: './imgs/icons/path_point_a.bmp',
             isA: true, // ab图标可以通过图标路径或isA、isB指定，可讨论后确定
 
@@ -81,7 +81,7 @@
                 name: 'IP Sec',
             }],
 
-            icon: './imgs/icons/router.png',
+            // icon: './imgs/icons/router.png',
 
         }, {
             id: 103,
@@ -110,7 +110,7 @@
                 isActived: true,
             }],
 
-            icon: './imgs/icons/switch.png',
+            // icon: './imgs/icons/switch.png',
 
         }, {
             id: 103.5,
