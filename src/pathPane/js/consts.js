@@ -69,7 +69,15 @@
                 style: {
                     nodes: createNodesStyleConfig(),
                     links: {
-                        color: '#7F8A90',
+                        hopLink: {
+                            color: '#7F8A90',
+                        },
+                        rangeLink: {
+                            color: '#7F8A90',
+                        },
+                        defaultLink: {
+                            color: '#7F8A90',
+                        },
                     },
                 },
             },

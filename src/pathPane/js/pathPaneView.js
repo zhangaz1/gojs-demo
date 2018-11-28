@@ -158,12 +158,12 @@
             _.each(nodes, function(node) {
                 if (!isFailed && lastNode) {
                     links.push({
-                        category: 'hopLink',
+                        category: 'defaultLink',
                         from: lastNode.id,
                         fromPort: 'icon',
                         to: node.id,
                         toPort: 'icon',
-                        color: '#D98805'
+                        // color: '#D98805'
                     });
                 }
 
