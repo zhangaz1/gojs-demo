@@ -204,11 +204,19 @@
             var typeKey = 'is' + upperCaseFirstChar(key);
             if (types) {
                 _.each(types, function(type) {
-                    if (!topoTypesDic[type.id]) {
-                        topoTypesDic[type.id] = type;
-                        type.order = topoTypes[type.id].order;
+                    var existType = topoTypesDic[type.id];
+                    if (!existType) {
+                        existType = type;
+
+                        topoTypesDic[type.id] = existType;
+                        existType.order = topoTypes[type.id].order;
+                    } else {
+                        existType.isUsed = existType.isUsed || type.isUsed;
+                        existType.hasUpTip = existType.hasUpTip || type.hasUpTip;
+                        existType.hasDownTip = existType.hasDownTip || type.hasDownTip;
                     }
-                    topoTypesDic[type.id][typeKey] = true;
+
+                    existType[typeKey] = true;
                 });
             }
         }

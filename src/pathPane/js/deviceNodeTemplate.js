@@ -94,22 +94,20 @@
             ];
 
 
-            args.push(createTopoTypeArrowTemplate('in'));
+            args.push(createTopoTypeArrowTemplate('UpTip'));
             args.push(createTopoTypeItemTextWithPanelTemplate());
-            args.push(createTopoTypeArrowTemplate('out'));
+            args.push(createTopoTypeArrowTemplate('DownTip'));
 
             return $.apply(null, args);
         }
 
         function createTopoTypeArrowTemplate(key) {
-            var hasTip = 'is' + upperCaseFirstChar(key);
-
             return $(
                 go.Picture, {
                     opacity: 0,
                     source: './imgs/icons/' + key + '.png'
                 },
-                new go.Binding('opacity', hasTip, function(value) {
+                new go.Binding('opacity', 'has' + key, function(value) {
                     return value ? 1 : 0;
                 }),
             );
