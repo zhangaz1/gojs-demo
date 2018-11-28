@@ -13,6 +13,7 @@ document.write('<script src="./js/rangeLinkLayout.js"></script>');
 document.write('<script src="./js/rangeLink.js"></script>');
 document.write('<script src="./js/rangeLinkTemplate.js"></script>');
 
+document.write('<script src="./js/defaultLinkTemplate.js"></script>');
 document.write('<script src="./js/hopLinkTemplate.js"></script>');
 document.write('<script src="./js/linkTemplates.js"></script>');
 
