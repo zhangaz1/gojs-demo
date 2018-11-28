@@ -2,7 +2,10 @@
 (function(ns) {
 
     var $ = go.GraphObject.make;
-    var opacityByValue = ns.utils.opacityByValue;
+
+    var utils = ns.utils;
+    var opacityByValue = utils.opacityByValue;
+    var upperCaseFirstChar = utils.upperCaseFirstChar;
 
     ns.deviceTemplate = {
         createDeviceTemplate: createDeviceTemplate
@@ -115,8 +118,14 @@
                 go.Panel, {
                     name: 'topoTypeGroupPanel_' + type,
                     background: group[type + 'BackgroundColor'],
+                    opacity: 0,
                     desiredSize: new go.Size(20, 3),
                 },
+
+                new go.Binding('opacity', '', function(data) {
+                    var key = 'is' + upperCaseFirstChar(type);
+                    return data[key] ? 1 : 0;
+                }),
             );
         }
 
