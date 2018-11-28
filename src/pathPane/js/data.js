@@ -60,7 +60,6 @@
             }, {
                 id: 'gre',
                 name: 'GRE',
-                hasUpTip: true,
             }, ],
 
             outTopoTypes: [{
@@ -75,6 +74,8 @@
             }, {
                 id: 'vxlan',
                 name: 'Vxlan',
+
+                hasUpTip: true,
             }, {
                 id: 'ipSec',
                 name: 'IP Sec',

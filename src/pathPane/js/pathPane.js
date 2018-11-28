@@ -131,14 +131,14 @@
             return {
                 category: 'rangeLink',
                 from: 102,
-                fromPort: 'in_vxlan',
+                fromPort: 'vxlan',
                 to: 104,
-                toPort: 'out_vxlan',
-                points: [{
-                    x: 100,
-                    y: 20,
-                }],
-                color: '#94CDF6'
+                toPort: 'vxlan',
+                // points: [{
+                //     x: 100,
+                //     y: 20,
+                // }],
+                // color: '#94CDF6'
             };
         }
 

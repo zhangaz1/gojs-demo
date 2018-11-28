@@ -22,8 +22,7 @@
     function computePoints() {
         var flag = go.Link.prototype.computePoints.call(this);
 
-        var pointsArray = this.points.toArray();
-        layoutRangeLink(pointsArray);
+        layoutRangeLink(this);
 
         return flag;
     }

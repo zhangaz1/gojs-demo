@@ -73,7 +73,7 @@
                             color: '#7F8A90',
                         },
                         rangeLink: {
-                            color: 'black',
+                            color: 'red',
                         },
                         defaultLink: {
                             color: '#619E99',
