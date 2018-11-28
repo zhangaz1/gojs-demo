@@ -405,7 +405,7 @@
 
     function getDiagramConfig() {
         return {
-            padding: new go.Margin(5, 0, 5, 0),
+            padding: new go.Margin(20, 0, 20, 0),
             initialContentAlignment: go.Spot.Top, // 上对齐布局
             allowMove: false,
             allowHorizontalScroll: false,

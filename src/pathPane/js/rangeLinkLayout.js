@@ -11,7 +11,7 @@
         var topoTypeWidth = deviceConfig.topoTypeBase.width;
         var topoTypeHeight = deviceConfig.topoTypeBase.height +
             deviceConfig.topoTypesPanel.group.height;
-        var firstLength = 20; // 第一段、最后一段link长度
+        var firstLength = 38; // 第一段、最后一段link长度
         var secondOffsetY = topoTypeHeight + firstLength;
 
         updatePoints();
