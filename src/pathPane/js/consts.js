@@ -89,10 +89,7 @@
      */
     function createTopoTypesDic() {
         // var dic = Object.create(null);
-        var dic = {
-            backgroundColor: '#DEF0FB',
-            borderColor: '#D98805',
-        };
+        var dic = {};
 
         _.each(topoTypes, function(topoType) {
             dic[topoType.id] = topoType;
@@ -116,7 +113,6 @@
                 aIcon: './imgs/icons/path_point_a.bmp',
                 bIcon: './imgs/icons/path_point_b.bmp',
 
-                topoTypes: topoTypesDic,
                 topoTypeBase: {
                     backgroundColor: '#D1E6FA',
                     borderColor: '#D1E6FA',
@@ -125,6 +121,12 @@
                         borderColor: '#88CBFC',
                     },
                 },
+                topoTypes: topoTypesDic,
+                topoTypesPanel: {
+                    backgroundColor: '#DEF0FB',
+                    borderColor: '#D98805',
+                },
+
                 details: {
 
                 },

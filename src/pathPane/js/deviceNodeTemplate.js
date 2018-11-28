@@ -23,7 +23,6 @@
                 name: 'deviceNode',
                 locationSpot: go.Spot.Center,
 
-                // width: nodeConfig.width,
                 padding: new go.Margin(1, 0, 1, 0),
                 background: nodeConfig.borderColor,
             },
@@ -43,6 +42,7 @@
                     padding: 10,
                     background: nodeConfig.backgroundColor,
                 },
+
                 createDeviceTopoTypesTemplate(),
                 createDeviceDetailTemplate(),
             );
@@ -51,23 +51,13 @@
         function createDeviceTopoTypesTemplate() {
             return $(
                 go.Panel,
-                'Vertical', {
-                    name: 'topoTypesPanel',
-                },
-                createTopoTypesTemplate(),
-            );
-        }
-
-        function createTopoTypesTemplate() {
-            return $(
-                go.Panel,
                 'Horizontal', {
                     name: 'topoTypesPanel',
                     alignment: go.Spot.Left,
                     margin: new go.Margin(1, 0, 1, 0),
                     padding: 1,
 
-                    background: deviceConfig.topoTypes.backgroundColor,
+                    // background: deviceConfig.topoTypesPanel.backgroundColor,
                     itemTemplate: createTopoTypeItemTemplate(),
                 },
                 new go.Binding('itemArray', 'topoTypes'),
@@ -79,8 +69,8 @@
                 go.Panel,
                 'Vertical', {
                     name: 'topoTypeItemPanel',
-                    padding: 1,
-                    margin: 1,
+                    // padding: 1,
+                    // margin: 1,
 
                     mouseEnter: showTopoTypeTip,
                     mouseLeave: mouseLeave,
@@ -120,11 +110,8 @@
                     name: 'topoTypeTextBlockPanel',
                     padding: 1,
                 },
+                new go.Binding('portId', 'id'),
 
-                new go.Binding('portId', 'id', function(value) {
-                    return value;
-                }),
-                new go.Binding('background', '', getTopoTypeColor('borderColor')),
                 createTopoTypeItemTextTemplate(),
             );
         }
@@ -147,8 +134,7 @@
 
         function getTopoTypeColor(colorKey) {
             return function(data) {
-                var key = data.name.toLowerCase();
-                var topoType = deviceConfig.topoTypes[key];
+                var topoType = deviceConfig.topoTypes[data.id];
                 return data.isUsed ?
                     (topoType.active && topoType.active[colorKey]) || topoTypeBase.active[colorKey] :
                     topoType[colorKey] || topoTypeBase[colorKey];
