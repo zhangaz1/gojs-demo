@@ -39,7 +39,7 @@
                 go.Panel,
                 'Position', {
                     name: 'mainLayout',
-                    padding: 10,
+                    padding: new go.Margin(5, 10, 5, 15),
                     background: nodeConfig.backgroundColor,
                 },
 
@@ -61,7 +61,7 @@
         }
 
         function createTopoTypeItemTemplate() {
-            var args = [
+            return $(
                 go.Panel,
                 'Vertical', {
                     name: 'topoTypeItemPanel',
@@ -75,14 +75,11 @@
                         return 'pointer';
                     }
                 }),
-            ];
 
-
-            args.push(createTopoTypeArrowTemplate('UpTip'));
-            args.push(createTopoTypeItemTextWithPanelTemplate());
-            args.push(createTopoTypeArrowTemplate('DownTip'));
-
-            return $.apply(null, args);
+                createTopoTypeArrowTemplate('UpTip'),
+                createTopoTypeItemTextWithPanelTemplate(),
+                createTopoTypeArrowTemplate('DownTip'),
+            );
         }
 
         function createTopoTypeArrowTemplate(key) {
