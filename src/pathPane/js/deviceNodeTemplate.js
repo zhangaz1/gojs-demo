@@ -16,6 +16,7 @@
         var nodeConfig = option.config.style.nodes;
         var deviceConfig = nodeConfig.device;
         var topoTypeBase = deviceConfig.topoTypeBase;
+        var group = deviceConfig.topoTypesPanel.group;
 
         return $(
             go.Node,
@@ -97,12 +98,25 @@
         function createTopoTypeItemTextWithPanelTemplate() {
             return $(
                 go.Panel,
-                'Auto', {
+                'Vertical', {
                     name: 'topoTypeTextBlockPanel',
                 },
                 new go.Binding('portId', 'id'),
+                new go.Binding('background', '', getTopoTypeColor('backgroundColor')),
 
+                createTopoGroupPanelTemplate('in'),
                 createTopoTypeItemTextTemplate(),
+                createTopoGroupPanelTemplate('out'),
+            );
+        }
+
+        function createTopoGroupPanelTemplate(type) {
+            return $(
+                go.Panel, {
+                    name: 'topoTypeGroupPanel_' + type,
+                    background: group[type + 'BackgroundColor'],
+                    desiredSize: new go.Size(20, 3),
+                },
             );
         }
 
@@ -112,11 +126,10 @@
                     angle: 270,
 
                     font: '10px sans-serif',
-                    desiredSize: new go.Size(40, 18),
+                    desiredSize: new go.Size(40, 20),
                     textAlign: 'center',
                 },
                 new go.Binding('text', 'name'),
-                new go.Binding('background', '', getTopoTypeColor('backgroundColor')),
             );
         }
 

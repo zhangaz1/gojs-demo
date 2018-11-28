@@ -125,6 +125,10 @@
                 topoTypesPanel: {
                     backgroundColor: '#DEF0FB',
                     borderColor: '#D98805',
+                    group: {
+                        inBackgroundColor: '#666A63',
+                        outBackgroundColor: '#2778A7',
+                    },
                 },
 
                 details: {
