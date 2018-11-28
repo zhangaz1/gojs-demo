@@ -127,9 +127,9 @@
             out: 'E4',
 
             inTopoTypes: [{
-                id: 'l2',
-                name: 'L2',
-            }, {
+                //     id: 'l2',
+                //     name: 'L2',
+                // }, {
                 id: 'l3',
                 name: 'L3',
                 isActived: true,
@@ -142,10 +142,10 @@
             }],
 
             outTopoTypes: [{
-                id: 'l2',
-                name: 'L2',
-                isActived: true,
-            }, {
+                //     id: 'l2',
+                //     name: 'L2',
+                //     isActived: true,
+                // }, {
                 id: 'l3',
                 name: 'L3',
             }, {
