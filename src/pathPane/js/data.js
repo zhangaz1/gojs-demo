@@ -232,7 +232,7 @@
             fromPort: 'l2', // from port
             to: 103, // to ndoe id
             toPort: 'l2', // to port
-            color: '#D98805' // link颜色，若有产生规则，可不传
+            // color: '#D98805' // link颜色，若有产生规则，可不传
         }, {
             category: 'hopLink',
             from: 103,

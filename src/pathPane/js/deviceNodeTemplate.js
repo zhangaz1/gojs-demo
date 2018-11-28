@@ -53,11 +53,7 @@
                 go.Panel,
                 'Horizontal', {
                     name: 'topoTypesPanel',
-                    alignment: go.Spot.Left,
-                    margin: new go.Margin(1, 0, 1, 0),
-                    padding: 1,
 
-                    // background: deviceConfig.topoTypesPanel.backgroundColor,
                     itemTemplate: createTopoTypeItemTemplate(),
                 },
                 new go.Binding('itemArray', 'topoTypes'),
@@ -69,8 +65,6 @@
                 go.Panel,
                 'Vertical', {
                     name: 'topoTypeItemPanel',
-                    // padding: 1,
-                    // margin: 1,
 
                     mouseEnter: showTopoTypeTip,
                     mouseLeave: mouseLeave,
@@ -108,7 +102,6 @@
                 go.Panel,
                 'Auto', {
                     name: 'topoTypeTextBlockPanel',
-                    padding: 1,
                 },
                 new go.Binding('portId', 'id'),
 
@@ -124,8 +117,6 @@
                     font: '10px sans-serif',
                     desiredSize: new go.Size(40, 18),
                     textAlign: 'center',
-
-                    margin: 0,
                 },
                 new go.Binding('text', 'name'),
                 new go.Binding('background', '', getTopoTypeColor('backgroundColor')),
