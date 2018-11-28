@@ -18,60 +18,32 @@
             id: 'l2',
             name: 'L2',
 
-            backgroundColor: 'green',
-            borderColor: 'red',
-            active: {
-                backgroundColor: '#F8A200',
-                borderColor: '#D98805',
-            },
+            // backgroundColor: 'green',
+            // borderColor: 'red',
+            // active: {
+            //     backgroundColor: '#F8A200',
+            //     borderColor: '#D98805',
+            // },
 
             order: 1, // 显示顺序
         }, {
             id: 'l3',
             name: 'L3',
 
-            borderColor: '#B2E88E',
-            backgroundColor: '#E8FDDA',
-            active: {
-                borderColor: '#3F9105',
-                backgroundColor: '#4DBB00',
-            },
-
             order: 2,
         }, {
             id: 'vxlan',
             name: 'Vxlan',
-
-            borderColor: '#94CDF6',
-            backgroundColor: '#DDF0FF',
-            active: {
-                borderColor: 'green',
-                backgroundColor: 'red',
-            },
 
             order: 10,
         }, {
             id: 'ipSec',
             name: 'IP Sec',
 
-            backgroundColor: 'green',
-            borderColor: 'red',
-            active: {
-                backgroundColor: '#F8A200',
-                borderColor: '#D98805',
-            },
-
             order: 10,
         }, {
             id: 'gre',
             name: 'GRE',
-
-            backgroundColor: 'green',
-            borderColor: 'red',
-            active: {
-                backgroundColor: '#F8A200',
-                borderColor: '#D98805',
-            },
 
             order: 10,
         }];
@@ -96,7 +68,9 @@
             config: {
                 style: {
                     nodes: createNodesStyleConfig(),
-                    links: {},
+                    links: {
+                        color: '#7F8A90',
+                    },
                 },
             },
         };
@@ -135,6 +109,14 @@
                 bIcon: './imgs/icons/path_point_b.bmp',
 
                 topoTypes: topoTypesDic,
+                topoTypeBase: {
+                    backgroundColor: '#D1E6FA',
+                    borderColor: '#D1E6FA',
+                    active: {
+                        backgroundColor: '#88CBFC',
+                        borderColor: '#88CBFC',
+                    },
+                },
                 details: {
 
                 },

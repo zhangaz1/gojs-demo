@@ -3,7 +3,6 @@
 
     var $ = go.GraphObject.make;
     var opacityByValue = ns.utils.opacityByValue;
-    var upperCaseFirstChar = ns.utils.upperCaseFirstChar;
 
     ns.deviceTemplate = {
         createDeviceTemplate: createDeviceTemplate
@@ -16,6 +15,7 @@
     function createDeviceTemplate(option) {
         var nodeConfig = option.config.style.nodes;
         var deviceConfig = nodeConfig.device;
+        var topoTypeBase = deviceConfig.topoTypeBase;
 
         return $(
             go.Node,
@@ -150,8 +150,8 @@
                 var key = data.name.toLowerCase();
                 var topoType = deviceConfig.topoTypes[key];
                 return data.isUsed ?
-                    topoType.active[colorKey] :
-                    topoType[colorKey];
+                    (topoType.active && topoType.active[colorKey]) || topoTypeBase.active[colorKey] :
+                    topoType[colorKey] || topoTypeBase[colorKey];
             }
         }
 
