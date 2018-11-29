@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Path Pane</title>
+
+    <script src="./fileLoader.js"> </script>
+
+</head>
+
+<body>
+    <div id="sample">
+        <span style="display: inline-block; vertical-align: top;">
+            <div style="margin-left: 10px;">
+                <div style="text-align: center;border:solid 1px;cursor: pointer;">
+                    <button id="up">Up</button>
+                </div>
+                <div id="myDiagramDiv" style="border: solid 1px black; width: 500px; height: 600px;"></div>
+                <div style="text-align: center;border:solid 1px;cursor: pointer;">
+                    <button id="down">down</button>
+                </div>
+            </div>
+        </span>
+
+        <span style="display: inline-block; vertical-align: top;">
+            Selected Part:<br />
+            <div id="myInspectorDiv" class="inspector"> </div>
+            <br />
+            First Node's data:<br />
+            <div id="myInspectorDiv2" class="inspector"> </div>
+            <br />
+            Model.modelData:<br />
+            <div id="myInspectorDiv3" class="inspector"> </div>
+            <br />
+        </span>
+
+        <span style="display: inline-block; vertical-align: top;">
+            <div id="myInspector" class="inspector-container"> </div>
+        </span>
+
+        <div id="myInspector">
+            <div>
+                <button id="getData">getData</button>
+                <button id="setData">setData</button>
+            </div>
+            <div>
+                <textarea name="data" id="data" cols="120" rows="18"></textarea>
+            </div>
+        </div>
+
+        <span style="display: none; vertical-align: top;">
+            <p>
+                This shows the contents of the model after each transaction:
+            </p>
+            <pre id="savedModel" />
+            </span>
+
+  </div>
+</body>
+</html>

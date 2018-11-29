@@ -40,8 +40,8 @@
             //     name: 'Vxyyy',
             // }],
 
-            // icon: './imgs/icons/pc.png', // device有多中图标可能，需要指明图标路径，或者提供图标类别
-            // abIcon: './imgs/icons/path_point_a.bmp',
+            // icon: './../../imgs/icons/pc.png', // device有多中图标可能，需要指明图标路径，或者提供图标类别
+            // abIcon: './../../imgs/icons/path_point_a.bmp',
             isA: true, // ab图标可以通过图标路径或isA、isB指定，可讨论后确定
 
         }, {
@@ -83,7 +83,7 @@
                 name: 'IP Sec',
             }],
 
-            // icon: './imgs/icons/router.png',
+            // icon: './../../imgs/icons/router.png',
 
         }, {
             id: 103,
@@ -112,7 +112,7 @@
                 isActived: true,
             }],
 
-            // icon: './imgs/icons/switch.png',
+            // icon: './../../imgs/icons/switch.png',
 
         }, {
             id: 103.5,
@@ -167,7 +167,7 @@
             //     name: 'Vxyyy',
             // }],
 
-            icon: './imgs/icons/router.png',
+            icon: './../../imgs/icons/router.png',
 
         }, {
             id: 104.5, // 同deviceId
@@ -177,7 +177,7 @@
 
             iconMargin: '0 0 0 28',
 
-            // icon: './imgs/icons/lan1.png', // 可讨论，若多种图标，需要指定类别，或path
+            // icon: './../../imgs/icons/lan1.png', // 可讨论，若多种图标，需要指定类别，或path
 
         }, {
             id: 400,
@@ -208,8 +208,8 @@
             in: 'E1 10.10.2/24',
             out: '',
 
-            icon: './imgs/icons/pc.png',
-            // abIcon: './imgs/icons/path_point_b.bmp',
+            icon: './../../imgs/icons/pc.png',
+            // abIcon: './../../imgs/icons/path_point_b.bmp',
             isB: true,
 
             inTopoTypes: [{

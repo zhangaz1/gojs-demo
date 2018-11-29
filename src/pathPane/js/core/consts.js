@@ -116,9 +116,9 @@
             borderColor: '#CEE0ED',
             borderWidth: 1,
             device: {
-                icon: './imgs/icons/router.png', // default icon ?
-                aIcon: './imgs/icons/path_point_a.bmp',
-                bIcon: './imgs/icons/path_point_b.bmp',
+                icon: './../../imgs/icons/router.png', // default icon ?
+                aIcon: './../../imgs/icons/path_point_a.bmp',
+                bIcon: './../../imgs/icons/path_point_b.bmp',
 
                 topoTypeBase: {
                     backgroundColor: '#D1E6FA',
@@ -170,7 +170,7 @@
             },
             media: {
                 height: 35,
-                icon: './imgs/icons/lan.png',
+                icon: './../../imgs/icons/lan.png',
                 iconSize: {
                     width: 16,
                     height: 16,
@@ -179,7 +179,7 @@
                 color: 'black',
             },
             balance: {
-                icon: './imgs/icons/balance.png',
+                icon: './../../imgs/icons/balance.png',
                 iconSize: {
                     width: 32,
                     height: 32,
@@ -188,7 +188,7 @@
                 color: 'black',
             },
             failed: {
-                icon: './imgs/icons/failed.png',
+                icon: './../../imgs/icons/failed.png',
                 iconSize: {
                     width: 16,
                     height: 16,

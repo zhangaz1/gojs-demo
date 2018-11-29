@@ -209,12 +209,12 @@
          */
         function getIcon(nodeData) {
             var icons = {
-                '101': './imgs/icons/pc.png',
-                '102': './imgs/icons/router.png',
-                '103': './imgs/icons/switch.png',
-                '104': './imgs/icons/router.png',
-                '104.5': './imgs/icons/lan.png',
-                '105': './imgs/icons/pc.png',
+                '101': './../../imgs/icons/pc.png',
+                '102': './../../imgs/icons/router.png',
+                '103': './../../imgs/icons/switch.png',
+                '104': './../../imgs/icons/router.png',
+                '104.5': './../../imgs/icons/lan.png',
+                '105': './../../imgs/icons/pc.png',
             };
 
             return icons[nodeData.id];

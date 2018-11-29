@@ -111,7 +111,7 @@
             return $(
                 go.Picture, {
                     opacity: 0,
-                    source: './imgs/icons/' + key + '.png'
+                    source: './../../imgs/icons/' + key + '.png'
                 },
                 new go.Binding('opacity', 'has' + key, function(value) {
                     return value ? 1 : 0;
