@@ -1,5 +1,7 @@
 ;
-(function(ns) {
+(function(netBrain) {
+    var ns = netBrain.pathPaneView;
+
     ns.utils = {
         opacityByValue: opacityByValue,
         createEventData: createEventData,

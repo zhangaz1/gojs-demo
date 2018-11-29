@@ -1,5 +1,6 @@
 ;
-(function(ns) {
+(function(netBrain) {
+    var ns = netBrain.pathPaneView;
 
     ns.nodesDataLayout = {
         layout: layout

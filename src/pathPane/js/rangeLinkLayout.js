@@ -1,5 +1,7 @@
 ;
-(function(ns) {
+(function(netBrain) {
+    var ns = netBrain.pathPaneView;
+
     ns.rangeLinkLayout = {
         layout: layout,
     };

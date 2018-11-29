@@ -1,5 +1,6 @@
 ;
-(function(ns) {
+(function(netBrain) {
+    var ns = netBrain.pathPaneView;
 
     var $ = go.GraphObject.make;
 

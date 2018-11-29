@@ -1,7 +1,6 @@
 ;
-(function(ns) {
-
-    var consts = ns.consts;
+(function(netBrain) {
+    var ns = netBrain.pathPaneView;
 
     var updateDiagram = ns.utils.updateDiagram;
 

@@ -1,6 +1,6 @@
 ;
-(function(ns) {
-    var $ = go.GraphObject.make;
+(function(netBrain) {
+    var ns = netBrain.pathPaneView;
 
     ns.linkTemplates = {
         mappingLinkTemplates: mappingLinkTemplates,

@@ -1,5 +1,7 @@
 ;
-(function(ns) {
+(function(netBrain) {
+    var ns = netBrain.pathPaneView;
+
     var $ = go.GraphObject.make;
     var RangeLink = ns.RangeLink;
     var createLinkShapeByStyle = ns.utils.createLinkShapeByStyle;

@@ -1,5 +1,7 @@
 ;
-(function(ns) {
+(function(netBrain) {
+    var ns = netBrain.pathPaneView;
+
     var nodeCategories = ns.consts.enums.nodeCategories;
     var topoTypes = ns.consts.enums.topoTypes;
     var upperCaseFirstChar = ns.utils.upperCaseFirstChar;
