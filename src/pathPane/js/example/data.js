@@ -21,13 +21,13 @@
             out: 'E0 10.10.10.1/24', // detail中的out信息，没有可不填
 
             outTopoTypes: [{ // device左侧显示的L2、L3等
-                id: 'l2',
+                id: 'L2_Topo_Type',
                 name: 'L2', // topoType中显示名字
                 hasDownTip: false, // 是否可以向下展开
                 hasUpTip: false, // 是否可以向上折叠
                 isActived: true, // 是否激活状态，决定颜色
             }, {
-                id: 'l3',
+                id: 'L3_Topo_Type',
                 name: 'L3',
             }, {
                 id: 'vxlan',
@@ -53,11 +53,11 @@
             out: 'E2',
 
             inTopoTypes: [{
-                id: 'l2',
+                id: 'L2_Topo_Type',
                 name: 'L2',
                 isActived: true,
             }, {
-                id: 'l3',
+                id: 'L3_Topo_Type',
                 name: 'L3',
             }, {
                 id: 'gre',
@@ -65,11 +65,11 @@
             }, ],
 
             outTopoTypes: [{
-                id: 'l2',
+                id: 'L2_Topo_Type',
                 name: 'L2',
                 isActived: true,
             }, {
-                id: 'l3',
+                id: 'L3_Topo_Type',
                 name: 'L3',
 
                 hasUpTip: true,
@@ -94,20 +94,20 @@
             out: 'E5 192.168.2.1/30',
 
             inTopoTypes: [{
-                id: 'l2',
+                id: 'L2_Topo_Type',
                 name: 'L2',
                 isActived: true,
             }, {
-                id: 'l3',
+                id: 'L3_Topo_Type',
                 name: 'L3',
             }],
 
             outTopoTypes: [{
-                id: 'l2',
+                id: 'L2_Topo_Type',
                 name: 'L2',
                 hasDownTip: true,
             }, {
-                id: 'l3',
+                id: 'L3_Topo_Type',
                 name: 'L3',
                 isActived: true,
             }],
@@ -129,10 +129,10 @@
             out: 'E4',
 
             inTopoTypes: [{
-                //     id: 'l2',
+                //     id: 'L2_Topo_Type',
                 //     name: 'L2',
                 // }, {
-                id: 'l3',
+                id: 'L3_Topo_Type',
                 name: 'L3',
                 isActived: true,
             }, {
@@ -144,11 +144,11 @@
             }],
 
             outTopoTypes: [{
-                //     id: 'l2',
+                //     id: 'L2_Topo_Type',
                 //     name: 'L2',
                 //     isActived: true,
                 // }, {
-                id: 'l3',
+                id: 'L3_Topo_Type',
                 name: 'L3',
             }, {
                 id: 'vxlan',
@@ -192,11 +192,11 @@
             out: '',
 
             inTopoTypes: [{
-                id: 'l2',
+                id: 'L2_Topo_Type',
                 name: 'L2',
                 isActived: true,
             }, {
-                id: 'l3',
+                id: 'L3_Topo_Type',
                 name: 'L3',
             }],
 
@@ -213,11 +213,11 @@
             isB: true,
 
             inTopoTypes: [{
-                id: 'l2',
+                id: 'L2_Topo_Type',
                 name: 'L2',
                 isActived: true,
             }, {
-                id: 'l3',
+                id: 'L3_Topo_Type',
                 name: 'L3',
             }],
 
@@ -228,28 +228,28 @@
         return [{
             category: 'hopLink',
             from: 101,
-            fromPort: 'l2',
+            fromPort: 'L2_Topo_Type',
             to: 102,
-            toPort: 'l2',
+            toPort: 'L2_Topo_Type',
             color: '#D98805',
         }, {
             category: 'hopLink', // 值为：hopLink或rangeLink
             from: 102, // from node id
-            fromPort: 'l2', // from port
+            fromPort: 'L2_Topo_Type', // from port
             to: 103, // to ndoe id
-            toPort: 'l2', // to port
+            toPort: 'L2_Topo_Type', // to port
             // color: '#D98805', // link颜色，若有产生规则，可不传
         }, {
             category: 'hopLink',
             from: 103,
-            fromPort: 'l3',
+            fromPort: 'L3_Topo_Type',
             to: 104,
-            toPort: 'l3',
+            toPort: 'L3_Topo_Type',
             color: '#4DBB00',
         }, {
             category: 'hopLink',
             from: 104,
-            fromPort: 'l3',
+            fromPort: 'L3_Topo_Type',
             to: 400,
             toPort: 'icon',
             color: '#4DBB00',

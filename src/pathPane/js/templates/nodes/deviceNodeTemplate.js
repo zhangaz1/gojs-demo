@@ -8,6 +8,8 @@
     var opacityByValue = utils.opacityByValue;
     var upperCaseFirstChar = utils.upperCaseFirstChar;
 
+    var topoTypes = ns.consts.enums.topoTypes;
+
     ns.deviceTemplate = {
         createDeviceTemplate: createDeviceTemplate
     };
@@ -161,7 +163,9 @@
                     desiredSize: new go.Size(topoTypeBase.height, topoTypeBase.width),
                     textAlign: 'center',
                 },
-                new go.Binding('text', 'name'),
+                new go.Binding('text', 'id', function(value) {
+                    return topoTypes[value].name;
+                }),
             );
         }
 

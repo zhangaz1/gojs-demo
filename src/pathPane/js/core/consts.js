@@ -16,7 +16,7 @@
      */
     function createTopoTypes() {
         return [{
-            id: 'l2',
+            id: 'L2_Topo_Type',
             name: 'L2',
 
             // backgroundColor: 'green',
@@ -28,7 +28,7 @@
 
             order: 1, // 显示顺序
         }, {
-            id: 'l3',
+            id: 'L3_Topo_Type',
             name: 'L3',
 
             order: 2,
