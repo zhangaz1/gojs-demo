@@ -157,17 +157,23 @@
             var isFailed = false;
             _.each(nodes, function(node) {
                 if (!isFailed && lastNode) {
+                    isFailed = isFailedNode(node);
+
+                    var portTail = isFailed ?
+                        '_copy' :
+                        '';
+                    var toPort = 'icon' + portTail;
+
                     links.push({
                         category: 'defaultLink',
                         from: lastNode.id,
                         fromPort: 'icon',
                         to: node.id,
-                        toPort: 'icon',
+                        toPort: toPort,
                         // color: '#D98805'
                     });
                 }
 
-                isFailed = isFailedNode(node);
                 lastNode = node;
             });
         }
