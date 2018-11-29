@@ -11,6 +11,7 @@
 
     function createMediaTemplate(option) {
         var nodeConfig = option.config.style.nodes;
+        var deviceConfig = nodeConfig.device;
         var mediaConfig = nodeConfig.media;
         var api = option.api;
 
@@ -22,8 +23,14 @@
                 padding: new go.Margin(1, 0, 1, 0),
                 background: nodeConfig.borderColor,
             },
+
             new go.Binding('width', 'width'),
             new go.Binding('location', 'location', go.Point.parse),
+
+            new go.Binding('padding', '', function() {
+                var verify = 35; // 与devicenodeIcon偏差
+                return new go.Margin(0, 0, 0, deviceConfig.details.left + verify);
+            }),
 
             createDeviceNameTemplate(),
         );
@@ -33,11 +40,12 @@
         function createDeviceNameTemplate() {
             var iconSize = mediaConfig.iconSize;
             return $(
-                go.Panel, 'Horizontal', {
+                go.Panel,
+                'Horizontal', {
                     name: 'mediaNamePanel',
                     height: mediaConfig.height,
                 },
-                new go.Binding('margin', 'iconMargin', go.Margin.parse),
+
                 $(
                     go.Picture, {
                         name: 'mediaIcon',
