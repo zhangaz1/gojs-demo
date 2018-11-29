@@ -90,8 +90,8 @@
         switch (node.data.category) {
             case nodeCategories.failed:
             case nodeCategories.balance:
-                x = getLinkAnotherX(node, config);
-                break;
+                // x = getLinkAnotherX(node, config);
+                // break;
             default:
                 x = node.location.x;
                 break;
