@@ -16,7 +16,7 @@
 
         return $(
             go.Node,
-            'Auto', {
+            'Horizontal', {
                 name: 'failedNode',
                 locationSpot: go.Spot.Center,
             },
@@ -29,22 +29,29 @@
                 return new go.Margin(0, 0, 0, deviceConfig.details.left + verify);
             }),
 
+            createFailedIconTemplate('_copy'),
             createFailedIconTemplate(),
         );
 
         // return void(0);
 
-        function createFailedIconTemplate() {
+        function createFailedIconTemplate(tail) {
             var iconSize = failedConfig.iconSize;
-            return $(
+            var icon = $(
                 go.Picture, {
                     name: 'failedIcon',
-                    portId: 'icon',
+                    portId: 'icon' + (tail || ''),
                     width: iconSize.width,
                     height: iconSize.height,
                     source: failedConfig.icon,
                 },
             );
+
+            if (!tail) {
+                icon.margin = new go.Margin(0, 0, 0, -100);
+            }
+
+            return icon;
         }
 
     }

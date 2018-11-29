@@ -185,6 +185,23 @@
             id: 105,
             category: 'device',
 
+            name: 'Host-xxx',
+            in: 'E1 10.10.2/24',
+            out: '',
+
+            inTopoTypes: [{
+                id: 'l2',
+                name: 'L2',
+                isActived: true,
+            }, {
+                id: 'l3',
+                name: 'L3',
+            }],
+
+        }, {
+            id: 106,
+            category: 'device',
+
             name: 'Host-2',
             in: 'E1 10.10.2/24',
             out: '',
@@ -202,7 +219,7 @@
                 name: 'L3',
             }],
 
-        }];
+        }, ];
     }
 
     function getLinks() {
@@ -226,6 +243,13 @@
             fromPort: 'l3',
             to: 104,
             toPort: 'l3',
+            color: '#4DBB00',
+        }, {
+            category: 'hopLink',
+            from: 104,
+            fromPort: 'l3',
+            to: 400,
+            toPort: 'icon',
             color: '#4DBB00',
         }, ];
     }
