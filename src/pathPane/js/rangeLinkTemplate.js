@@ -18,9 +18,9 @@
                 routing: go.Link.Orthogonal,
             },
             new go.Binding('', '', function(data) {
-                data.deviceConfig = option.config.style.nodes.device;
                 data.option = option;
             }),
+
             createLinkShapeByStyle(rangeLinkStyle),
         );
     }
