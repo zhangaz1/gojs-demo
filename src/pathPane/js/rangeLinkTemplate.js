@@ -21,15 +21,7 @@
                 data.deviceConfig = option.config.style.nodes.device;
                 data.option = option;
             }),
-            $(
-                go.Shape, {
-                    isPanelMain: true,
-                    stroke: 'transparent',
-                },
-                new go.Binding('pathPattern', '', function() {
-                    return createLinkShapeByStyle(rangeLinkStyle);
-                }),
-            ),
+            createLinkShapeByStyle(rangeLinkStyle),
         );
     }
 })(NetBrain);

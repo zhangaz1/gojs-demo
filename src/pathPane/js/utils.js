@@ -15,17 +15,17 @@
 
     function createLinkShapeByStyle(style) {
         return createLinkShape(
-            style.geometry,
+            style.strokeDashArray,
             style.color,
             style.width,
         );
     }
 
-    function createLinkShape(geometry, color, width) {
+    function createLinkShape(strokeDashArray, color, width) {
         return go.GraphObject
             .make(
                 go.Shape, {
-                    geometryString: geometry || 'M0 0 M3 0 L6 0',
+                    strokeDashArray: strokeDashArray || [3, 3],
                     stroke: color || 'black',
                     strokeWidth: width || 1,
                 },

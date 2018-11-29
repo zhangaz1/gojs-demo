@@ -71,17 +71,17 @@
                     links: {
                         hopLink: {
                             color: '#7F8A90',
-                            geometry: 'M0 0 M3 0 L6 0',
+                            strokeDashArray: [3, 2],
                             width: 1,
                         },
                         rangeLink: {
                             color: '#519BC6',
-                            geometry: 'M0 0 M3 0 L6 0',
+                            strokeDashArray: [8, 6],
                             width: 4,
                         },
                         defaultLink: {
                             color: '#619E99',
-                            geometry: 'M0 0 M3 0 L6 0',
+                            strokeDashArray: [5, 2],
                             width: 2,
                         },
                     },

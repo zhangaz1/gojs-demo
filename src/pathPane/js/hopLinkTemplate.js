@@ -16,15 +16,8 @@
             go.Link, {
                 routing: go.Link.Orthogonal,
             },
-            $(
-                go.Shape, {
-                    isPanelMain: true,
-                    stroke: 'transparent',
-                },
-                new go.Binding('pathPattern', '', function() {
-                    return createLinkShapeByStyle(hopLinkStyle);
-                }),
-            ),
+
+            createLinkShapeByStyle(hopLinkStyle),
         );
     }
 })(NetBrain);
