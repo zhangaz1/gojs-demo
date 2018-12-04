@@ -32,11 +32,13 @@
                 locationSpot: go.Spot.Center,
 
                 padding: new go.Margin(1, 0, 1, 0),
-                background: nodeConfig.borderColor,
+                background: deviceConfig.borderColor ||
+                    nodeConfig.borderColor,
             },
 
             new go.Binding('width', 'width'),
             new go.Binding('location', 'location', go.Point.parse),
+            new go.Binding('background', 'borderColor'),
 
             createMainLayout(),
         );
@@ -49,8 +51,11 @@
                 'Position', {
                     name: 'mainLayout',
                     padding: new go.Margin(5, 10, 5, 15),
-                    background: nodeConfig.backgroundColor,
+                    background: deviceConfig.backgroundColor ||
+                        nodeConfig.backgroundColor,
                 },
+
+                new go.Binding('background', 'backgroundColor'),
 
                 createDeviceTopoTypesTemplate(),
                 createDeviceDetailTemplate(),
@@ -73,13 +78,16 @@
             return $(
                 go.Panel,
                 'Auto', {
-                    background: nodeConfig.backgroundColor,
                     padding: 1,
+                    background: deviceConfig.backgroundColor ||
+                        nodeConfig.backgroundColor,
 
                     mouseEnter: showTopoTypeTip,
                     mouseLeave: mouseLeave,
                     click: switchTopoType,
                 },
+
+                new go.Binding('background', 'borderColor'),
 
                 new go.Binding('cursor', '', function(topoType) {
                     if (hasTip(topoType)) {
@@ -100,7 +108,8 @@
                 go.Panel,
                 'Vertical', {
                     name: 'topoTypeItemPanel',
-                    background: nodeConfig.backgroundColor,
+                    background: deviceConfig.backgroundColor ||
+                        nodeConfig.backgroundColor,
                 },
 
                 createTopoTypeArrowTemplate('UpTip'),
@@ -163,9 +172,7 @@
                     desiredSize: new go.Size(topoTypeBase.height, topoTypeBase.width),
                     textAlign: 'center',
                 },
-                new go.Binding('text', 'id', function(value) {
-                    return topoTypes[value].name;
-                }),
+                new go.Binding('text', 'name'),
             );
         }
 

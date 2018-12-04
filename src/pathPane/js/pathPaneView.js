@@ -2,9 +2,13 @@
 (function(netBrain) {
     var ns = netBrain.pathPaneView;
 
-    var nodeCategories = ns.consts.enums.nodeCategories;
-    var topoTypes = ns.consts.enums.topoTypes;
+    var enums = ns.consts.enums;
+    var nodeCategories = enums.nodeCategories;
+    var linkCategories = enums.linkCategories;
+    var topoTypes = enums.topoTypes;
+
     var upperCaseFirstChar = ns.utils.upperCaseFirstChar;
+    var publish = ns.utils.publish;
 
     ns.pathPaneView = {
         createView: createView,
@@ -13,6 +17,29 @@
     var layoutNodesData = ns.nodesDataLayout.layout;
     var layoutNodes = ns.nodesLayout.layout;
     var updateDiagram = ns.utils.updateDiagram;
+
+    // topo type 自动填充属性列表
+    var propertiesToFill = [
+        'name',
+        'order',
+        'backgroundColor',
+        'borderColor',
+        'active',
+    ];
+
+    // path view api:
+    var publicMethods = [
+        // public
+        'bindData',
+        'canMoveUp',
+        'canMoveDown',
+        'moveUp',
+        'moveDown',
+
+        // debug
+        'getDiagram',
+        'getData',
+    ];
 
     return void(0);
 
@@ -25,9 +52,16 @@
      * @returns: {object}： 包含api，例：
      *
         {
+            // public api:
             bindData(data): 通过此函数绑定data，渲染path视图
-            getScrollInfo:  获取画布大小和位置信息，以便控制滚动,
-            scroll:         滚动画布，正值向下，负值向上,
+            canMoveUp(): return boolean: 是否可以向上移动可视区
+            canMoveDown(): return boolean: 是否可以向下移动可视区
+            moveUp(step: number): 可视区向上移动step像素
+            moveDown(step: number): 可视区向下移动step像素
+
+            // debug api:
+            getDiagram: 返回内部gojs diagram 实例引用
+            getData： 返回diagram当前bangding的数据：nodeDataArray、linkDataArray等
         }
      *
      *
@@ -35,14 +69,18 @@
      *
         function init() {
             var api = {
-                getUpTopoTypeRange:                    获取上一层的起止范围,
+                getUpTopoTypeRange:                 获取上一层的起止范围,
 
                 showUpTip:                          显示向上箭头tip,
                 showDownTip:                        显示向下箭头tip,
 
-                switchUpTopoType:                      向上topoType切换,
-                switchDownTopoType:                    向下topoType切换,
+                switchUpTopoType:                   向上topoType切换,
+                switchDownTopoType:                 向下topoType切换,
                 switchBalance:                      切换loadBalance,
+
+                getIcon:                            获取device或media等的icon
+                closeTip:                           用于鼠标移出后关闭tip
+                suggestPaneWidth：                  根据node宽度调整画布大小
             };
             var pathPaneView = ns.pathPaneView.createView('myDiagramDiv'， api);
 
@@ -50,16 +88,19 @@
                 nodeDataArray: ns.data.getNodes(),
                 linkDataArray: ns.data.getLinks()
             };
-            pathPaneView.bindData(data);
 
-            var scrollInfo = pathPanView.getScrollInfo();
+            pathPaneView.bindData(data)
+                .then(function(){
+                    // todo something:
+                    // update move up/down status...
+                });
         }
      *
      */
     function createView(containerId, api) {
         var nodeWidth = getDiagramWidth(containerId);
 
-        var config = mergeNewConfig();
+        var config = mergeNewConfig(nodeWidth);
         var option = {
             config: config,
             api: api,
@@ -69,31 +110,9 @@
 
         var view = createViewInstance();
 
-        var publicMethods = [
-            'getDiagram',
-
-            'bindData',
-            'getData',
-
-            'canMoveUp',
-            'canMoveDown',
-            'moveUp',
-            'moveDown',
-        ];
-
         return publish(view, publicMethods);
 
         // return void(0);
-
-        function publish(obj, methods) {
-            var proxy = {};
-
-            _.each(methods, function(method) {
-                proxy[method] = obj[method].bind(obj);
-            });
-
-            return proxy;
-        }
 
         function createViewInstance() {
             return {
@@ -111,7 +130,7 @@
             };
         }
 
-        function mergeNewConfig() {
+        function mergeNewConfig(nodeWidth) {
             return ns.config.getConfig({
                 containerId: containerId,
                 style: {
@@ -167,7 +186,7 @@
                     var toPort = 'icon' + portTail;
 
                     links.push({
-                        category: 'defaultLink',
+                        category: linkCategories.defaultLink,
                         from: lastNode.id,
                         fromPort: 'icon',
                         to: node.id,
@@ -215,7 +234,7 @@
                         existType = type;
 
                         topoTypesDic[type.id] = existType;
-                        existType.order = topoTypes[type.id].order;
+                        tryFillDefaultInfo(type, topoTypes);
                     } else {
                         existType.isActived = existType.isActived || type.isActived;
                         existType.hasUpTip = existType.hasUpTip || type.hasUpTip;
@@ -224,6 +243,22 @@
 
                     existType[typeKey] = true;
                 });
+            }
+        }
+
+        function tryFillDefaultInfo(type, topoTypes) {
+            _.each(propertiesToFill, function(propertyName) {
+                setDefaultPropertyIfNotAssign(type, topoTypes, propertyName);
+            });
+        }
+
+        function setDefaultPropertyIfNotAssign(type, topoTypes, propertyName) {
+            var topoTypeDefine = topoTypes[type.id];
+            if (
+                topoTypeDefine &&
+                _.isUndefined(type[propertyName])
+            ) {
+                type[propertyName] = topoTypeDefine[propertyName];
             }
         }
 

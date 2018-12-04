@@ -11,6 +11,7 @@
         function init() {
             var api = getApi();
             var pathPaneView = ns.pathPaneView.createView('myDiagramDiv', api);
+
             initData(pathPaneView)
                 .then(function() {
                     bindMoveHandler(pathPaneView);
@@ -85,7 +86,6 @@
 
                 showUpTip: showUpTip,
                 showDownTip: showDownTip,
-                showElseTopoTypesTip: showElseTopoTypesTip,
 
                 switchUpTopoType: switchUpTopoType,
                 switchDownTopoType: switchDownTopoType,
@@ -113,10 +113,6 @@
                     name: 'Vxlan',
                     // ...
                 },
-                elseTopoTypes: [{      // 仅用于elseTopoTypes相关调用
-                    name: 'Vxxxx',
-                    // ...
-                }],
                 node: {
                     id: 105,
                     // ...
@@ -163,14 +159,6 @@
         function showDownTip(eventData) {
             console.log('showDownTip:', eventData);
             return 2;
-        }
-
-        /**
-         *
-         * @param {object} eventData : 同上
-         */
-        function showElseTopoTypesTip(eventData) {
-            console.log('showElseTopoTypesTip:', eventData);
         }
 
         /**
@@ -229,6 +217,11 @@
             console.log('closeTip:', id);
         }
 
+        /**
+         * 根据node宽度更改pane宽度
+         *
+         * @param {Number} width
+         */
         function suggestPaneWidth(width) {
             console.log('suggestPaneWidth:', width);
             $('#myDiagramDiv').width(width);

@@ -2,6 +2,8 @@
 (function(netBrain) {
     var ns = netBrain.pathPaneView;
 
+    var nodeCategories = ns.consts.enums.nodeCategories;
+
     ns.nodeTemplates = {
         mappingNodeTeamplates: mappingNodeTeamplates,
     };
@@ -11,10 +13,26 @@
     function mappingNodeTeamplates(option) {
         var nodeTemplateMap = option.diagram.nodeTemplateMap;
 
-        nodeTemplateMap.add('device', ns.deviceTemplate.createDeviceTemplate(option));
-        nodeTemplateMap.add('media', ns.mediaTemplate.createMediaTemplate(option));
-        nodeTemplateMap.add('balance', ns.balanceTemplate.createBalanceTemplate(option));
-        nodeTemplateMap.add('failed', ns.failedTemplate.createFailedTemplate(option));
+        nodeTemplateMap.add(
+            nodeCategories.device,
+            ns.deviceTemplate.createDeviceTemplate(option)
+        );
+
+        nodeTemplateMap.add(
+            nodeCategories.media,
+            ns.mediaTemplate.createMediaTemplate(option)
+        );
+
+        nodeTemplateMap.add(
+            nodeCategories.balance,
+            ns.balanceTemplate.createBalanceTemplate(option)
+        );
+
+        nodeTemplateMap.add(
+            nodeCategories.failed,
+            ns.failedTemplate.createFailedTemplate(option)
+        );
+
     }
 
 

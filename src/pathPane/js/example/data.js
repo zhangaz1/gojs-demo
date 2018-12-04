@@ -16,34 +16,29 @@
 
             category: 'device', // 类别决定使用何种模板，目前支持device、media、balance、failed等
 
+            // backgroundColor: 'red',  // 背景颜色，不指定则取device背景颜色
+            // borderColor: 'red',      // 边框颜色，不指定则取device边框颜色
+
             name: 'Host-1', // detail中的hostName信息
             in: '', // detail中的in信息，没有可不填
             out: 'E0 10.10.10.1/24', // detail中的out信息，没有可不填
 
-            outTopoTypes: [{ // device左侧显示的L2、L3等
-                id: 'L2_Topo_Type',
-                name: 'L2', // topoType中显示名字
+            // in topo types
+            inTopoTypes: [],
+            // out topo types
+            outTopoTypes: [{
+                id: 'L2_Topo_Type', // 前后台对应的key
+                name: 'L2', // topoType中显示名字, 不赋值，则取配置中name
                 hasDownTip: false, // 是否可以向下展开
                 hasUpTip: false, // 是否可以向上折叠
                 isActived: true, // 是否激活状态，决定颜色
             }, {
                 id: 'L3_Topo_Type',
-                name: 'L3',
             }, {
                 id: 'vxlan',
-                name: 'Vxlan',
             }, ],
 
-            // elseinTopoTypes: [{ // 其他可选的topoType,不包含L2、L3，仅与Vxlan同列的其他可选topoType，切换后显示在Vxlan位置
-            //     name: 'Vxxxx',
-            // }, {
-            //     name: 'Vxyyy',
-            // }],
-
-            // icon: './../../imgs/icons/pc.png', // device有多中图标可能，需要指明图标路径，或者提供图标类别
-            // abIcon: './../../imgs/icons/path_point_a.bmp',
             isA: true, // ab图标可以通过图标路径或isA、isB指定，可讨论后确定
-
         }, {
             id: 102,
             category: 'device',
@@ -52,6 +47,7 @@
             in: 'E1',
             out: 'E2',
 
+            // in topo types
             inTopoTypes: [{
                 id: 'L2_Topo_Type',
                 name: 'L2',
@@ -64,6 +60,7 @@
                 name: 'GRE',
             }, ],
 
+            // out topo types;
             outTopoTypes: [{
                 id: 'L2_Topo_Type',
                 name: 'L2',
@@ -82,8 +79,6 @@
                 id: 'ipSec',
                 name: 'IP Sec',
             }],
-
-            // icon: './../../imgs/icons/router.png',
 
         }, {
             id: 103,
@@ -175,7 +170,8 @@
 
             name: 'VPC1', // 显示用
 
-            iconMargin: '0 0 0 28',
+            // backgroundColor: 'blue',
+            // borderColor: 'red',
 
             // icon: './../../imgs/icons/lan1.png', // 可讨论，若多种图标，需要指定类别，或path
 
@@ -231,28 +227,28 @@
             fromPort: 'L2_Topo_Type',
             to: 102,
             toPort: 'L2_Topo_Type',
-            color: '#D98805',
+            // color: '#D98805',
         }, {
-            category: 'hopLink', // 值为：hopLink或rangeLink
-            from: 102, // from node id
-            fromPort: 'L2_Topo_Type', // from port
-            to: 103, // to ndoe id
-            toPort: 'L2_Topo_Type', // to port
-            // color: '#D98805', // link颜色，若有产生规则，可不传
+            category: 'hopLink',        // 值为：hopLink或rangeLink
+            from: 102,                  // from node id
+            fromPort: 'L2_Topo_Type',   // from port
+            to: 103,                    // to ndoe id
+            toPort: 'L2_Topo_Type',     // to port
+            // color: '#D98805',        // link颜色，若不传则取对应link配置的默认颜色
         }, {
             category: 'hopLink',
             from: 103,
             fromPort: 'L3_Topo_Type',
             to: 104,
             toPort: 'L3_Topo_Type',
-            color: '#4DBB00',
+            // color: '#4DBB00',
         }, {
             category: 'hopLink',
             from: 104,
             fromPort: 'L3_Topo_Type',
             to: 400,
             toPort: 'icon',
-            color: '#4DBB00',
+            // color: '#4DBB00',
         }, ];
     }
 

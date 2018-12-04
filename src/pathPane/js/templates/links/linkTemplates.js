@@ -2,6 +2,8 @@
 (function(netBrain) {
     var ns = netBrain.pathPaneView;
 
+    var linkCategories = ns.consts.enums.linkCategories;
+
     ns.linkTemplates = {
         mappingLinkTemplates: mappingLinkTemplates,
     };
@@ -11,9 +13,20 @@
     function mappingLinkTemplates(option) {
         var linkTemplateMap = option.diagram.linkTemplateMap;
 
-        linkTemplateMap.add('defaultLink', ns.defaultLinkTemplate.createDefaultLinkTemplate(option));
-        linkTemplateMap.add('hopLink', ns.hopLinkTemplate.createHopLinkTemplate(option));
-        linkTemplateMap.add('rangeLink', ns.rangeLinkTemplate.createRangeLinkTemplate(option));
+        linkTemplateMap.add(
+            linkCategories.defaultLink,
+            ns.defaultLinkTemplate.createDefaultLinkTemplate(option)
+        );
+
+        linkTemplateMap.add(
+            linkCategories.hopLink,
+            ns.hopLinkTemplate.createHopLinkTemplate(option)
+        );
+
+        linkTemplateMap.add(
+            linkCategories.rangeLink,
+            ns.rangeLinkTemplate.createRangeLinkTemplate(option)
+        );
     }
 
 })(NetBrain);

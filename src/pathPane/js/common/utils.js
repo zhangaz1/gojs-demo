@@ -11,9 +11,20 @@
         upperCaseFirstChar: upperCaseFirstChar,
         createLinkShape: createLinkShape,
         createLinkShapeByStyle: createLinkShapeByStyle,
+        publish: publish,
     };
 
     return void(0);
+
+    function publish(obj, methods) {
+        var proxy = {};
+
+        _.each(methods, function(method) {
+            proxy[method] = obj[method].bind(obj);
+        });
+
+        return proxy;
+    }
 
     function createLinkShapeByStyle(style) {
         return createLinkShape(
@@ -31,6 +42,8 @@
                     stroke: color || 'black',
                     strokeWidth: width || 1,
                 },
+
+                new go.Binding('stroke', 'color'),
             );
     }
 

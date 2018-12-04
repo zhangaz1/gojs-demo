@@ -47,6 +47,7 @@
                     width: iconSize.width,
                     height: iconSize.height,
                     source: balanceConfig.icon,
+
                     cursor: 'pointer',
                     click: switchBalance,
                 },
@@ -61,6 +62,9 @@
                     font: balanceConfig.font,
                     stroke: balanceConfig.color,
                     isMultiline: false,
+
+                    cursor: 'pointer',
+                    click: switchBalance,
                 },
                 new go.Binding('text', 'name').makeTwoWay(),
             );

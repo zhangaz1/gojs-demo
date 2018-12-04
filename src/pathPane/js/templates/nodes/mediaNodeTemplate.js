@@ -22,16 +22,13 @@
                 name: 'mediaNode',
                 locationSpot: go.Spot.Center,
                 padding: new go.Margin(1, 0, 1, 0),
-                background: nodeConfig.borderColor,
+                background: mediaConfig.borderColor ||
+                    nodeConfig.borderColor,
             },
 
             new go.Binding('width', 'width'),
             new go.Binding('location', 'location', go.Point.parse),
-
-            new go.Binding('padding', '', function() {
-                var verify = 35; // 与devicenodeIcon偏差
-                return new go.Margin(0, 0, 0, deviceConfig.details.left + verify);
-            }),
+            new go.Binding('background', 'borderColor'),
 
             createDeviceNameTemplate(),
         );
@@ -45,7 +42,16 @@
                 'Horizontal', {
                     name: 'mediaNamePanel',
                     height: mediaConfig.height,
+                    background: mediaConfig.backgroundColor ||
+                        nodeConfig.backgroundColor,
                 },
+
+                new go.Binding('padding', '', function() {
+                    var verify = 35; // 与devicenodeIcon偏差
+                    return new go.Margin(0, 0, 0, deviceConfig.details.left + verify);
+                }),
+
+                new go.Binding('background', 'backgroundColor'),
 
                 $(
                     go.Picture, {

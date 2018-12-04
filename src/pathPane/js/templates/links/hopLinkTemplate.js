@@ -20,6 +20,7 @@
             },
 
             createLinkShapeByStyle(hopLinkStyle),
+
         );
     }
 })(NetBrain);
