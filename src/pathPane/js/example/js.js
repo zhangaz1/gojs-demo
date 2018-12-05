@@ -38,8 +38,4 @@ document.write('<script src="./../inspectors/debugInspector.js"></script>');
 // main
 document.write('<script src="./../pathPaneView.js"></script>');
 
-// example
-document.write('<script src="./../example/data.js"></script>');
-document.write('<script src="./../example/pathPane.js"></script>');
-
 //============ path pane view ==================
