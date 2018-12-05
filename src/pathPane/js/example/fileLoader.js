@@ -32,9 +32,6 @@
     }, {
         type: 'js',
         path: 'libs/gojs/DebugInspector.js',
-    }, {
-        type: 'js',
-        path: 'pathPane/js/path.js',
     }, ];
 
     loadFiles(files);
