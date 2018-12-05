@@ -10,9 +10,7 @@
     var upperCaseFirstChar = ns.utils.upperCaseFirstChar;
     var publish = ns.utils.publish;
 
-    ns.pathPaneView = {
-        createView: createView,
-    };
+    ns.createView = createView;
 
     var layoutNodesData = ns.nodesDataLayout.layout;
     var layoutNodes = ns.nodesLayout.layout;

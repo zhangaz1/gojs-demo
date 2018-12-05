@@ -240,7 +240,7 @@
                         name: 'device' + uppercaseKey + 'Text',
                         font: outIn.labelFont,
                     },
-                    new Binding('text', key),
+                    new go.Binding('text', key),
                 )
             );
         }

@@ -10,7 +10,7 @@
 
         function init() {
             var api = getApi();
-            var pathPaneView = ns.pathPaneView.createView('myDiagramDiv', api);
+            var pathPaneView = ns.createView('myDiagramDiv', api);
 
             initData(pathPaneView)
                 .then(function() {
