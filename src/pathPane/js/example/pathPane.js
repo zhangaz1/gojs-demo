@@ -96,6 +96,8 @@
                 closeTip: closeTip,
 
                 suggestPaneWidth: suggestPaneWidth,
+
+                selectNode: selectNode,
             };
         }
 
@@ -225,6 +227,10 @@
         function suggestPaneWidth(width) {
             console.log('suggestPaneWidth:', width);
             $('#myDiagramDiv').width(width);
+        }
+
+        function selectNode(deviceData) {
+            console.log('select device:', deviceData);
         }
 
     });

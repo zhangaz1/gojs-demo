@@ -28,7 +28,7 @@
             new go.Binding('location', 'location', go.Point.parse),
 
             new go.Binding('padding', '', function() {
-                var verify = 27; // 与devicenodeIcon偏差
+                var verify = 31; // 与devicenodeIcon偏差
                 return new go.Margin(0, 0, 0, deviceConfig.details.left + verify);
             }),
 
@@ -66,13 +66,13 @@
                     cursor: 'pointer',
                     click: switchBalance,
                 },
-                new go.Binding('text', 'name').makeTwoWay(),
+                new go.Binding('text', 'count'),
             );
         }
 
         function switchBalance(inputEvent, graphObject) {
             var eventData = createEventData(inputEvent, graphObject);
-            option.api.switchBalance(eventData);
+            option.api.switchBalance(eventData, inputEvent.event);
         }
     }
 

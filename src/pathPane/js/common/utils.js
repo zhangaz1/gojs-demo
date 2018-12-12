@@ -9,6 +9,7 @@
         updateDiagram: updateDiagram,
         diagramReady: diagramReady,
         upperCaseFirstChar: upperCaseFirstChar,
+        lowerCaseFirstChar: lowerCaseFirstChar,
         createLinkShape: createLinkShape,
         createLinkShapeByStyle: createLinkShapeByStyle,
         publish: publish,
@@ -48,8 +49,16 @@
     }
 
     function upperCaseFirstChar(str) {
+        return shiftFirstChar(str, 'toUpperCase');
+    }
+
+    function lowerCaseFirstChar(str) {
+        return shiftFirstChar(str, 'toLowerCase');
+    }
+
+    function shiftFirstChar(str, shifter) {
         if (str.length > 0) {
-            return str[0].toUpperCase() + str.slice(1);
+            return str[0][shifter]() + str.slice(1);
         }
         return str;
     }

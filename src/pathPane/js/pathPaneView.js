@@ -33,6 +33,7 @@
         'canMoveDown',
         'moveUp',
         'moveDown',
+        'selectDevice',
 
         // debug
         'getDiagram',
@@ -107,6 +108,7 @@
         var diagram = createPathPanelDiagram(option);
 
         var view = createViewInstance();
+        option.view = view; // for node action：device selected...
 
         return publish(view, publicMethods);
 
@@ -125,6 +127,8 @@
                 moveDown: moveDown,
                 scroll: scroll,
                 canMove: canMove,
+
+                selectDevice: selectDevice,
             };
         }
 
@@ -149,7 +153,7 @@
         /**
          * 绑定视图数据，显示path
          *
-         * @param {object} data : 指定nodeDataArray和linkDataArray，例：
+         * @param {object} dataShadow : 指定nodeDataArray和linkDataArray，例：
          *
             {
                 nodeDataArray：array
@@ -158,17 +162,32 @@
          *
          */
         function bindData(data) {
-            var nodes = data.nodeDataArray;
+            var dataShadow = shadowData(data);
+            var nodes = dataShadow.nodeDataArray;
             mergeNodesTopoTypes(nodes);
             calculateDeviceDetailLeft(nodes);
 
-            var links = data.linkDataArray;
+            var links = dataShadow.linkDataArray;
             addDefaultLinks(nodes, links);
 
             return updateDiagram(diagram, function() {
-                    diagram.model = createModel(data, config);
+                    diagram.model = createModel(dataShadow, config);
                 })
                 .then(doNodesLayout);
+        }
+
+        /**
+         * 仅仅重新构造了array，node和link并不复制
+         *
+         *  因为后面会自动增加defaultLink，为避免修改传入的数组，故增加此逻辑
+         *
+         * @param {Object} data
+         */
+        function shadowData(data) {
+            return {
+                nodeDataArray: [].concat(data.nodeDataArray),
+                linkDataArray: [].concat(data.linkDataArray),
+            };
         }
 
         function addDefaultLinks(nodes, links) {
@@ -254,7 +273,10 @@
             var topoTypeDefine = topoTypes[type.id];
             if (
                 topoTypeDefine &&
-                _.isUndefined(type[propertyName])
+                (
+                    propertyName === 'name' || // for temp test !!! to remove
+                    _.isUndefined(type[propertyName])
+                )
             ) {
                 type[propertyName] = topoTypeDefine[propertyName];
             }
@@ -384,6 +406,26 @@
 
             return false;
         }
+
+        function selectDevice(nodeData, emitEvent) {
+            var deviceId = nodeData.id;
+
+            diagram.nodes.each(function(node) {
+                var data = node.data;
+                if (data.category === nodeCategories.device) {
+                    var key = 'selected';
+                    if (data.id === deviceId && !data[key]) { // set selected
+                        diagram.model.setDataProperty(data, key, true);
+                    } else if (data[key] && data.id !== deviceId) { // remove selected
+                        diagram.model.setDataProperty(data, key, false);
+                    }
+                }
+            });
+
+            if (emitEvent) {
+                api.selectNode(nodeData);
+            }
+        }
     }
 
     function getDiagramWidth(containerId) {
@@ -430,14 +472,14 @@
                 option.config.containerId,
                 getDiagramConfig(), {
                     // temp: for test
-                    allowSelect: true,
+                    // allowSelect: true,
                     // allowMove: true,
                     // automatically show the state of the diagram's model on the page
-                    'ModelChanged': function(e) {
-                        if (e.isTransactionFinished) {
-                            document.getElementById('savedModel').textContent = diagram.model.toJson();
-                        }
-                    }
+                    // 'ModelChanged': function(e) {
+                    //     if (e.isTransactionFinished) {
+                    //         document.getElementById('savedModel').textContent = diagram.model.toJson();
+                    //     }
+                    // }
                 }
             );
 

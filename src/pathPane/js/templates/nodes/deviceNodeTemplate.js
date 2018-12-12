@@ -7,6 +7,7 @@
     var utils = ns.utils;
     var opacityByValue = utils.opacityByValue;
     var upperCaseFirstChar = utils.upperCaseFirstChar;
+    var lowerCaseFirstChar = utils.lowerCaseFirstChar;
 
     var topoTypes = ns.consts.enums.topoTypes;
 
@@ -53,13 +54,32 @@
                     padding: new go.Margin(5, 10, 5, 15),
                     background: deviceConfig.backgroundColor ||
                         nodeConfig.backgroundColor,
+
+                    cursor: 'pointer',
+                    click: selectDevice,
                 },
 
                 new go.Binding('background', 'backgroundColor'),
+                new go.Binding('background', 'selected', getBackgrounColorBySelected),
 
                 createDeviceTopoTypesTemplate(),
                 createDeviceDetailTemplate(),
             );
+        }
+
+        function getBackgrounColorBySelected(value, graphObject) {
+            if (value) {
+                return deviceConfig.selectedBackgroundColor ||
+                    nodeConfig.selectedBackgroundColor;
+            } else {
+                return graphObject.part.data.backgroundColor ||
+                    deviceConfig.backgroundColor ||
+                    nodeConfig.backgroundColor;
+            }
+        }
+
+        function selectDevice(inputEvent, graphObject) {
+            option.view.selectDevice(graphObject.part.data, true);
         }
 
         function createDeviceTopoTypesTemplate() {
@@ -119,10 +139,25 @@
         }
 
         function createTopoTypeArrowTemplate(key) {
+            var top = 0
+            var bottom = 0;
+            var space = 2;
+
+            if (key === 'UpTip') {
+                bottom = space;
+            }
+            if (key === 'DownTip') {
+                top = space;
+            }
+
+            var iconKey = lowerCaseFirstChar(key);
             return $(
                 go.Picture, {
                     opacity: 0,
-                    source: './../../imgs/icons/' + key + '.png'
+                    source: topoTypeBase[iconKey],
+                    width: topoTypeBase.tipIconWidth,
+                    height: topoTypeBase.tipIconHeight,
+                    margin: new go.Margin(top, 0, bottom, 0),
                 },
                 new go.Binding('opacity', 'has' + key, function(value) {
                     return value ? 1 : 0;
@@ -226,6 +261,7 @@
                     name: 'devcie' + uppercaseKey + 'Panel',
                     alignment: go.Spot.Left,
                     padding: 3,
+                    opacity: 0,
                 },
                 new go.Binding('opacity', key, opacityByValue),
                 $(
@@ -294,12 +330,10 @@
                 },
                 new go.Binding('source', '', function(data, picture) {
                     var icon = '';
-                    if (!picture.source) {
-                        if (data.isA) {
-                            icon = deviceConfig.aIcon;
-                        } else if (data.isB) {
-                            icon = deviceConfig.bIcon;
-                        }
+                    if (data.isA) {
+                        icon = deviceConfig.aIcon;
+                    } else if (data.isB) {
+                        icon = deviceConfig.bIcon;
                     }
                     return icon;
                 }),

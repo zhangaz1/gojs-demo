@@ -66,7 +66,7 @@
         option.api.suggestPaneWidth(maxNodeWidth);
     }
 
-    function calculateX(node, config) {
+    function calculateX(node) {
         return node.location.x;
     }
 

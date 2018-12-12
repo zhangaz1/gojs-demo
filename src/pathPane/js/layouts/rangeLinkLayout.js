@@ -9,7 +9,7 @@
     return void(0);
 
     function layout(link) {
-        var xOffset = 5;
+        var xOffset = -2; // range link 左偏移距离
 
         var style = link.data.option.config.style;
         var deviceConfig = style.nodes.device;
@@ -37,7 +37,7 @@
             points[pointsLength - 2].y += secondOffsetY;
             points[pointsLength - 1].y += topoTypeHeight;
 
-            points[pointsLength - 3].x -= getToOffsetLeft(link) + xOffset;
+            points[pointsLength - 3].x -= (getToOffsetLeft(link) + xOffset + rangeLinkWidth);
             points[pointsLength - 3].y = points[pointsLength - 2].y;
         }
 
